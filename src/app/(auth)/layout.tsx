@@ -1,3 +1,5 @@
+import AuthServiceHeader from '@/components/layout/AuthServiceHeader'
+
 export default function Layout({
   children,
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header>MAINHEADER</header>
+      <AuthServiceHeader />
       {children}
     </>
   )
