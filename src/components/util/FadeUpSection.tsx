@@ -37,8 +37,11 @@ export default function FadeUpSection({
   }, [lastScrollY])
 
   return (
-    <div ref={sectionRef} className={`fade-up ${isVisible ? 'visible' : ''}`}>
+    <section
+      ref={sectionRef}
+      className={`fade-up ${isVisible ? 'visible' : ''}`}
+    >
       {children}
-    </div>
+    </section>
   )
 }

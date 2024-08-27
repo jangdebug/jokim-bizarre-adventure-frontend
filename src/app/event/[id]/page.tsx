@@ -1,13 +1,8 @@
-'use client'
-import { useParams } from 'next/navigation'
-
-export default function Event() {
-  const { id } = useParams()
-
+export default function Event({ params }: { params: { id: string } }) {
   return (
     <div>
       <h1>Event Page</h1>
-      <p>id : {id}</p>
+      <p>id : {params.id}</p>
     </div>
   )
 }
