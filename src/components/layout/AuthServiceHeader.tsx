@@ -1,14 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import BasketIcon from '../icons/BasketIcon'
-import SearchIcon from '../icons/SearchIcon'
+import BasketIcon from '../icons/auth-service-header/BasketIcon'
+import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import TitleHeader from '../ui/TitleHeader'
-import LeftArrowIcon from '../icons/LeftArrowIcon'
+import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 
 export default function AuthServiceHeader() {
   const pathName = usePathname()
-  console.log('pathname', pathName)
 
   const [title, setTitle] = useState<string>('')
 

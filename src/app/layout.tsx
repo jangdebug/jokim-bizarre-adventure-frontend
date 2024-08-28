@@ -4,9 +4,13 @@ import { Noto_Sans_KR } from '@next/font/google'
 
 import './globals.css'
 import BottomNavigation from '@/components/layout/BottomNavigation'
+import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
-const notoSansKR = Noto_Sans_KR({ subsets: ['latin'], weight: ['400', '700'] })
+const notoSansKR = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+})
 
 export const metadata: Metadata = {
   title: {
@@ -26,6 +30,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={notoSansKR.className}>
         {children}
+        <Footer />
         <BottomNavigation />
       </body>
     </html>

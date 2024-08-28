@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
-import CategoryIcon from '../icons/CategoryIcon'
-import BrandIcon from '../icons/BrandIcon'
-// import BottomNavLogo from '../icons/BottomNavLogo'
-import MyPageIcon from '../icons/MyPageIcon'
-import DefaultHistoryIcon from '../icons/DefaultHistoryIcon'
+import CategoryIcon from '../icons/bottom-navigation/CategoryIcon'
+import BrandIcon from '../icons/bottom-navigation/BrandIcon'
+import MyPageIcon from '../icons/bottom-navigation/MyPageIcon'
+import DefaultHistoryIcon from '../icons/bottom-navigation/DefaultHistoryIcon'
 import Image from 'next/image'
-import BottomNavLogo from '../icons/BottomNavLogo.png'
+import BottomNavLogo from '../icons/bottom-navigation/BottomNavLogo.png'
 export default function BottomNavigation() {
   return (
     <nav className="fixed w-full bottom-0 left-0 z-[111] overflow-hidden  bg-white ">
