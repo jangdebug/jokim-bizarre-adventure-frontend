@@ -26,7 +26,7 @@ export default function AuthServiceHeader() {
           <li>
             <LeftArrowIcon />
           </li>
-          <li className=" absolute left-[50%] translate-x-[-50%]">
+          <li className="absolute left-[50%] translate-x-[-50%]">
             <TitleHeader title={title} textStyle="text-xl" />
           </li>
           <li>
@@ -34,8 +34,25 @@ export default function AuthServiceHeader() {
               <li>
                 <SearchIcon />
               </li>
-              <li>
+              <li className="relative">
                 <BasketIcon />
+                <span
+                  className={`absolute
+                                                top-[-4px]
+                                                right-[-6px]
+                                                flex
+                                                w-[20px]
+                                                h-[20px]
+                                                text-[10px]
+                                                bg-[rgb(217,156,99)]
+                                                text-white
+                                                items-center
+                                                justify-center
+                                                rounded-full
+                                                leading-[0]`}
+                >
+                  12
+                </span>
               </li>
             </ul>
           </li>
