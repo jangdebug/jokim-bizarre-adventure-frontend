@@ -1,5 +1,5 @@
 import FadeUpSection from '@/components/util/FadeUpSection'
-import MainCarousel from '@/components/MainCarousel'
+import MainCarousel from '@/components/main/MainCarousel'
 import ToTopButton from '@/components/util/ToTopButton'
 
 export default function Home() {
