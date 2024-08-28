@@ -1,7 +1,7 @@
 'use client'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import DownArrowIcon from '@/components/icons/footer/DownArrowIcon.png'
 import UpArrowIcon from '@/components/icons/footer/UpArrowIcon.png'
@@ -30,23 +30,10 @@ const socialIcons: SocialIcon[] = [
 ]
 export default function Footer() {
   const [isDetail, setIsDetail] = useState<boolean>(false)
-  const [height, setHeight] = useState<number>(0)
-  const divRef = useRef<HTMLDivElement | null>(null)
 
   const toggleDetailHandler = () => {
     setIsDetail(!isDetail)
   }
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (divRef.current) {
-        setHeight(divRef.current.offsetHeight)
-      }
-    }
-
-    // Initial height
-    updateHeight()
-  }, [])
 
   return (
     <footer className="bg-[#f8f8f8] border-t-8 border-[#f8f8f8]">
