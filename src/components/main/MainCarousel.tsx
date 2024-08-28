@@ -55,14 +55,14 @@ export default function MainCarousel() {
               <div class="absolute flex w-[100px] h-[28px] top-[12px] right-[12px] p-[6px] items-center box-border bg-[rgba(0,0,0,0.2)] z-10">
                 <button class="pointer-events-none flex-shrink-0 block w-[16px] h-[16px] bg-no-repeat bg-center bg-[length:16px_16px] ${
                   autoplayEnabled
-                    ? `bg-[url('/icons/stop.png')]`
-                    : `bg-[url('/icons/play.svg')]`
+                    ? `bg-[url('https://cdn-mo.sivillage.com/mo/assets/comm/image/05Icon32PxThinStop.png')]`
+                    : `bg-[url('https://cdn-mo.sivillage.com/mo/assets/comm/image/icon_play2.svg')]`
                 }"/></button>
                 <div class="static flex-grow text-[12px] font-light leading-[14px] text-[rgba(255,255,255,0.8)] w-full text-center transition-opacity duration-300 transform translate-x-0 translate-y-0 z-10">
                   <span class="text-white">${current}</span> /
                   <span> ${total}</span>
                 </div>
-                <a href="/event" class="bg-[url('/icons/plus.png')] flex-shrink-0 block w-[16px] h-[16px] bg-no-repeat bg-center bg-[length:16px_16px]"></a>
+                <a href="/event" class="bg-[url('https://cdn-mo.sivillage.com/mo/assets/comm/image/btn03.png')] flex-shrink-0 block w-[16px] h-[16px] bg-no-repeat bg-center bg-[length:16px_16px]"></a>
               </div>
             `
           },
