@@ -9,9 +9,9 @@ function MainCategoryItem({
   categoryBadgeData: categoryBadgeType
 }) {
   return (
-    <li className="flex flex-col justify-center items-center">
-      <Link href={'/'}>
-        <div className="object-cover w-5/6 rounded-full flex justify-center">
+    <li>
+      <Link className="flex flex-col justify-center items-center" href={'/bgd'}>
+        <div className="object-cover w-5/6 rounded-full">
           <Image
             src={categoryBadgeData.categoryBadgeImageUrl}
             width={200}
