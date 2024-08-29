@@ -1,15 +1,19 @@
 'use client'
 import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Image from 'next/image'
 import 'swiper/css'
 import { Autoplay } from 'swiper/modules'
 
 import 'swiper/css/effect-creative'
 import { EffectCreative, Pagination, Navigation } from 'swiper/modules'
-import Link from 'next/link'
+import { mainSwiperItem } from '@/types/MainSwiperItem'
+import MainSwiperItem from './MainSwiperItem'
 
-export default function MainCarousel() {
+export default function MainSwiper({
+  swiperItems,
+}: {
+  swiperItems: mainSwiperItem[]
+}) {
   const swiperRef = useRef<any>(null)
   const [autoplayEnabled, setAutoplayEnabled] = useState<boolean>(true)
 
@@ -70,35 +74,12 @@ export default function MainCarousel() {
         modules={[EffectCreative, Autoplay, Pagination, Navigation]}
         className="w-full"
       >
-        {Array.from({ length: 8 }).map((_, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <Link href={`/event/${index}`} className="relative">
-                <Image
-                  src={`/images/download_${index}.png`}
-                  alt="main image"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                />
-                <div className="absolute bottom-[2.4rem] left-6 right-6 z-10 flex flex-col items-center justify-center text-white">
-                  <p className="flex mb-2 text-sm font-bold leading-5 break-keep">
-                    <span>BRAND</span>
-                    <span>& more</span>
-                  </p>
-                  <p className="text-[34px] font-bold leading-[42px] max-h-[84px] text-center">
-                    HERE IS <br />
-                    TITLE
-                  </p>
-                  <p className="text-[16px] leading-[24px] h-[48px] mt-2 overflow-hidden text-ellipsis ">
-                    HERE IS SUBTITLE
-                  </p>
-                </div>
-              </Link>
-            </SwiperSlide>
-          )
-        })}
+        {swiperItems.map((swiperItem) => (
+          <SwiperSlide key={swiperItem.id}>
+            <MainSwiperItem key={swiperItem.id} swiperItem={swiperItem} />
+          </SwiperSlide>
+        ))}
+
         {/* swiper renderCustom 이 jsx 지원이 되지 않아 해당 버튼 위 덮어씌움.. */}
         <button
           onClick={toggleAutoplay}

@@ -1,11 +1,14 @@
 import FadeUpSection from '@/components/util/FadeUpSection'
-import MainCarousel from '@/components/main/MainCarousel'
+import MainSwiper from '@/components/main/MainSwiper'
 import ToTopButton from '@/components/util/ToTopButton'
+import { getMainSwiperItem } from '@/actions/main/getMainSwiperItem'
 
-export default function Home() {
+export default async function Home() {
+  const mainSwiperData = await getMainSwiperItem()
+
   return (
     <main className="flex min-h-screen flex-col ">
-      <MainCarousel />
+      <MainSwiper swiperItems={mainSwiperData} />
       <div
         style={{
           height: '400px',
