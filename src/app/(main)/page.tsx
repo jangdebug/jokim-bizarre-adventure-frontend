@@ -1,24 +1,19 @@
 import FadeUpSection from '@/components/util/FadeUpSection'
 import MainSwiper from '@/components/main/MainSwiper'
 import ToTopButton from '@/components/util/ToTopButton'
+import MainCategory from '@/components/main/MainCategory'
 import { getMainSwiperItem } from '@/actions/main/getMainSwiperItem'
+import { categoryBadgeType } from '@/types/InitialDataTypes'
+import { getCategoryBadgeData } from '@/actions/main/getCategoryBadgeData'
 
 export default async function Home() {
+  const categoryBadgeResData: categoryBadgeType[] = await getCategoryBadgeData()
   const mainSwiperData = await getMainSwiperItem()
 
   return (
-    <main className="flex min-h-screen flex-col ">
+    <main>
       <MainSwiper swiperItems={mainSwiperData} />
-      <div
-        style={{
-          height: '400px',
-          backgroundColor: 'black',
-          color: 'white',
-          marginBottom: '50px',
-        }}
-      >
-        MAINCATEGORY
-      </div>
+      <MainCategory categoryBadgeListData={categoryBadgeResData} />
       <div
         style={{
           height: '500px',
