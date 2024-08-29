@@ -1,21 +1,17 @@
 import FadeUpSection from '@/components/util/FadeUpSection'
 import MainCarousel from '@/components/MainCarousel'
 import ToTopButton from '@/components/util/ToTopButton'
+import MainCategory from '@/components/main/MainCategory'
+import { categoryBadgeType } from '@/types/InitialDataTypes'
+import { getCategoryBadgeData } from '@/actions/main/getCategoryBadgeData'
 
-export default function Home() {
+export default async function Home() {
+  const categoryBadgeResData: categoryBadgeType[] = await getCategoryBadgeData()
+
   return (
-    <main className="flex min-h-screen flex-col ">
+    <main>
       <MainCarousel />
-      <div
-        style={{
-          height: '400px',
-          backgroundColor: 'black',
-          color: 'white',
-          marginBottom: '50px',
-        }}
-      >
-        MAINCATEGORY
-      </div>
+      <MainCategory categoryBadgeListData={categoryBadgeResData} />
       <div
         style={{
           height: '500px',
