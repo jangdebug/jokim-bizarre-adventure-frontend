@@ -1,4 +1,4 @@
-export default function Event({ params }: { params: { id: string } }) {
+export default function EventDetail({ params }: { params: { id: string } }) {
   return (
     <div>
       <h1>Event Page</h1>
