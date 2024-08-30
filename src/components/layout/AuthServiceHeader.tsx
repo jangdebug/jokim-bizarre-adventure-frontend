@@ -10,14 +10,21 @@ export default function AuthServiceHeader() {
   const pathName = usePathname()
 
   const [title, setTitle] = useState<string>('')
+  const lastSegment = pathName.split('/').pop()
+
+  console.log(pathName, lastSegment)
 
   useEffect(() => {
-    if (pathName === '/sign-in') {
+    if (lastSegment === 'sign-in') {
       setTitle('로그인')
-    } else if (pathName === '/sign-up') {
+    } else if (lastSegment === 'sign-up') {
       setTitle('회원가입')
+    } else if (lastSegment === 'phone') {
+      setTitle('통합 멤버십 가입')
+    } else if (lastSegment === 'simple') {
+      setTitle('온라인 간편가입')
     }
-  }, [pathName])
+  }, [lastSegment])
 
   return (
     <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">

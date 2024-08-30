@@ -16,14 +16,18 @@ export default function SignUpSelection() {
         신세계인터내셔날 통합 멤버십 가입
       </p>
       <div className="mt-[16px] flex flex-col gap-[12px]">
-        <Button size={'auth'} variant={'kakao'} className="gap-[6px]">
-          <Image src={KakaoIcon} alt="kakaoIcon" />
-          카카오로 가입하기
-        </Button>
-        <Button size={'auth'} className="gap-[6px]">
-          <Image src={PhoneIcon} alt="phoneIcon" width={20} />
-          휴대폰 / 아이핀 인증으로 가입하기
-        </Button>
+        <Link href={'/'}>
+          <Button size={'auth'} variant={'kakao'} className="gap-[6px]">
+            <Image src={KakaoIcon} alt="kakaoIcon" />
+            카카오로 가입하기
+          </Button>
+        </Link>
+        <Link href={'/sign-up/phone'}>
+          <Button size={'auth'} className="gap-[6px]">
+            <Image src={PhoneIcon} alt="phoneIcon" width={20} />
+            휴대폰 / 아이핀 인증으로 가입하기
+          </Button>
+        </Link>
       </div>
       <ul className="mt-[24px] px-[16px] py-[20px] bg-[#f8f8f8]">
         {membershipDescriptions.map((item) => (
@@ -64,7 +68,7 @@ export default function SignUpSelection() {
           멤버십회원(본인인증)으로 전환가입 하셔야 더 많은 멤버십 혜택을 받으실
           수 있습니다.
         </p>
-        <Link href={'/'} className="w-full">
+        <Link href={'/sign-up/simple'} className="w-full">
           <Button
             variant={'outline'}
             size={'auth'}
