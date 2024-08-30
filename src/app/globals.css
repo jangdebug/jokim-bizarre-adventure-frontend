@@ -101,3 +101,16 @@ html {
   transform: translateY(0);
   animation: fadeUp 1s forwards;
 }
+
+.list-item:not(:last-child) {
+  @apply mb-[16px];
+}
+
+.notification-marker {
+  list-style-position: outside;
+}
+
+.notification-marker li::before {
+  content: '·';
+  font-size: 12px;
+}
