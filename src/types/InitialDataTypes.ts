@@ -11,5 +11,6 @@ export interface eventTabBadgeType {
   id: number
   tabDescription: string
   tabName: string
-  tabBadgeImageUrl: string
+  tabBadgeImageUrl1?: string
+  tabBadgeImageUrl2?: string
 }
