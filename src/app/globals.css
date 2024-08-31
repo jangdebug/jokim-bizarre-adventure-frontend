@@ -69,8 +69,8 @@
 }
 
 body {
-  font-family: 'SF Pro Display', 'Apple SD Gothic Neo', 'Apple-Gothic', 'Roboto',
-    'Noto Sans KR', 'Droid Sans', 'dotum', sans-serif;
+  font-family: 'SF Pro Display', 'Apple SD Gothic Neo', 'Apple-Gothic', 'Roboto', 'Noto Sans KR', 'Droid Sans', 'dotum',
+    sans-serif;
 }
 
 html {
@@ -113,4 +113,13 @@ html {
 .notification-marker li::before {
   content: '·';
   font-size: 12px;
+}
+
+/* 브라우저에 따라 input number type 증감 버튼 제거 */
+.input-no-spinner {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    @apply appearance-none;
+    margin: 0;
+  }
 }
