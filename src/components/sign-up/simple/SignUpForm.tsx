@@ -1,6 +1,6 @@
 import React from 'react'
 import EssentialSignUpField from './EssentialSignUpField'
-import EssentialSignUpField_re from './EssentialSignUpField_re'
+import { Button } from '@/components/ui/button'
 
 export default function SignUpForm({ handleSignUp }: { handleSignUp: (formData: FormData) => void }) {
   return (
@@ -8,6 +8,8 @@ export default function SignUpForm({ handleSignUp }: { handleSignUp: (formData: 
       <form action={handleSignUp}>
         <EssentialSignUpField />
         {/* <EssentialSignUpField_re /> */}
+
+        <Button type="submit">test submit</Button>
       </form>
     </div>
   )

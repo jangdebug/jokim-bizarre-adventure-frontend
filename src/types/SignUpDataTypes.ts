@@ -40,3 +40,20 @@ interface essenitialFormType {
   isValidPhone: boolean
   isOverFourTeen: boolean
 }
+
+interface essenitialFormErrorType {
+  emailId: boolean
+  emailDomain: boolean
+  emailDuplicate: boolean //이메일 중복때 쓸 거
+  password: boolean
+  confirmPassword: boolean
+  name: boolean
+}
+
+interface essentialFormEmptyType {
+  emailId: boolean
+  emailDomain: boolean
+  password: boolean
+  confirmPassword: boolean
+  name: boolean
+}

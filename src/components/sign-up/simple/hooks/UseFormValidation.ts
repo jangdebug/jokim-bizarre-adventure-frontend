@@ -7,7 +7,6 @@ const validatePassword = (password: string) => {
   const combinationCheck =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*\d)|(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])/.test(password)
   const noSpaceCheck = !/\s/.test(password)
-
   return lengthCheck && combinationCheck && noSpaceCheck
 }
 const validateConfirmPassword = (password: string, confirmPassword: string) => password === confirmPassword
@@ -26,7 +25,7 @@ export const useFormValidation = () => {
     isOverFourTeen: false,
   })
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<essenitialFormErrorType>({
     emailId: false,
     emailDomain: false,
     emailDuplicate: false, //이메일 중복때 쓸 거
@@ -35,7 +34,7 @@ export const useFormValidation = () => {
     name: false,
   })
 
-  const [isEmpty, setIsEmpty] = useState({
+  const [isEmpty, setIsEmpty] = useState<essentialFormEmptyType>({
     emailId: false,
     emailDomain: false,
     password: false,
@@ -45,7 +44,6 @@ export const useFormValidation = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    console.log(name, value)
 
     setValues((prev) => ({ ...prev, [name]: value }))
 
@@ -76,7 +74,6 @@ export const useFormValidation = () => {
 
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    console.log(name, value.length)
 
     if (value.length === 0) {
       setIsEmpty((prev) => ({ ...prev, [name]: true }))
