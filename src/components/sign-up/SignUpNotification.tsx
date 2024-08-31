@@ -1,4 +1,4 @@
-import { notificationData } from '@/datas/dummy/sign-up/signUpDatas'
+import { notificationData } from '@/datas/dummy/sign-up/SignUpDatas'
 import React from 'react'
 
 export default function SignUpNotification() {

@@ -24,11 +24,52 @@ export const notificationData: notificationType[] = [
   },
   {
     id: 2,
-    content:
-      '회원혜택은 당사의 사정에 따라 변경될 수 있습니다. (구매시 포인트 적립포함)',
+    content: '회원혜택은 당사의 사정에 따라 변경될 수 있습니다. (구매시 포인트 적립포함)',
   },
   {
     id: 3,
     content: '문의 : 신세계인터내셔날 고객센터(유료) 1644-4490',
+  },
+]
+
+export const phoneHeaderData: phoneHeaderType[] = [
+  {
+    name: '010',
+    value: '010',
+  },
+  {
+    name: '016',
+    value: '016',
+  },
+  {
+    name: '017',
+    value: '017',
+  },
+  {
+    name: '018',
+    value: '018',
+  },
+  {
+    name: '019',
+    value: '019',
+  },
+]
+
+export const emailDomainData: emailDomainType[] = [
+  {
+    name: 'naver.com',
+    value: 'naver.com',
+  },
+  {
+    name: 'gmail.com',
+    value: 'gmail.com',
+  },
+  {
+    name: 'daum.net',
+    value: 'daum.net',
+  },
+  {
+    name: 'nate.com',
+    value: 'nate.com',
   },
 ]
