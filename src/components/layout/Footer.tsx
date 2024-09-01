@@ -10,13 +10,7 @@ import InstagramIcon from '@/components/icons/footer/InstagramIcon.png'
 import YoutubeIcon from '@/components/icons/footer/YoutubeIcon.png'
 import RightArrowIcon from '../icons/footer/RightArrowIcon'
 
-const footerNavItem: string[] = [
-  'ABOUT',
-  '회사소개',
-  '매장안내',
-  '고객센터',
-  '채팅상담',
-]
+const footerNavItem: string[] = ['ABOUT', '회사소개', '매장안내', '고객센터', '채팅상담']
 
 interface SocialIcon {
   src: StaticImageData
@@ -39,34 +33,20 @@ export default function Footer() {
     <footer className="bg-[#f8f8f8] border-t-8 border-[#f8f8f8]">
       <nav className="flex justify-between items-center h-[50px] px-[24px] bg-white">
         {footerNavItem.map((item, idx) => (
-          <Link
-            key={idx}
-            className="break-all text-[14px]  text-[#333]"
-            href={'/'}
-          >
+          <Link key={idx} className="break-all text-[14px]  text-[#333]" href={'/'}>
             {item}
           </Link>
         ))}
       </nav>
       <div className="flex justify-between items-center p-[16px_24px_0px]">
-        <p className="text-[16px] leading-[52px] font-bold tracking-[0.1px]">
-          ㈜신세계인터내셔날 사업자 정보
-        </p>
+        <p className="text-[16px] leading-[52px] font-bold tracking-[0.1px]">㈜신세계인터내셔날 사업자 정보</p>
         <button onClick={toggleDetailHandler}>
-          {isDetail ? (
-            <Image src={UpArrowIcon} alt="upArrowIcon" />
-          ) : (
-            <Image src={DownArrowIcon} alt="downArrowIcon" />
-          )}
+          {isDetail ? <Image src={UpArrowIcon} alt="upArrowIcon" /> : <Image src={DownArrowIcon} alt="downArrowIcon" />}
         </button>
       </div>
 
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out h-0 ${isDetail ? `h-[225px]` : 'h-0'}`}
-      >
-        <div
-          className={` p-[3px_24px_26px_24px] text-[12px] leading-[20px] text-[#787878]  `}
-        >
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out h-0 ${isDetail ? `h-[225px]` : 'h-0'}`}>
+        <div className={` p-[3px_24px_26px_24px] text-[12px] leading-[20px] text-[#787878]  `}>
           <div>
             서울특별시 강남구 도산대로 449 (청담동)
             <br />
@@ -84,10 +64,7 @@ export default function Footer() {
             <br />
             <div className="flex flex-row gap-1">
               <p>이메일 : </p>
-              <Link
-                className="flex flex-row items-end break-all"
-                href={`mailTo:siv_cs@sikorea.co.kr`}
-              >
+              <Link className="flex flex-row items-end break-all" href={`mailTo:siv_cs@sikorea.co.kr`}>
                 siv_cs@sikorea.co.kr
                 <RightArrowIcon />
               </Link>

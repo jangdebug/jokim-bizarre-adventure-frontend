@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { emailDomainData } from '@/datas/dummy/sign-up/SignUpDatas'
 import { useFormValidation } from '../hooks/UseFormValidation'
 
-export default function EmailImput() {
+export default function EmailInput() {
   const { values, isEmpty, errors, setValues, setErrors, handleChange, handleBlur } = useFormValidation()
   const [isEditable, setIsEditable] = useState(true)
 

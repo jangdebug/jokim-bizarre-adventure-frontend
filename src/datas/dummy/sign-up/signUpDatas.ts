@@ -73,3 +73,53 @@ export const emailDomainData: emailDomainType[] = [
     value: 'nate.com',
   },
 ]
+
+export const marketingAgreementsData: marketingAgreementType[] = [
+  {
+    title: 'SMS',
+    description: 'smsAgreement',
+    agreementState: false,
+  },
+  {
+    title: 'E-mail',
+    description: 'emailAgreement',
+    agreementState: false,
+  },
+  {
+    title: 'DM',
+    description: 'dmAgreement',
+    agreementState: false,
+  },
+  {
+    title: 'CALL',
+    description: 'callAgreement',
+    agreementState: false,
+  },
+]
+
+export const rightAgreementsData: rightAgreementsType[] = [
+  {
+    title: '신세계인터내셔날 웹사이트 이용약관',
+    description: 'webUsageRight',
+    isEssential: true,
+    agreementState: false,
+  },
+  {
+    title: '신세계인터내셔날 통합회원 이용약관 ',
+    description: 'integratedMemberRight',
+    isEssential: true,
+    agreementState: false,
+  },
+  {
+    title: '서비스 제공을 위한 개인정보 수집 및 이용동의 ',
+    description: 'infoUsageRight',
+    isEssential: true,
+    agreementState: false,
+  },
+  {
+    title: '통합 멤버십 서비스 제공을 위한 신세계톰보이 정보 제공 동의 ',
+    description: 'tomboyInfoUsageRight',
+    isEssential: false,
+    agreementState: false,
+  },
+]

@@ -57,3 +57,22 @@ interface essentialFormEmptyType {
   confirmPassword: boolean
   name: boolean
 }
+
+interface marketingAgreementType {
+  title: string
+  description: string
+  agreementState: boolean
+}
+
+interface rightAgreementsType {
+  title: string
+  description: string
+  isEssential: boolean
+  agreementState: boolean
+}
+
+interface optionalFormType {
+  birthYear: number
+  birthMonth: number
+  birthDay: number
+}

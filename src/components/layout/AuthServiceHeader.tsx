@@ -34,10 +34,7 @@ export default function AuthServiceHeader() {
             <LeftArrowIcon />
           </li>
           <li className="absolute left-[50%] translate-x-[-50%] ">
-            <TitleHeader
-              title={title}
-              textStyle="text-[18px] font-medium leading-[34px]"
-            />
+            <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />
           </li>
           <li>
             <ul className="flex gap-4">

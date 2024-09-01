@@ -30,9 +30,7 @@ export default function ToTopButton() {
     <button
       onClick={scrollToTop}
       className={`fixed w-12 h-12 right-[13px] ${
-        isVisible
-          ? 'block bottom-[73px] opacity-100'
-          : 'bottom-[-73px] opacity-0'
+        isVisible ? 'block bottom-[73px] opacity-100' : 'bottom-[-73px] opacity-0'
       } z-[100] rounded-full flex items-center justify-center`}
       style={{
         transitionProperty: 'visibility, opacity, bottom',

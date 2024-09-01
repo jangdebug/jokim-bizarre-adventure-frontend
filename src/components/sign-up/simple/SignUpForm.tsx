@@ -3,6 +3,7 @@ import EssentialSignUpField from './EssentialSignUpField'
 import { Button } from '@/components/ui/button'
 import Divider from '@/components/ui/Divider'
 import OptionalSignUpField from './OptionalSignUpField'
+import RightsSignUpField from './RightsSignUpField'
 
 export default function SignUpForm({ handleSignUp }: { handleSignUp: (formData: FormData) => void }) {
   return (
@@ -13,7 +14,7 @@ export default function SignUpForm({ handleSignUp }: { handleSignUp: (formData: 
         <Divider />
         <OptionalSignUpField />
         <Divider />
-        <Button type="submit">test submit</Button>
+        <RightsSignUpField />
       </form>
     </div>
   )
