@@ -106,15 +106,6 @@ html {
   @apply mb-[16px];
 }
 
-.notification-marker {
-  list-style-position: outside;
-}
-
-.notification-marker li::before {
-  content: '·';
-  font-size: 12px;
-}
-
 /* 브라우저에 따라 input number type 증감 버튼 제거 */
 .input-no-spinner {
   &::-webkit-outer-spin-button,
