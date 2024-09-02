@@ -9,7 +9,13 @@ export default function EventListTitle() {
       <p>
         총 <span className="text-[#d99c63]">{temp}</span>건
       </p>
-      <Button className="w-10 h-10 text-right">필터링</Button>
+      <button className="w-10 h-10 text-right">
+        <img
+          src="https://cdn-mo.sivillage.com/mo/assets/comm/image/05IconFiltersFilter3x.png"
+          alt="Icon"
+          className="object-contain mr-2" // Adjust the size and margin as needed
+        />
+      </button>
     </div>
   )
 }
