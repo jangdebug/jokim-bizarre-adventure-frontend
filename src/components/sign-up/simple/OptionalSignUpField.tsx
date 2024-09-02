@@ -1,5 +1,6 @@
 'use client'
 
+import AddressInput from './optional-form-item/AddressInput'
 import BirthSelectForm from './optional-form-item/BirthSelectForm'
 import MarketingAgreement from './optional-form-item/MarketingAgreement'
 
@@ -11,10 +12,7 @@ export default function OptionalSignUpField() {
         <BirthSelectForm />
       </>
       <>
-        <p className="mt-[33px] mb-[13px] text-[16px] leading-[22px] text-[#131922] font-bold">주소</p>
-        <div className="w-full h-[60px] bg-black">
-          <span className="text-white">address Select Part</span>
-        </div>
+        <AddressInput />
       </>
 
       <>

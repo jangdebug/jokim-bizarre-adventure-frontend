@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CategoryIcon from '../icons/bottom-navigation/CategoryIcon'
 import BrandIcon from '../icons/bottom-navigation/BrandIcon'
 import MyPageIcon from '../icons/bottom-navigation/MyPageIcon'
@@ -8,7 +8,7 @@ import DefaultHistoryIcon from '../icons/bottom-navigation/DefaultHistoryIcon'
 import Image from 'next/image'
 import BottomNavLogo from '../icons/bottom-navigation/BottomNavLogo.png'
 import ToTopButton from '../util/ToTopButton'
-export default function BottomNavigation({ withFadeOption }: { withFadeOption?: boolean }) {
+export default function BottomNavigation({ withFadeOption = false }: { withFadeOption?: boolean }) {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [lastScrollY, setLastScrollY] = useState<number>(0)
 
