@@ -2,6 +2,7 @@ import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import Image from 'next/image'
 import MainHeaderLogo from '../icons/main-header/MainHeaderLogo.png'
+import Link from 'next/link'
 
 export default function MainHeader() {
   return (
@@ -9,7 +10,9 @@ export default function MainHeader() {
       <nav>
         <ul className="">
           <li className="absolute left-0 top-0 ">
-            <Image src={MainHeaderLogo} alt="mainHeaderLogo" priority={true} />
+            <Link href={'/'}>
+              <Image src={MainHeaderLogo} alt="mainHeaderLogo" priority={true} />
+            </Link>
           </li>
 
           <li>
