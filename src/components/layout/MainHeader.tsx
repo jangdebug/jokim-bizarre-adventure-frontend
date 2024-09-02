@@ -9,7 +9,7 @@ export default function MainHeader() {
       <nav>
         <ul className="">
           <li className="absolute left-0 top-0 ">
-            <Image src={MainHeaderLogo} alt="mainHeaderLogo" />
+            <Image src={MainHeaderLogo} alt="mainHeaderLogo" priority={true} />
           </li>
 
           <li>

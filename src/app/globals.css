@@ -114,3 +114,13 @@ html {
     margin: 0;
   }
 }
+
+/* 스크룰 바 제거 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
