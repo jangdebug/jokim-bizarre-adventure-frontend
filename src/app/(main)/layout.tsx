@@ -1,3 +1,5 @@
+import MainHeader from '@/components/layout/MainHeader'
+
 export default function Layout({
   children,
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header>MAINHEADER</header>
+      <MainHeader />
       {children}
     </>
   )
