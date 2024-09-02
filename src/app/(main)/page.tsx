@@ -52,7 +52,6 @@ export default async function Home() {
           </div>
         </FadeUpSection>
       </div>
-      <ToTopButton />
     </main>
   )
 }

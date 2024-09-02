@@ -5,6 +5,7 @@ import { Noto_Sans_KR } from '@next/font/google'
 import './globals.css'
 import BottomNavigation from '@/components/layout/BottomNavigation'
 import Footer from '@/components/layout/Footer'
+import ToTopButton from '@/components/util/ToTopButton'
 
 const inter = Inter({ subsets: ['latin'] })
 const notoSansKR = Noto_Sans_KR({
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body className={notoSansKR.className}>
         {children}
         <Footer />
-        <BottomNavigation />
+        <BottomNavigation withFadeOption={true} />
       </body>
     </html>
   )

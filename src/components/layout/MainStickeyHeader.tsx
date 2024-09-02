@@ -61,8 +61,6 @@ export default function MainStickeyHeader() {
 
   const currentSegment = pathName.split('/').pop()
 
-  console.log(currentSegment)
-
   return (
     <nav className="z-10 sticky top-0 left-0 no-scrollbar w-full px-[15px] grid grid-flow-col overflow-x-scroll bg-[#fefefe] border-b border-[#e0e0e0]">
       {stickeyHeaderItems?.map((item) => (
