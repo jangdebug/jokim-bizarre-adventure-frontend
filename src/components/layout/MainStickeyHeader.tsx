@@ -14,44 +14,44 @@ const stickHeaderItemData: stickHeaderItemType[] = [
   {
     id: 1,
     title: 'Home',
-    value: 'home',
+    value: '',
     url: '/',
   },
   {
     id: 2,
     title: 'Event',
     value: 'event',
-    url: '/',
+    url: '/event',
   },
   {
     id: 3,
     title: 'Deal',
     value: 'deal',
-    url: '/',
+    url: '/deal',
   },
   {
     id: 4,
     title: 'Best',
     value: 'best',
-    url: '/',
+    url: '/best',
   },
   {
     id: 5,
     title: 'S.I.Live',
     value: 'silive',
-    url: '/',
+    url: '/silive',
   },
   {
     id: 6,
     title: 'Content',
     value: 'content',
-    url: '/',
+    url: '/content',
   },
   {
     id: 7,
     title: 'SSG DF',
     value: 'ssgdf',
-    url: '/',
+    url: '/ssgdf',
   },
 ]
 

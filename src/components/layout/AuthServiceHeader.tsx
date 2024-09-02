@@ -5,6 +5,7 @@ import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import TitleHeader from '../ui/TitleHeader'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
+import Link from 'next/link'
 
 export default function AuthServiceHeader() {
   const pathName = usePathname()
@@ -39,10 +40,14 @@ export default function AuthServiceHeader() {
           <li>
             <ul className="flex gap-4">
               <li>
-                <SearchIcon />
+                <Link href={'/'}>
+                  <SearchIcon />
+                </Link>
               </li>
               <li className="relative">
-                <BasketIcon />
+                <Link href={'/'}>
+                  <BasketIcon />
+                </Link>
                 <span
                   className={`absolute
                                                 top-[-4px]

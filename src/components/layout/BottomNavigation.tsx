@@ -16,10 +16,8 @@ export default function BottomNavigation({ withFadeOption }: { withFadeOption?: 
     const currentScrollY = window.scrollY
 
     if (currentScrollY > lastScrollY) {
-      console.log('down', !isVisible)
       setIsVisible(true)
     } else if (currentScrollY < lastScrollY) {
-      console.log('up', !isVisible)
       setIsVisible(false)
     }
 

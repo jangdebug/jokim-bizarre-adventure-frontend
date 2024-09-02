@@ -18,10 +18,14 @@ export default function MainHeader() {
           <li>
             <ul className="flex justify-end gap-4">
               <li>
-                <SearchIcon />
+                <Link href={'/'}>
+                  <SearchIcon />
+                </Link>{' '}
               </li>
               <li className="relative">
-                <BasketIcon />
+                <Link href={'/'}>
+                  <BasketIcon />
+                </Link>
                 <span
                   className={`absolute
                                                 top-[-4px]
