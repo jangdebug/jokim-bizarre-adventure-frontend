@@ -32,7 +32,9 @@ export default function AuthServiceHeader() {
       <nav>
         <ul className="flex justify-between">
           <li>
-            <LeftArrowIcon />
+            <Link href={'/'}>
+              <LeftArrowIcon />
+            </Link>{' '}
           </li>
           <li className="absolute left-[50%] translate-x-[-50%] ">
             <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />
