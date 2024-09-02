@@ -53,14 +53,14 @@ export default function EmailInput() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="self">직접입력</SelectItem>
-            {emailDomains.map((item, idx) => (
+            {emailDomains?.map((item, idx) => (
               <SelectItem key={idx} value={item.value}>
                 {item.name}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
-      </div>{' '}
+      </div>
       <p
         className={`${isEmpty.emailId || isEmpty.emailDomain || values.emailId.length > 0 || values.emailDomain.length > 0 ? 'pb-[8px]' : 'invisible'} ${errors.emailId && errors.emailDomain && !errors.emailDuplicate ? 'text-[#d99c3c]' : 'text-[#db3c3c]'} text-[14px] leading-[20px]`}
       >
