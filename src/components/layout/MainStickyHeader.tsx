@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
 
 interface stickHeaderItemType {
   id: number
@@ -55,7 +54,7 @@ const stickHeaderItemData: stickHeaderItemType[] = [
   },
 ]
 
-export default function MainStickeyHeader() {
+export default function MainStickyHeader() {
   const stickeyHeaderItems: stickHeaderItemType[] = stickHeaderItemData
   const pathName = usePathname()
 
@@ -69,7 +68,7 @@ export default function MainStickeyHeader() {
           key={item.id}
           href={item.url}
         >
-          <span className={`${currentSegment === item.value ? ' ' : ''}`}>{item.title}</span>
+          <span>{item.title}</span>
         </Link>
       ))}
     </nav>
