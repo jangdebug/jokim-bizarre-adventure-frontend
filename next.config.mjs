@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'image.sivillage.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn-mo.sivillage.com',
+      },
     ],
   },
 }
