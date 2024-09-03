@@ -1,7 +1,7 @@
 'use client'
 
 import InputWithClear from '@/components/dummy/InputWithClear'
-import { useFormValidation } from './hooks/UseFormValidation'
+import { useFormValidation } from '@/hooks/UseFormValidation'
 import PhoneInput from './esseitial-form-item/ValidatePhoneFormItem'
 import EmailInput from './esseitial-form-item/EmailInput'
 import PasswordInput from './esseitial-form-item/PasswordInput'

@@ -4,33 +4,12 @@
 // slug 의 길이가 2 이상이면 첫 번째 li 앞에도 :before 을 사용해 화살표 출력
 'use client'
 
+import { useScrollEvent } from '@/hooks/UseScrollEvent'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 
 export default function ProductCategoryInfoHeader() {
   const catgoryInfo: string[] = ['아우터', '여성의류']
-
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [lastScrollY, setLastScrollY] = useState<number>(0)
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-    if (currentScrollY > lastScrollY) {
-      // 스크롤내리기
-
-      setIsVisible(false)
-    } else if (currentScrollY < lastScrollY) {
-      // 스크롤올리기
-      setIsVisible(true)
-    }
-    setLastScrollY(currentScrollY)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  const isVisible = useScrollEvent()
 
   return (
     <header className={`h-[48px] w-full z-[101] ${isVisible ? 'sticky top-0' : ''}`}>

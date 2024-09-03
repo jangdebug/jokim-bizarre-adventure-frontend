@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { phoneHeaderData } from '@/datas/dummy/sign-up/SignUpDatas'
 import React from 'react'
-import { useFormValidation } from '../hooks/UseFormValidation'
+import { useFormValidation } from '@/hooks/UseFormValidation'
 
 export default function PhoneInput() {
   const { values, setValues, handleChange } = useFormValidation()

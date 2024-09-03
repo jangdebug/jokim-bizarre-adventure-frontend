@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import CloseIcon from '../icons/product-list-header/CloseIcon'
 import DownArrowSmallIcon from '../icons/product-list-header/DownArrowSmallIcon'
 import { useEffect, useState } from 'react'
+import { useScrollEvent } from '@/hooks/UseScrollEvent'
 
 interface ItemCategory {
   id: number
@@ -24,34 +25,13 @@ const itemCategoryDatas: ItemCategory[] = [
 
 export default function ProductStickyHeader() {
   const [isWrap, setIsWrap] = useState<boolean>(false)
+  const isVisible = useScrollEvent()
 
   const itemCategories = itemCategoryDatas
 
   const handleWrapState = () => {
     setIsWrap((prev) => !prev)
   }
-
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [lastScrollY, setLastScrollY] = useState<number>(0)
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-    if (currentScrollY > lastScrollY) {
-      // 스크롤내리기
-
-      setIsVisible(false)
-    } else if (currentScrollY < lastScrollY) {
-      // 스크롤올리기
-      setIsVisible(true)
-    }
-    setLastScrollY(currentScrollY)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
 
   return (
     <nav className={`w-full sticky ${isVisible ? 'top-[48px]' : 'top-0'}`}>

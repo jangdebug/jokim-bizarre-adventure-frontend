@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 import CategoryIcon from '../icons/bottom-navigation/CategoryIcon'
 import BrandIcon from '../icons/bottom-navigation/BrandIcon'
 import MyPageIcon from '../icons/bottom-navigation/MyPageIcon'
@@ -8,27 +7,10 @@ import DefaultHistoryIcon from '../icons/bottom-navigation/DefaultHistoryIcon'
 import Image from 'next/image'
 import BottomNavLogo from '../icons/bottom-navigation/BottomNavLogo.png'
 import ToTopButton from '../util/ToTopButton'
+import { useScrollEvent } from '@/hooks/UseScrollEvent'
+
 export default function BottomNavigation({ withFadeOption = false }: { withFadeOption?: boolean }) {
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [lastScrollY, setLastScrollY] = useState<number>(0)
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-
-    if (currentScrollY > lastScrollY) {
-      setIsVisible(true)
-    } else if (currentScrollY < lastScrollY) {
-      setIsVisible(false)
-    }
-
-    setLastScrollY(currentScrollY)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  const isVisible = useScrollEvent()
 
   return (
     <>

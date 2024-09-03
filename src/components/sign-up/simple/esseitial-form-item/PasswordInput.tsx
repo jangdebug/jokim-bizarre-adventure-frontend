@@ -1,6 +1,6 @@
 import InputWithClear from '@/components/dummy/InputWithClear'
 import React from 'react'
-import { useFormValidation } from '../hooks/UseFormValidation'
+import { useFormValidation } from '@/hooks/UseFormValidation'
 
 export default function PasswordInput() {
   const { values, isEmpty, errors, setValues, handleChange, handleBlur } = useFormValidation()

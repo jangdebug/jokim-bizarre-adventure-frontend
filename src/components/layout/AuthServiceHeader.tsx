@@ -6,6 +6,7 @@ import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import TitleHeader from '../ui/TitleHeader'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
+import { useScrollEvent } from '@/hooks/UseScrollEvent'
 
 export default function AuthServiceHeader() {
   const pathName = usePathname()
@@ -31,27 +32,7 @@ export default function AuthServiceHeader() {
     }
   }, [lastSegment])
 
-  const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [lastScrollY, setLastScrollY] = useState<number>(0)
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-    if (currentScrollY > lastScrollY) {
-      // 스크롤내리기
-
-      setIsVisible(false)
-    } else if (currentScrollY < lastScrollY) {
-      // 스크롤올리기
-      setIsVisible(true)
-    }
-    setLastScrollY(currentScrollY)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  const isVisible = useScrollEvent()
 
   return (
     <header
