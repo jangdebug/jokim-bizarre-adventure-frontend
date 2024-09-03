@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import ToTopIcon from '../icons/to-top-button/ToTopIcon'
 
-export default function ToTopButton() {
+export default function ToTopButton({ moveWithBottomNav }: { moveWithBottomNav?: boolean }) {
   const [isVisible, setIsVisible] = useState(false)
 
   const handleScroll = () => {
@@ -25,12 +25,17 @@ export default function ToTopButton() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
   return (
     <button
       onClick={scrollToTop}
       className={`fixed w-12 h-12 right-[13px] ${
-        isVisible ? 'block bottom-[73px] opacity-100' : 'bottom-[-73px] opacity-0'
+        moveWithBottomNav
+          ? isVisible
+            ? 'block bottom-[16px] opacity-100'
+            : 'bottom-[-16px] opacity-0'
+          : isVisible
+            ? 'block bottom-[73px] opacity-100'
+            : 'bottom-[-73px] opacity-0'
       } z-[100] rounded-full flex items-center justify-center`}
       style={{
         transitionProperty: 'visibility, opacity, bottom',

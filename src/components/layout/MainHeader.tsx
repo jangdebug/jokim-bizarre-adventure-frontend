@@ -1,50 +1,26 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
-import TitleHeader from '../ui/TitleHeader'
-import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
+import BasketIcon from '../icons/auth-service-header/BasketIcon'
+import Image from 'next/image'
+import MainHeaderLogo from '../icons/main-header/MainHeaderLogo.png'
 import Link from 'next/link'
 
-export default function AuthServiceHeader() {
-  const pathName = usePathname()
-
-  const [title, setTitle] = useState<string>('')
-  const lastSegment = pathName.split('/').pop()
-
-  console.log(pathName, lastSegment)
-
-  useEffect(() => {
-    if (lastSegment === 'sign-in') {
-      setTitle('로그인')
-    } else if (lastSegment === 'sign-up') {
-      setTitle('회원가입')
-    } else if (lastSegment === 'phone') {
-      setTitle('통합 멤버십 가입')
-    } else if (lastSegment === 'simple') {
-      setTitle('온라인 간편가입')
-    }
-  }, [lastSegment])
-
+export default function MainHeader() {
   return (
-    <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">
+    <header className="flex flex-col justify-center w-full h-[56px] px-[16px] bg-white">
       <nav>
-        <ul className="flex justify-between">
-          <li>
+        <ul className="">
+          <li className="absolute left-0 top-0 ">
             <Link href={'/'}>
-              <LeftArrowIcon />
-            </Link>{' '}
+              <Image src={MainHeaderLogo} alt="mainHeaderLogo" priority={true} />
+            </Link>
           </li>
-          <li className="absolute left-[50%] translate-x-[-50%] ">
-            <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />
-          </li>
+
           <li>
-            <ul className="flex gap-4">
+            <ul className="flex justify-end gap-4">
               <li>
                 <Link href={'/'}>
                   <SearchIcon />
-                </Link>
+                </Link>{' '}
               </li>
               <li className="relative">
                 <Link href={'/'}>

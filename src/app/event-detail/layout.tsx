@@ -1,7 +1,7 @@
 import MainHeader from '@/components/layout/MainHeader'
-import MainStickyHeader from '@/components/layout/MainStickyHeader'
+import MainStickeyHeader from '@/components/layout/MainStickeyHeader'
 
-export default function Layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <>
       <MainHeader />
-      <MainStickyHeader />
+      <MainStickeyHeader />
       {children}
     </>
   )

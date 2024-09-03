@@ -1,44 +1,25 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
-import TitleHeader from '../ui/TitleHeader'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
 
-export default function AuthServiceHeader() {
-  const pathName = usePathname()
-
-  const [title, setTitle] = useState<string>('')
-  const lastSegment = pathName.split('/').pop()
-
-  console.log(pathName, lastSegment)
-
-  useEffect(() => {
-    if (lastSegment === 'sign-in') {
-      setTitle('로그인')
-    } else if (lastSegment === 'sign-up') {
-      setTitle('회원가입')
-    } else if (lastSegment === 'phone') {
-      setTitle('통합 멤버십 가입')
-    } else if (lastSegment === 'simple') {
-      setTitle('온라인 간편가입')
-    }
-  }, [lastSegment])
-
+export default function ProductPageHeader() {
   return (
     <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">
       <nav>
-        <ul className="flex justify-between">
+        <ul className="flex justify-between items-center">
           <li>
             <Link href={'/'}>
               <LeftArrowIcon />
-            </Link>{' '}
+            </Link>
           </li>
-          <li className="absolute left-[50%] translate-x-[-50%] ">
-            <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />
-          </li>
+
+          <Link href={'/'} className="w-full border-b border-[#000] mx-[16px]  pb-[5px] text-left ">
+            <span className="text-[#787878] text-[14px] leading-[17px] tracking-[-0.035em] pt-[10px] pb-[8px]">
+              놓칠 수 없는 최대 30% 페이백
+            </span>
+          </Link>
+
           <li>
             <ul className="flex gap-4">
               <li>
