@@ -15,12 +15,12 @@ interface ItemCategory {
 }
 
 const itemCategoryDatas: ItemCategory[] = [
-  { id: 2, title: '자켓', value: 'event', url: '/event' },
-  { id: 3, title: '점퍼', value: 'deal', url: '/deal' },
-  { id: 4, title: '베스트', value: 'best', url: '/best' },
-  { id: 5, title: '코트', value: 'silive', url: '/silive' },
-  { id: 6, title: '다운/패딩', value: 'content', url: '/content' },
-  { id: 7, title: '퍼/무스탕', value: 'ssgdf', url: '/ssgdf' },
+  { id: 2, title: '자켓', value: 'event', url: '/' },
+  { id: 3, title: '점퍼', value: 'deal', url: '/' },
+  { id: 4, title: '베스트', value: 'best', url: '/' },
+  { id: 5, title: '코트', value: 'silive', url: '/' },
+  { id: 6, title: '다운/패딩', value: 'content', url: '/' },
+  { id: 7, title: '퍼/무스탕', value: 'ssgdf', url: '/' },
 ]
 
 export default function ProductStickyHeader() {
@@ -48,7 +48,7 @@ export default function ProductStickyHeader() {
         <div className="flex">
           {isWrap ? null : (
             <Link
-              href="/"
+              href="/product"
               className="text-black font-medium pr-6 h-[48px] text-[16px] leading-[48px] tracking-[0.4px] whitespace-nowrap"
             >
               전체
@@ -57,7 +57,7 @@ export default function ProductStickyHeader() {
           <ul className={`flex  ${isWrap ? 'flex-wrap' : 'overflow-x-auto no-scrollbar'}`}>
             {isWrap ? (
               <Link
-                href="/"
+                href="/product"
                 className="text-black font-medium pr-6 h-[48px] text-[16px] leading-[48px] tracking-[0.4px] whitespace-nowrap"
               >
                 전체
@@ -65,6 +65,7 @@ export default function ProductStickyHeader() {
             ) : null}
             {itemCategories.map((item) => (
               <li key={item.id} className={`${isWrap ? '' : 'border-b border-gray-300'}`}>
+                {/* 카테고리 데이터에 따른 별도의 링크로 이동해야 합니다. */}
                 <Link
                   href={item.url}
                   className={`text-[#929292] pr-6 h-[48px] text-[16px] leading-[48px] tracking-[0.4px] whitespace-nowrap

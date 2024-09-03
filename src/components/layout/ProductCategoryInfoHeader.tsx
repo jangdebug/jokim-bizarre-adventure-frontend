@@ -19,7 +19,7 @@ export default function ProductCategoryInfoHeader() {
             key={index}
             className={`category-item relative text-[16px] leading-[19px] p-[16px_18px_13px_0] overflow-ellipsis text-left`}
           >
-            <Link href={'/'}>{category}</Link>
+            <Link href={'/product'}>{category}</Link>
           </li>
         ))}
       </ul>

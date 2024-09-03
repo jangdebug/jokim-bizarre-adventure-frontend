@@ -25,12 +25,12 @@ export default function MainHeader() {
           <li>
             <ul className="flex justify-end gap-4">
               <li>
-                <Link href={'/'}>
+                <Link href={'/search'}>
                   <SearchIcon />
                 </Link>{' '}
               </li>
               <li className="relative">
-                <Link href={'/'}>
+                <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
                 <span
