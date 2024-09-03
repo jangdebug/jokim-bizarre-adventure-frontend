@@ -13,7 +13,7 @@ export default function AuthServiceHeader() {
   const [title, setTitle] = useState<string>('')
   const lastSegment = pathName.split('/').pop()
 
-  console.log(pathName, lastSegment)
+  // console.log(pathName, lastSegment)
 
   useEffect(() => {
     if (lastSegment === 'sign-in') {
@@ -24,11 +24,39 @@ export default function AuthServiceHeader() {
       setTitle('통합 멤버십 가입')
     } else if (lastSegment === 'simple') {
       setTitle('온라인 간편가입')
+    } else if (lastSegment === 'mypage') {
+      setTitle('마이페이지')
+    } else if (lastSegment === 'brand') {
+      setTitle('BRAND')
     }
   }, [lastSegment])
 
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+  const [lastScrollY, setLastScrollY] = useState<number>(0)
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    if (currentScrollY > lastScrollY) {
+      // 스크롤내리기
+
+      setIsVisible(false)
+    } else if (currentScrollY < lastScrollY) {
+      // 스크롤올리기
+      setIsVisible(true)
+    }
+    setLastScrollY(currentScrollY)
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
+
   return (
-    <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">
+    <header
+      className={`z-[100] bg-white flex flex-col justify-center w-full h-[56px] px-[16px] ${isVisible ? 'sticky top-0' : ''}`}
+    >
       <nav>
         <ul className="flex justify-between">
           <li>

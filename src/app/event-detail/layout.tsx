@@ -1,5 +1,6 @@
+import BottomNavigation from '@/components/layout/BottomNavigation'
 import MainHeader from '@/components/layout/MainHeader'
-import MainStickeyHeader from '@/components/layout/MainStickeyHeader'
+import MainStickyHeader from '@/components/layout/MainStickyHeader'
 
 export default function RootLayout({
   children,
@@ -9,8 +10,9 @@ export default function RootLayout({
   return (
     <>
       <MainHeader />
-      <MainStickeyHeader />
+      <MainStickyHeader />
       {children}
+      <BottomNavigation />
     </>
   )
 }

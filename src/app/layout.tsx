@@ -29,11 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={notoSansKR.className}>
-        {children}
-        <Footer />
-        <BottomNavigation withFadeOption={true} />
-      </body>
+      <body className={notoSansKR.className}>{children}</body>
     </html>
   )
 }

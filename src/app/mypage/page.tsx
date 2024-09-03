@@ -1,4 +1,3 @@
-import React from 'react'
 import MyInfoTop from '@/components/mypage/myInfoTop'
 import MyInfoLookUp from '@/components/mypage/myInfoLookUp'
 import MyInfoCategory from '@/components/mypage/myInfoCategory'

@@ -1,6 +1,5 @@
 import FadeUpSection from '@/components/util/FadeUpSection'
 import MainSwiper from '@/components/main/MainSwiper'
-import ToTopButton from '@/components/util/ToTopButton'
 import MainCategory from '@/components/main/MainCategory'
 import { getMainSwiperItem } from '@/actions/main/getMainSwiperItem'
 import { categoryBadgeType } from '@/types/InitialDataTypes'

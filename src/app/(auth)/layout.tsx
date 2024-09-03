@@ -1,4 +1,6 @@
 import AuthServiceHeader from '@/components/layout/AuthServiceHeader'
+import BottomNavigation from '@/components/layout/BottomNavigation'
+import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,6 +21,8 @@ export default function Layout({
     <>
       <AuthServiceHeader />
       {children}
+      <Footer />
+      <BottomNavigation />
     </>
   )
 }

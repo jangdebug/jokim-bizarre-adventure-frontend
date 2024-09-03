@@ -10,10 +10,8 @@ export default function Layout({
 }>) {
   return (
     <>
-      <MainHeader />
-      <MainStickyHeader />
+      {/* category 용 헤더 필요 */}
       {children}
-      <Footer />
       <BottomNavigation />
     </>
   )
