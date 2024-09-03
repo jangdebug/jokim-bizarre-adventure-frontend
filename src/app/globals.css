@@ -124,3 +124,7 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.bg-linear {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
+}
