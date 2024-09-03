@@ -1,5 +1,5 @@
 import MainHeader from '@/components/layout/MainHeader'
-import MainStickeyHeader from '@/components/layout/MainStickeyHeader'
+import MainStickyHeader from '@/components/layout/MainStickyHeader'
 
 export default function Layout({
   children,
@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <>
       <MainHeader />
-      <MainStickeyHeader />
+      <MainStickyHeader />
       {children}
     </>
   )
