@@ -88,7 +88,7 @@ const myPageCategory: myCategoryProps[] = [
       },
       {
         content: '찜',
-        src: '/',
+        src: '/mypage/searchwish',
       },
       {
         content: '재입고 알림신청 내역',
