@@ -1,12 +1,7 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
-import TitleHeader from '../ui/TitleHeader'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
-import { Button } from '../ui/button'
 
 export default function ProductPageHeader() {
   return (

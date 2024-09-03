@@ -128,3 +128,24 @@ html {
 .bg-linear {
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 20%, white 100%);
 }
+
+.category-item::after {
+  content: '';
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.category-item:first-child::after {
+  width: 18px;
+  height: 18px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/05Icon16ArrowGray.svg'); /* 첫 번째 아이템의 이미지 */
+}
+
+.category-item:last-child::after {
+  width: 14px;
+  height: 14px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/icon_v_symbol_category.svg'); /* 마지막 아이템의 이미지 */
+}

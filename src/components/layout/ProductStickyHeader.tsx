@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 import CloseIcon from '../icons/product-list-header/CloseIcon'
 import DownArrowSmallIcon from '../icons/product-list-header/DownArrowSmallIcon'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ItemCategory {
   id: number
@@ -31,8 +31,30 @@ export default function ProductStickyHeader() {
     setIsWrap((prev) => !prev)
   }
 
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+  const [lastScrollY, setLastScrollY] = useState<number>(0)
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    if (currentScrollY > lastScrollY) {
+      // 스크롤내리기
+
+      setIsVisible(false)
+    } else if (currentScrollY < lastScrollY) {
+      // 스크롤올리기
+      setIsVisible(true)
+    }
+    setLastScrollY(currentScrollY)
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
+
   return (
-    <nav className="w-full top-0 sticky">
+    <nav className={`w-full sticky ${isVisible ? 'top-[48px]' : 'top-0'}`}>
       <div
         className={`absolute top-0 left-0 w-full pl-6 bg-white box-border z-15 ${
           isWrap ? 'border-b border-gray-300' : ''
