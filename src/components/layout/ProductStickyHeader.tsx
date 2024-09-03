@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 import CloseIcon from '../icons/product-list-header/CloseIcon'
 import DownArrowSmallIcon from '../icons/product-list-header/DownArrowSmallIcon'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useScrollEvent } from '@/hooks/UseScrollEvent'
 
 interface ItemCategory {
@@ -35,7 +35,7 @@ export default function ProductStickyHeader() {
 
   return (
     <nav className={`w-full sticky ${isVisible ? 'top-[48px]' : 'top-0'}`}>
-      <div className={` pl-6 bg-white box-border z-15 ${isWrap ? 'border-b border-gray-300' : ''}`}>
+      <div className={` pl-6 bg-white box-border z-15 border-b border-[#e0e0e0]`}>
         {isWrap && (
           <div className="flex items-center justify-between">
             <p className="text-[14px] leading-[48px] text-[#787878]">ALL CATEGORIES</p>
@@ -50,7 +50,7 @@ export default function ProductStickyHeader() {
               전체
             </Link>
           )}
-          <ul className={`flex  ${isWrap ? 'flex-wrap' : 'overflow-x-auto no-scrollbar'}`}>
+          <ul className={`flex w-full  ${isWrap ? 'flex-wrap ' : 'overflow-x-auto no-scrollbar '}`}>
             {isWrap ? (
               <Link
                 href="/product"
@@ -60,7 +60,7 @@ export default function ProductStickyHeader() {
               </Link>
             ) : null}
             {itemCategories.map((item) => (
-              <li key={item.id} className={`${isWrap ? '' : 'border-b border-gray-300'}`}>
+              <li key={item.id}>
                 {/* 카테고리 데이터에 따른 별도의 링크로 이동해야 합니다. */}
                 <Link
                   href={item.url}
