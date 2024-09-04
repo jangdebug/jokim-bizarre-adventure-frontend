@@ -12,7 +12,7 @@ export default function ProductCategoryInfoHeader({ categoryInfo }: { categoryIn
   const isVisible = useScrollEvent()
 
   return (
-    <header className={`h-[48px] w-full z-[101] ${isVisible ? 'sticky top-0' : ''}`}>
+    <header className={`bg-white h-[48px] w-full z-[101] ${isVisible ? 'sticky top-0' : ''}`}>
       <ul className="flex items-center pr-[16px] pl-[24px]  box-border bg-[#fff] ">
         {categoryInfo?.map((category, index) => (
           <li

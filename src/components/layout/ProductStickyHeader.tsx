@@ -34,7 +34,7 @@ export default function ProductStickyHeader() {
   }
 
   return (
-    <nav className={`w-full sticky ${isVisible ? 'top-[48px]' : 'top-0'}`}>
+    <nav className={`z-50 bg-white w-full sticky ${isVisible ? 'top-[48px]' : 'top-0'}`}>
       <div className={` pl-6 bg-white box-border z-15 border-b border-[#e0e0e0]`}>
         {isWrap && (
           <div className="flex items-center justify-between">

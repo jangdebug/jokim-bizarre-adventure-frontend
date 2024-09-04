@@ -1,5 +1,6 @@
 import FilterBar from '@/components/product/FilterBar'
 import ProductContentsHeader from '@/components/product/ProductContentsHeader'
+import ProductList from '@/components/product/ProductList'
 
 export default function Product({ params }: { params: { slug: string[] } }) {
   const slug = params.slug
@@ -21,7 +22,7 @@ export default function Product({ params }: { params: { slug: string[] } }) {
     <section>
       <ProductContentsHeader />
       <FilterBar />
-      <div className="productList h-[500vh]">productList</div>
+      <ProductList />
     </section>
   )
 }
