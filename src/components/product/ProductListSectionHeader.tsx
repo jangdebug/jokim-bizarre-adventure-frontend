@@ -4,16 +4,17 @@ import SortIcon from '../icons/product/SortIcon'
 import { useState } from 'react'
 import ViewFourIcon from '../icons/product/ViewFourIcon'
 import ViewOneIcon from '../icons/product/ViewOneIcon'
-import { redirect, usePathname, useRouter, useSearchParams } from 'next/navigation'
-import {} from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 
-export default function ProductListSectionHeader() {
-  const [viewMode, SetViewMode] = useState<number>(0)
+export default function ProductListSectionHeader({ currentViewMode = 0 }: { currentViewMode: number }) {
+  const [viewMode, SetViewMode] = useState<number>(currentViewMode)
   const currentPath = usePathname()
   const router = useRouter()
 
   const handleViewModeChange = () => {
     SetViewMode((prev) => (prev + 1 > 2 ? 0 : prev + 1))
+    // console.log(viewMode + 1 > 2 ? 0 : viewMode + 1)
+
     router.replace(`${currentPath}?type=${viewMode + 1 > 2 ? 0 : viewMode + 1}`)
   }
 

@@ -10,6 +10,8 @@ export default function Product({ searchParams }: { searchParams: ViewModeType }
   // console.log(searchParams)
 
   // export default function Product({ params }: { params: { slug: string[] } }) {
+  // console.log('path', params.slug)
+
   // const slug = params.slug
   // const slugArray = Array.isArray(slug) ? slug : [slug]
 
@@ -20,7 +22,7 @@ export default function Product({ searchParams }: { searchParams: ViewModeType }
 
   return (
     <section>
-      <ProductListSectionHeader />
+      <ProductListSectionHeader currentViewMode={searchParams.type} />
       <FilterBar />
       <ProductList viewMode={searchParams.type} />
     </section>

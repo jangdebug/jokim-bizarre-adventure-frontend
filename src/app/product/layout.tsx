@@ -18,7 +18,7 @@ export default function Layout({
   const filteredPathSegments = pathSegments.slice(1).slice(-2)
   const decodedSegments = filteredPathSegments.map((segment) => decodeURIComponent(segment))
 
-  console.log(decodedSegments)
+  console.log('layout decoded', decodedSegments)
 
   return (
     <>
