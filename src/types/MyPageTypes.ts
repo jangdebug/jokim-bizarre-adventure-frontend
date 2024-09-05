@@ -43,3 +43,34 @@ export interface myWishEventType {
   wishStartDate: string
   wishEndDate: string
 }
+
+//MyPage Register Type
+export interface myRegisterType {
+  id: number
+  registerName: string
+  currentLink?: string | undefined
+}
+
+//MyPage Size Option Type
+export interface mySizeOptionType {
+  id: number
+  optionName: string
+  optionNameEn: string
+  optionType?: string | undefined
+}
+
+//MyPage Size Type
+export interface mySizeType {
+  id: number
+  height?: number | undefined
+  weight?: number | undefined
+  topSize?: string | undefined
+  bottomSize?: string | undefined
+  footSize?: string | undefined
+}
+
+//MyPage Top, Bottom, Foot Size Data Type
+export interface selectSizeType {
+  id: number
+  option: string
+}

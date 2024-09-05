@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import MyWishTab from './myWishTab'
+import MyWishTab from '../myTab'
 
 interface EventtItemProps {
   eventItem: {
