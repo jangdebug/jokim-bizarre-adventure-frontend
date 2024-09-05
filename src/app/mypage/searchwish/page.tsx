@@ -1,14 +1,15 @@
-'use client'
+import { getMyWishProductData } from '@/actions/mypage/getMyWishData'
+import MyWishItemCount from '@/components/mypage/myWish/myWishItemCount'
+import MyWishProducts from '@/components/mypage/myWish/myWishProducts'
+import { myWishProductType } from '@/types/MyPageTypes'
 
-import MyWishTab from '@/components/mypage/myWish/myWishTab'
-import React, { useState } from 'react'
-
-export default function MyWishPage() {
-  const [isClicked, setIsClicked] = useState<boolean>(true)
+export default async function MyWishPage() {
+  const wishProductDatas: myWishProductType[] = await getMyWishProductData()
 
   return (
     <>
-      <MyWishTab isClicked={isClicked} setIsClicked={setIsClicked} />
+      <MyWishItemCount index={1} count={wishProductDatas.length} />
+      <MyWishProducts wishProductDatas={wishProductDatas} />
     </>
   )
 }

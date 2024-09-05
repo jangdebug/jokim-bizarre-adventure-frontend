@@ -1,28 +1,31 @@
-import React from 'react'
+'use client'
 
-interface clickProps {
-  isClicked: boolean
-  setIsClicked: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { myWishTabDatas } from '@/datas/dummy/mypage/MyWishTab'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { useState } from 'react'
 
-export default function MyWishTab({ isClicked, setIsClicked }: clickProps) {
+export default function MyWishTab() {
   const activeTabClass = 'border-b-2 border-black text-black'
   const inactiveTabClass = 'border-b border-gray-300 text-gray-500'
 
+  const currentURI = usePathname()
+
   return (
-    <div className="flex">
-      <div
-        className={`${isClicked ? activeTabClass : inactiveTabClass} w-full flex items-center justify-center`}
-        onClick={() => setIsClicked(true)}
-      >
-        <span>상품</span>
-      </div>
-      <div
-        className={`${!isClicked ? activeTabClass : inactiveTabClass} w-full leading-10 flex items-center justify-center`}
-        onClick={() => setIsClicked(false)}
-      >
-        <span>컨텐츠</span>
-      </div>
+    <div>
+      <ul className="w-full flex justify-between">
+        {myWishTabDatas &&
+          myWishTabDatas.map((path) => (
+            <Link href={path.link} key={path.id} className="w-1/2">
+              <li
+                key={path.id}
+                className={`${currentURI && path.link === currentURI ? activeTabClass : inactiveTabClass} text-center py-3`}
+              >
+                {path.name}
+              </li>
+            </Link>
+          ))}
+      </ul>
     </div>
   )
 }

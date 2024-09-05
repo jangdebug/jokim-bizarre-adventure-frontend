@@ -15,3 +15,31 @@ export interface myLookUpType {
   delivering: number
   deliveryComplete: number
 }
+
+//MyPage WishTap Type
+export interface myWishTabType {
+  id: number
+  name: string
+  link: string
+}
+
+//MyPage WishProduct Type
+export interface myWishProductType {
+  id: number
+  wishImageUrl: string
+  wishBrand: string
+  wishName: string
+  wishAmmount: number
+  wishPrice: number
+}
+
+//MyPage WishEvent Type
+export interface myWishEventType {
+  id: number
+  wishImageUrl: string
+  wishSubTitle: string
+  wishTitle: string
+  wishDescription: string
+  wishStartDate: string
+  wishEndDate: string
+}
