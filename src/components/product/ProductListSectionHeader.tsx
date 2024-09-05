@@ -21,7 +21,7 @@ export default function ProductListSectionHeader({ currentViewMode = 0 }: { curr
   return (
     <header className={`bg-white pl-[24px] pr-[16px] mt-[16px] flex items-center justify-between h-[56px] `}>
       <span className="header-font text-[22px] leading-[40px] font-[900] text-[#131922]">All Product</span>
-      <ul className="flex gap-[4px]">
+      <ul className="flex gap-[4px] ">
         <li>
           <button>
             <SortIcon />
