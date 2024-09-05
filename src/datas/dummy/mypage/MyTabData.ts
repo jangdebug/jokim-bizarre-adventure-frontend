@@ -1,6 +1,6 @@
-import { myInfoType, myLookUpType, myWishEventType, myWishProductType, myWishTabType } from '@/types/MyPageTypes'
+import { myTabType } from '@/types/MyPageTypes'
 
-export const myWishTabDatas: myWishTabType[] = [
+export const myWishTabDatas: myTabType[] = [
   {
     id: 1,
     name: '상품',

@@ -1,12 +1,12 @@
 'use client'
 
-import { myWishTabType } from '@/types/MyPageTypes'
+import { myTabType } from '@/types/MyPageTypes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
 interface tabProps {
-  tabData: myWishTabType[]
+  tabData: myTabType[]
 }
 
 export default function MyTab({ tabData }: tabProps) {

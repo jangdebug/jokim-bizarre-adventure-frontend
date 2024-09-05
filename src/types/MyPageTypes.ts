@@ -17,7 +17,7 @@ export interface myLookUpType {
 }
 
 //MyPage WishTap Type
-export interface myWishTabType {
+export interface myTabType {
   id: number
   name: string
   link: string
