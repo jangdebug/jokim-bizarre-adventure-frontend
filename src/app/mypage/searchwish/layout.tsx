@@ -1,5 +1,5 @@
-import MyWishTab from '@/components/mypage/myWish/myWishTab'
-import { myWishEventDatas } from '@/datas/dummy/mypage/MyWishData'
+import MyTab from '@/components/mypage/myWish/myWishTab'
+import { myWishTabDatas } from '@/datas/dummy/mypage/MyTabData'
 
 export default function Layout({
   children,
@@ -8,7 +8,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <MyWishTab />
+      <MyTab tabData={myWishTabDatas} />
       {children}
     </>
   )

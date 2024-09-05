@@ -1,11 +1,15 @@
 'use client'
 
-import { myWishTabDatas } from '@/datas/dummy/mypage/MyWishTab'
+import { myWishTabType } from '@/types/MyPageTypes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function MyWishTab() {
+interface tabProps {
+  tabData: myWishTabType[]
+}
+
+export default function MyTab({ tabData }: tabProps) {
   const activeTabClass = 'border-b-2 border-black text-black'
   const inactiveTabClass = 'border-b border-gray-300 text-gray-500'
 
@@ -14,8 +18,8 @@ export default function MyWishTab() {
   return (
     <div>
       <ul className="w-full flex justify-between">
-        {myWishTabDatas &&
-          myWishTabDatas.map((path) => (
+        {tabData &&
+          tabData.map((path) => (
             <Link href={path.link} key={path.id} className="w-1/2">
               <li
                 key={path.id}
