@@ -43,7 +43,7 @@ export default function AuthServiceHeader() {
           <li>
             <Link href={'/'}>
               <LeftArrowIcon />
-            </Link>{' '}
+            </Link>
           </li>
           <li className="absolute left-[50%] translate-x-[-50%] ">
             <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />
@@ -51,12 +51,12 @@ export default function AuthServiceHeader() {
           <li>
             <ul className="flex gap-4">
               <li>
-                <Link href={'/'}>
+                <Link href={'/search'}>
                   <SearchIcon />
                 </Link>
               </li>
               <li className="relative">
-                <Link href={'/'}>
+                <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
                 <span

@@ -68,6 +68,13 @@
   }
 }
 
+@font-face {
+  font-family: 'RegularBoldCello';
+  src: url('/assets/fonts/RegularBoldCello-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 body {
   font-family: 'SF Pro Display', 'Apple SD Gothic Neo', 'Apple-Gothic', 'Roboto', 'Noto Sans KR', 'Droid Sans', 'dotum',
     sans-serif;
@@ -145,4 +152,8 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.header-font {
+  font-family: 'RegularBoldCello', sans-serif;
 }

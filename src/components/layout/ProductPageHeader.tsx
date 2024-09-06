@@ -9,6 +9,7 @@ export default function ProductPageHeader() {
       <nav>
         <ul className="flex justify-between items-center">
           <li>
+            {/* 뒤로가기 기능으로 변경해야합니다 */}
             <Link href={'/'}>
               <LeftArrowIcon />
             </Link>
@@ -23,12 +24,12 @@ export default function ProductPageHeader() {
           <li>
             <ul className="flex gap-4">
               <li>
-                <Link href={'/'}>
+                <Link href={'/search'}>
                   <SearchIcon />
                 </Link>
               </li>
               <li className="relative">
-                <Link href={'/'}>
+                <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
                 <span

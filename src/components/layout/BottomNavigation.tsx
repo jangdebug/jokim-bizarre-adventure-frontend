@@ -20,13 +20,19 @@ export default function BottomNavigation({ withFadeOption = false }: { withFadeO
       >
         <ul className=" flex justify-around w-full items-center ">
           <li className="overflow-x-hidden w-full  box-border flex items-center justify-center ">
-            <Link href={'/'} className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border">
+            <Link
+              href={'/category'}
+              className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border"
+            >
               <CategoryIcon />
               <span className="text-[10px] leading-[12px] pb-[3px] text-[#929292] ">category</span>
             </Link>
           </li>
           <li className="overflow-x-hidden w-full  box-border flex items-center justify-center ">
-            <Link href={'/'} className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border">
+            <Link
+              href={'/brand'}
+              className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border"
+            >
               <BrandIcon />
               <span className="text-[10px] leading-[12px] pb-[3px] text-[#929292] ">BRAND</span>
             </Link>
@@ -37,7 +43,10 @@ export default function BottomNavigation({ withFadeOption = false }: { withFadeO
             </Link>
           </li>
           <li className="overflow-x-hidden w-full  box-border flex items-center justify-center ">
-            <Link href={'/'} className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border">
+            <Link
+              href={'/mypage'}
+              className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border"
+            >
               <MyPageIcon />
               <span className="text-[10px] leading-[12px] pb-[3px] text-[#929292] ">MY</span>
             </Link>
