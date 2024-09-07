@@ -1,14 +1,15 @@
-import { categoryBadgeDatas } from '@/datas/dummy/main/CategoryDatas'
-import MainCategoryItem from '../main/MainCategoryItem'
+import { categoryQuickMenuData } from '@/datas/dummy/category/CategoryQuickMenuData'
+import CategoryBadge from './CategoryBadge'
 
 export default function CategoryBadgeList() {
-  const categoryBadgeListData = categoryBadgeDatas
+  const categoryQuickMenuBadges: QuickMenuBadgeType[] = categoryQuickMenuData
   return (
-    <nav>
-      here
-      <ul>
-        {categoryBadgeListData.map((item) => (
-          <MainCategoryItem categoryBadgeData={item} key={item.categoryId} />
+    <nav className="bg-[#f8f8f8]">
+      <ul className="flex overflow-x-auto px-[24px] gap-[12px] no-scrollbar">
+        {categoryQuickMenuBadges.map((item) => (
+          <li key={item.id} className="py-[12px]">
+            <CategoryBadge categoryBadgeData={item} />
+          </li>
         ))}
       </ul>
     </nav>

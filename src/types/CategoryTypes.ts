@@ -4,3 +4,9 @@ interface QuickMenuBadgeType {
   categoryName: string
   categoryBadgeImageUrl: string
 }
+
+interface CategoryType {
+  categoryId: number
+  categoryName: string
+  depth: number
+}

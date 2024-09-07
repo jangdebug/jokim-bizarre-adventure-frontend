@@ -169,3 +169,10 @@ html {
 .header-font {
   font-family: 'RegularBoldCello', sans-serif;
 }
+
+.h-category {
+  height: calc(100dvh - 220px);
+}
+.h-sub-category {
+  height: calc(100dvh - 168px);
+}

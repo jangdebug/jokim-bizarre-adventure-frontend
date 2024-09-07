@@ -1,4 +1,4 @@
-export const categoryBadgeDatas: QuickMenuBadgeType[] = [
+export const categoryQuickMenuData: QuickMenuBadgeType[] = [
   {
     id: 1,
     targetUrl: '/category',
