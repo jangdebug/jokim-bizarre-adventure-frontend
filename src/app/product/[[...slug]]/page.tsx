@@ -21,10 +21,9 @@ export default function Product({ searchParams }: { searchParams: ViewModeType }
   // console.log(mainCategory, middleCategory, sub1, sub2)
 
   return (
-    <section>
+    <main>
       <ProductListSectionHeader currentViewMode={searchParams.type} />
-      <FilterBar />
       <ProductList viewMode={searchParams.type} />
-    </section>
+    </main>
   )
 }

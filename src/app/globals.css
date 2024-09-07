@@ -145,6 +145,18 @@ html {
   transform: translateY(-50%);
 }
 
+.category-item:first-child::after {
+  width: 18px;
+  height: 18px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/05Icon16ArrowGray.svg'); /* 첫 번째 아이템의 이미지 */
+}
+
+.category-item:last-child::after {
+  width: 14px;
+  height: 14px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/icon_v_symbol_category.svg'); /* 마지막 아이템의 이미지 */
+}
+
 /* 3줄 이상 넘어가면 ellipsis */
 .truncate-lines {
   display: -webkit-box;

@@ -20,7 +20,7 @@ export default function EssentialSignUpField() {
   }
 
   return (
-    <div className="pt-[22px] py-[40px] px-[24px]">
+    <section className="pt-[22px] py-[40px] px-[24px]">
       <p className="text-[18px] leading-[22px] text-[#131922] font-bold">필수항목</p>
       <div className="mt-[20px] flex flex-col">
         <EmailInput />
@@ -45,11 +45,11 @@ export default function EssentialSignUpField() {
       <div className="mt-[16px] flex justify-between items-center">
         <label className="  text-[14px] text-[#404040] leading-[20px] font-[500]">
           <div className="flex items-center gap-[8px]">
-            <CheckboxWithSvg name={'isOverFourTeen'} checked={values.isOverFourTeen} onChange={handleAgeCheckChange} />
+            <CheckboxWithSvg name={'isOverFourTeen'} onChange={handleAgeCheckChange} />
             <span>만 14세 이상입니다.(필수)</span>
           </div>
         </label>
       </div>
-    </div>
+    </section>
   )
 }
