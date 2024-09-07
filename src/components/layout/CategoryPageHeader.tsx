@@ -1,5 +1,3 @@
-import BasketIcon from '../icons/auth-service-header/BasketIcon'
-import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
 
@@ -15,7 +13,7 @@ export default function CategoryPageHeader() {
             </Link>
           </li>
 
-          <Link href={'/'} className="w-full border-b border-[#000] mx-[16px]  pb-[5px] text-left ">
+          <Link href={'/search'} className="w-full border-b border-[#000] mx-[16px]  pb-[5px] text-left ">
             <span className="text-[#787878] text-[14px] leading-[17px] tracking-[-0.035em] pt-[10px] pb-[8px]">
               놓칠 수 없는 최대 30% 페이백
             </span>

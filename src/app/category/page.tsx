@@ -16,7 +16,7 @@ export default function Category({ searchParams }: { searchParams: { main: numbe
   console.log(searchParams)
 
   return (
-    <main className="">
+    <main>
       <CategoryBadgeList />
       <section className="h-category grid grid-cols-7 mb-[56px]">
         <MainCategoryList selectedId={Number(searchParams.main)} categoryData={categoryDatas} />
