@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function CategoryBadge({ categoryBadgeData }: { categoryBadgeData: QuickMenuBadgeType }) {
   return (
-    <div className="flex flex-col items-center">
+    <Link href={categoryBadgeData.targetUrl} className="flex flex-col items-center">
       <div className="w-[62px]">
         <Image
           src={categoryBadgeData.categoryBadgeImageUrl}
@@ -16,6 +17,6 @@ export default function CategoryBadge({ categoryBadgeData }: { categoryBadgeData
       <span className="mt-[6px] text-[12px] leading-[16px] text-[#131922] overflow-hidden">
         {categoryBadgeData.categoryName}
       </span>
-    </div>
+    </Link>
   )
 }
