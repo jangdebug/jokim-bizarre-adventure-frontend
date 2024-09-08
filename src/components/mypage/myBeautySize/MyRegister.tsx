@@ -1,40 +1,30 @@
-'use client'
-
-import { myRegisterType, mySizeType } from '@/types/MyPageTypes'
-import React, { useState } from 'react'
-import { Button } from '../ui/button'
-import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { myRegisterDatas } from '@/datas/dummy/mypage/MyRegisterData'
 import Image from 'next/image'
-import { Checkbox } from '../ui/checkbox'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-interface registerProps {
-  registerData: myRegisterType[]
-  inputValues: mySizeType
-}
-
-export default function MyRegister({ registerData, inputValues }: registerProps) {
+export default function MyRegister({ agreement }: { agreement: boolean }) {
   const currentURI = usePathname()
-  const [isAgreeChecked, setIsAgreeChecked] = useState<boolean>(false)
-
-  console.log('test --> ', inputValues)
 
   return (
-    <div className="px-5 my-5 border-t-8 border-t-[#f0f0f0]">
+    <div className="px-5 my-5">
       <div className="pb-4 mt-10 border-b border-b-gray-200 flex justify-between">
         <div className="font-bold flex items-center ">
-          <Checkbox onClick={() => setIsAgreeChecked(!isAgreeChecked)} />
-          <p className="mx-3">
+          <Checkbox name="agreement" id="agree" defaultChecked={agreement} />
+          <label className="mx-3" htmlFor="agree">
             개인정보 수집 및 이용 동의 <span className="text-orange-500">(필수)</span>
-          </p>
+          </label>
         </div>
-        <Link href={'/agreeInfo'}>
+        <Link href={'/agreeInfo'} className="flex items-center">
           <Image
             src={'https://cdn-mo.sivillage.com/mo/assets/comm/image/05Icon32PxThinArrowRight.svg'}
             width={20}
             height={20}
             alt={'개인정보 수집 및 이용 동의 상세 보기'}
             priority
+            style={{ width: 'auto', height: 'auto' }}
           />
         </Link>
       </div>
@@ -43,8 +33,8 @@ export default function MyRegister({ registerData, inputValues }: registerProps)
       </p>
 
       <div className="pb-12">
-        {registerData &&
-          registerData.map((data) =>
+        {myRegisterDatas &&
+          myRegisterDatas.map((data) =>
             currentURI && data.currentLink === currentURI ? (
               <Button key={data.id} className="w-full h-12">
                 {data.registerName}
