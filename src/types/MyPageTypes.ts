@@ -1,3 +1,5 @@
+import { StringDecoder } from 'string_decoder'
+
 //MyPage Info Type
 export interface myInfoType {
   myGradeUrl: string
@@ -42,4 +44,28 @@ export interface myWishEventType {
   wishDescription: string
   wishStartDate: string
   wishEndDate: string
+}
+
+//MyPage Register Type
+export interface myRegisterType {
+  id: number
+  registerName: string
+  currentLink: String
+}
+
+//MyPage Size Type
+export interface mySizeType {
+  id: number
+  height?: number | undefined
+  weight?: number | undefined
+  topSize?: string | undefined
+  bottomSize?: string | undefined
+  footSize?: string | undefined
+  agreement: boolean
+}
+
+//MyPage Top, Bottom, Foot Size Data Type
+export interface selectSizeType {
+  id: number
+  option: string
 }

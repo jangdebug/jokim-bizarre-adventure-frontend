@@ -1,5 +1,5 @@
 import MyTab from '@/components/mypage/myTab'
-import { myWishTabDatas } from '@/datas/dummy/mypage/MyTabData'
+import { myBeautySizeTabDatas } from '@/datas/dummy/mypage/MyTabData'
 
 export default function Layout({
   children,
@@ -8,7 +8,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <MyTab tabData={myWishTabDatas} />
+      <MyTab tabData={myBeautySizeTabDatas} />
       {children}
     </>
   )
