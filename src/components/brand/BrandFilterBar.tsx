@@ -42,8 +42,12 @@ export default function BrandFilterBar() {
             koreanLetters.map((item) => (
               <LetterButton key={item} letter={item} isSelected={selectedLetter === item} onClick={handleLetterClick} />
             ))}
-          <LetterButton letter={'0~9'} isSelected={selectedLetter === '0~9'} onClick={handleLetterClick} />
-          <LetterButton letter={'etc'} isSelected={selectedLetter === 'etc'} onClick={handleLetterClick} />
+          <Link href={`#0-9`}>
+            <LetterButton letter={'0~9'} isSelected={selectedLetter === '0~9'} onClick={handleLetterClick} />
+          </Link>
+          <Link href={`#etc`}>
+            <LetterButton letter={'etc'} isSelected={selectedLetter === 'etc'} onClick={handleLetterClick} />
+          </Link>
         </ul>
       </div>
     </section>
