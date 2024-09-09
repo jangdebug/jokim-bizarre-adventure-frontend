@@ -49,7 +49,9 @@ export const updateDefaultDelivery = async (newDefaultId: string) => {
 //  /newDefaultId => @PathVariable String defaultDeliveryId => GET
 // export const updateDefaultDelivery = async (newDefaultId: string) => {
 //   try {
-//     const response = await fetch(`/api/set-default-address?defaultDeliveryId={newDefaultId}`, {
+//     const response = await fetch(`/api/v1/mypage/delivery/set-default-address/${newDefaultId}`, {
+//     const response = await fetch(`/api/v1/mypage/delivery/set-default-address?defaultDeliveryId=${newDefaultId}`, {
+//       method: 'PATCH',
 //       method: 'GET',
 //       headers: {
 //         'Content-Type': 'application/json',
