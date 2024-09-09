@@ -29,6 +29,8 @@ export default function AuthServiceHeader() {
       setTitle('마이페이지')
     } else if (lastSegment === 'brand') {
       setTitle('BRAND')
+    } else if (lastSegment === 'favorite') {
+      setTitle('BRAND')
     }
   }, [lastSegment])
 

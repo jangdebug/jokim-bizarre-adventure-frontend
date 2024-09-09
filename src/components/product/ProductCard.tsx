@@ -65,7 +65,7 @@ export default function ProductCard({
         </Link>
         {viewMode == 1 ? null : (
           <div className="absolute top-[8px] right-[8px] z-10">
-            <LikeButton />
+            <LikeButton type="product" targetId={productCard.productId} />
           </div>
         )}
       </li>
