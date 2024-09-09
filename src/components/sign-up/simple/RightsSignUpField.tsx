@@ -35,7 +35,7 @@ export default function RightsSignUpField() {
   }
 
   return (
-    <div className="pt-[40px] px-[24px]">
+    <section className="pt-[40px] px-[24px]">
       <p className="text-[18px] leading-[22px] text-[#131922] font-bold">이용약관</p>
       <ul className="mt-[40px]">
         <li className="pb-[20px] border-b border-[#f0f0f0]">
@@ -81,6 +81,6 @@ export default function RightsSignUpField() {
       <Button type="submit" size={'auth'}>
         약관동의 및 가입완료
       </Button>
-    </div>
+    </section>
   )
 }

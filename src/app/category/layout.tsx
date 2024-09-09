@@ -1,7 +1,5 @@
 import BottomNavigation from '@/components/layout/BottomNavigation'
-import Footer from '@/components/layout/Footer'
-import MainHeader from '@/components/layout/MainHeader'
-import MainStickyHeader from '@/components/layout/MainStickyHeader'
+import CategoryPageHeader from '@/components/layout/CategoryPageHeader'
 
 export default function Layout({
   children,
@@ -11,6 +9,7 @@ export default function Layout({
   return (
     <>
       {/* category 용 헤더 필요 */}
+      <CategoryPageHeader />
       {children}
       <BottomNavigation />
     </>

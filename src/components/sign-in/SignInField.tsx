@@ -1,32 +1,65 @@
-import React from 'react'
-import { Input } from '../ui/input'
-import { Checkbox } from '../ui/checkbox'
+'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
+import InputWithClear from '../dummy/InputWithClear'
 
 export default function SignInField() {
+  const [signInValues, setSignInValues] = useState<{
+    email: string
+    password: string
+    isAutoLogin: boolean
+  }>({
+    email: '',
+    password: '',
+    isAutoLogin: false,
+  })
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.name, e.target.value)
+    const { name, value, checked } = e.target
+
+    switch (name) {
+      case 'email':
+        setSignInValues((prev) => ({ ...prev, [name]: value }))
+        break
+      case 'password':
+        setSignInValues((prev) => ({ ...prev, [name]: value }))
+        break
+      case 'isAutoLogin':
+        setSignInValues((prev) => ({ ...prev, [name]: checked }))
+        break
+
+      default:
+        break
+    }
   }
 
   return (
     <>
-      <Input
-        type="text"
+      <InputWithClear
         name="email"
+        type="text"
+        value={signInValues.email}
+        onChange={handleChange}
+        onClear={() => setSignInValues((prev) => ({ ...prev, email: '' }))}
         placeholder="아이디 (이메일주소)"
-        onChange={handleChange}
       />
-      <Input
-        type="password"
+      <InputWithClear
         name="password"
-        placeholder="비밀번호"
+        type="password"
+        value={signInValues.password}
         onChange={handleChange}
+        onClear={() => setSignInValues((prev) => ({ ...prev, password: '' }))}
+        placeholder="비밀번호"
       />
       <div className="flex flex-row justify-between items-center mt-[8px] text-[14px]">
-        <div className="mr-2 flex gap-[8px] items-center">
-          <Checkbox name="autoLogin" id="terms" value={'true'} />
-          <label htmlFor="terms">자동로그인</label>
-        </div>
+        <label className="">
+          <div className="flex items-center gap-[8px]">
+            <CheckboxWithSvg name="isAutoLogin" value={'true'} onChange={handleChange} />
+            <span>자동로그인</span>
+          </div>
+        </label>
+
         <Link href={'/'} className="underline  text-[#787878] ">
           ID/PW 찾기
         </Link>
