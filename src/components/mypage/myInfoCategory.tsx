@@ -59,7 +59,7 @@ const myPageCategory: myCategoryProps[] = [
     item: [
       {
         content: '상품리뷰',
-        src: '/',
+        src: '/mypage/review',
       },
       {
         content: '상품문의',
