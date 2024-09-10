@@ -12,6 +12,8 @@ export default function ProductCard({
   viewMode?: number
   showMoreOptions?: boolean
 }) {
+  console.log(viewMode)
+
   return (
     <>
       <li className={`w-full relative ${viewMode == 1 ? '' : 'mb-[36px]'}`}>
@@ -59,7 +61,7 @@ export default function ProductCard({
           )}
           {/* 신상 여부 */}
           {showMoreOptions &&
-            (viewMode === 1 ? null : productCard.isNew ? (
+            (viewMode == 1 ? null : productCard.isNew ? (
               <p className="pl-[8px] mt-[-8px] text-[12px] leading-[18px] font-bold text-[#d99c63]">신상</p>
             ) : null)}
         </Link>
