@@ -2,6 +2,7 @@ import FindAccountDivider from '@/components/find-account/FindAccountDivider'
 import FindAccountForm from '@/components/find-account/FindAccountForm'
 import FindAccountNavigation from '@/components/find-account/FindAccountNavigation'
 import { Button } from '@/components/ui/button'
+import LinkButton from '@/components/ui/LinkButton'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
@@ -57,18 +58,8 @@ export default function FindAccount({ searchParams }: { searchParams: { target: 
         <FindAccountDivider />
 
         <section className="flex flex-col gap-[8px]">
-          <Link
-            href={'#'}
-            className="w-full h-[48px] bg-[#131922] text-[#fff] flex items-center justify-center text-[14px] tracking-[0.23px] font-[500]"
-          >
-            휴대폰 인증으로 찾기
-          </Link>
-          <Link
-            href={'#'}
-            className="w-full h-[48px] bg-[#131922] text-[#fff] flex items-center justify-center text-[14px] tracking-[0.23px] font-[500]"
-          >
-            아이핀 인증으로 찾기
-          </Link>
+          <LinkButton href={'#'} bgColor="#131922" content="휴대폰 인증으로 찾기" />
+          <LinkButton href={'#'} bgColor="#131922" content="아이핀 인증으로 찾기" />
         </section>
       </main>
     </>
