@@ -60,7 +60,7 @@ export default function SignInField() {
           </div>
         </label>
 
-        <Link href={'/'} className="underline  text-[#787878] ">
+        <Link href={'/sign-in/find-account'} className="underline  text-[#787878] ">
           ID/PW 찾기
         </Link>
       </div>

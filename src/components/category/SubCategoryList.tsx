@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import RightArrowIcon from '../icons/sign-up/RightArrowIcon'
-import Image from 'next/image'
 import DummySubCategoryBanner from './DummySubCategoryBanner'
 
 const categoryDatas1: CategoryType[] = [
@@ -8,7 +7,7 @@ const categoryDatas1: CategoryType[] = [
   { categoryId: 9, categoryName: '스킨케어', depth: 2 },
   { categoryId: 10, categoryName: '메이크업', depth: 2 },
   { categoryId: 11, categoryName: '바디케어', depth: 2 },
-  { categoryId: 12, categoryName: '헤어케어', depth: 2 },
+  { categoryId: 18, categoryName: '헤어케어', depth: 2 },
   { categoryId: 12, categoryName: '맨즈케어', depth: 2 },
   { categoryId: 13, categoryName: '맘/베이비', depth: 2 },
   { categoryId: 14, categoryName: '홈 프래그런스', depth: 2 },

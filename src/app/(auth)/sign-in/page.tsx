@@ -1,12 +1,10 @@
 import KakaoIcon from '@/components/icons/sign-in/KakaoIcon'
 import PhoneIcon from '@/components/icons/sign-in/PhoneIcon'
 import NaverIcon from '@/components/icons/sign-in/NaverIcon.png'
-import SignInForm from '@/components/sign-in/SignInForm'
 import { Button } from '@/components/ui/button'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import SignInField from '@/components/sign-in/SignInField'
 
 export const metadata: Metadata = {

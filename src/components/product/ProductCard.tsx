@@ -12,8 +12,6 @@ export default function ProductCard({
   viewMode?: number
   showMoreOptions?: boolean
 }) {
-  console.log(viewMode)
-
   return (
     <>
       <li className={`w-full relative ${viewMode == 1 ? '' : 'mb-[36px]'}`}>
