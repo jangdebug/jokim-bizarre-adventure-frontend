@@ -1,30 +1,21 @@
 'use client'
 
+import { RadioGroup } from '@/components/ui/Radio'
 import { useEffect, useState } from 'react'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/Radio'
 import DeliveryActionButtons from './DeliveryActionButtons'
 import DeliveryListItem from './DeliveryListItem'
 import { updateDefaultDelivery } from '@/actions/mypage/getMyDeliveryDatas'
-
-interface DeliveryInfo {
-  addressId: number
-  addressName: string
-  recipient: string
-  phone: string
-  zipCode: string
-  address: string
-  addressDetail: string
-}
+import { deliveryType } from '@/types/MyPageTypes'
 
 interface DeliveryListProps {
-  deliveryList: DeliveryInfo[]
+  deliveryList: deliveryType[]
   defaultDeliveryId: number
 }
 
 export default function DeliveryList({ deliveryList, defaultDeliveryId }: DeliveryListProps) {
   const [radioValue, setRadioValue] = useState<string>(String(defaultDeliveryId))
   const [currentDefaultId, setCurrentDefaultId] = useState<number>(defaultDeliveryId)
-  const [localDeliveryList, setLocalDeliveryList] = useState<DeliveryInfo[]>(deliveryList)
+  const [localDeliveryList, setLocalDeliveryList] = useState<deliveryType[]>(deliveryList)
 
   const handleRadioChange = (value: string) => {
     setRadioValue(value)
@@ -56,7 +47,7 @@ export default function DeliveryList({ deliveryList, defaultDeliveryId }: Delive
     <>
       <DeliveryActionButtons onDefaultSettingClick={handleDefaultSettingClick} />
 
-      <section className="w-11/12 mx-auto min-h-[calc(100vh-112px)]">
+      <section className="px-[24px] mx-auto min-h-[calc(100vh-112px)]">
         <RadioGroup defaultValue={String(currentDefaultId)} onValueChange={handleRadioChange}>
           {localDeliveryList.length > 0 && (
             <div>
@@ -64,7 +55,7 @@ export default function DeliveryList({ deliveryList, defaultDeliveryId }: Delive
                 <DeliveryListItem
                   key={info.addressId}
                   info={info}
-                  currentDefaultId={currentDefaultId}
+                  isDefault={info.addressId === currentDefaultId}
                   onRadioChange={handleRadioChange}
                 />
               ))}

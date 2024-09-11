@@ -102,11 +102,15 @@ export interface defaultDeliveryType {
 export interface deliveryType {
   addressId: number
   addressName: string
+  dispCellNo: string
   recipient: string
   phone: string
   zipCode: string
-  address: string
+  addressRoad: string
+  addressJibeon: string
   addressDetail: string
+  checkDefault?: boolean | false
+  deliveryPolicy?: boolean | false
 }
 
 export interface phoneType {

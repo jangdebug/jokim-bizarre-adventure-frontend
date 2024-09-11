@@ -1,5 +1,6 @@
 import { myDefaultDeliveryData, myDeliveryDatas, phoneDatas } from '@/datas/dummy/mypage/MyDeliveryDatas'
 import { defaultDeliveryType, deliveryType, phoneType } from '@/types/MyPageTypes'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 export interface DeliveryResponse {
   defaultDelivery: defaultDeliveryType

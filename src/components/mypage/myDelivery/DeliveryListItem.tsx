@@ -1,20 +1,13 @@
 import { RadioGroupItem } from '@/components/ui/Radio'
+import { deliveryType } from '@/types/MyPageTypes'
 
 interface DeliveryListItemProps {
-  info: {
-    addressId: number
-    addressName: string
-    recipient: string
-    phone: string
-    zipCode: string
-    address: string
-    addressDetail: string
-  }
-  currentDefaultId: number
+  info: deliveryType
+  isDefault: boolean
   onRadioChange: (value: string) => void
 }
 
-export default function DeliveryListItem({ info, currentDefaultId, onRadioChange }: DeliveryListItemProps) {
+export default function DeliveryListItem({ info, isDefault, onRadioChange }: DeliveryListItemProps) {
   return (
     <div className="flex -space-y-1 space-x-2 py-5 border-b border-b-gray-200">
       <RadioGroupItem
@@ -24,18 +17,20 @@ export default function DeliveryListItem({ info, currentDefaultId, onRadioChange
       />
       <label htmlFor={`r${info.addressId}`} className="w-full">
         <div className="flex justify-between">
-          <p className="font-bold items-center mb-3">
-            <span className="mr-3">{info.addressName}</span>
-            <span className="text-gray-400">
+          <p className="items-center mb-3">
+            <span className="mr-3 font-bold">{info.addressName}</span>
+            <span className="text-gray-500">
               | {info.recipient}
-              {info.addressId === currentDefaultId && ' (기본배송지)'}
+              {isDefault && ' (기본배송지)'}
             </span>
           </p>
-          <p className="text-sm text-gray-500">수정 {info.addressId !== currentDefaultId && '| 삭제'}</p>
+          <p className="text-sm text-gray-500">수정 {!isDefault && '| 삭제'}</p>
         </div>
         <div>
-          <p className="mb-2">
-            ({info.zipCode}) {info.address} {info.addressDetail}
+          <p className="mb-2 text-xs">
+            <strong>
+              ({info.zipCode}) {info.addressRoad.replace(/\[도로명\]/g, '').trim()} {info.addressDetail}
+            </strong>
           </p>
           <p>
             <span className="text-sm text-gray-400">{info.phone}</span>
