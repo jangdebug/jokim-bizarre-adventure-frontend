@@ -117,3 +117,34 @@ export interface phoneType {
   id: number
   dispCellNo: string
 }
+
+///////////////////////// Order /////////////////////////
+
+export interface orderStepType {
+  id: number
+  StepImage: React.FC
+  StepName: string
+}
+
+export interface orderPolicyType {
+  id: number
+  step: string
+  title: string
+  contents: string[]
+  sub: string[]
+}
+
+export interface orderListType {
+  id: number
+  productId: number
+  productImageUrl: String
+  brandName: String
+  productName: String
+  productOption: String
+  quantity: number
+  amount: number
+  address: String
+  couponCode?: String | null
+  deliveryState: String
+  purchaseDate: String
+}
