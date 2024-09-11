@@ -113,7 +113,7 @@ const myPageCategory: myCategoryProps[] = [
       },
       {
         content: '배송지/환불계좌 관리',
-        src: '/',
+        src: '/mypage/delivery-info',
       },
       {
         content: '회원탈퇴',
