@@ -32,7 +32,7 @@ export default function MainHeader() {
               <li>
                 <Link href={'/search'}>
                   <SearchIcon />
-                </Link>{' '}
+                </Link>
               </li>
               <li className="relative">
                 <Link href={'/basket'}>

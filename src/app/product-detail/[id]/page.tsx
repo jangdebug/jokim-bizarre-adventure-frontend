@@ -1,3 +1,3 @@
 export default function ProductDetail() {
-  return <div>ProductDetail</div>
+  return <main className="h-[200vh]">helo</main>
 }
