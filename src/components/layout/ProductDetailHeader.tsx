@@ -19,9 +19,14 @@ export default function ProductDetailHeader() {
   const handleScroll = () => {
     if (window.scrollY == 0) {
       setIsBlack(() => false)
-    } else {
+    } else if (window.scrollY > 60) {
+      // console.log(window.scrollY, isVisible)
+
       setIsBlack(() => true)
     }
+    // } else {
+    //   console.log(window.scrollY, isVisible)
+    // }
   }
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export default function ProductDetailHeader() {
 
   return (
     <header
-      className={`z-[100]  flex flex-col justify-center w-full h-[56px] px-[16px] ${isBlack ? 'bg-white' : ''} ${isVisible ? 'sticky top-0 ' : ''}`}
+      className={`z-[100] flex flex-col justify-center w-full h-[56px] px-[16px]  ${isBlack ? (isVisible ? 'bg-white fixed top-0' : 'absolute top-0 left-0') : 'absolute top-0 left-0'} `}
     >
       <nav>
         <ul className="flex justify-between">
