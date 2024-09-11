@@ -1,5 +1,5 @@
 export const productDetailData = {
-  productId: 534,
+  productId: 2406262345,
   images: [
     'https://image.sivillage.com/upload/C00001/s3/goods/org/348/240812027288348.jpg?RS=750&SP=1',
     'https://image.sivillage.com/upload/C00001/s3/goods/org/354/240812027288354.jpg?RS=750&SP=1',
