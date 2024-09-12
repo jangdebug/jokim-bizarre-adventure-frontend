@@ -1,6 +1,8 @@
-import ProductDescriptionSection from '@/components/icons/product-detail/ProductDescriptionSection'
+import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
+import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
+import Divider from '@/components/ui/Divider'
 import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import { productDetailData } from '@/datas/dummy/product/ProductDetailData'
 
@@ -20,11 +22,9 @@ export default async function ProductDetail() {
     <main>
       <ProductHashTagSection hashTagList={productDetail.hashTag} />
       <SlimEventSwiper />
-
       {/* ProductDetailNavigation */}
-
-      <ProductDescriptionSection html={test} id={productDetail.productId} />
-
+      <ProductDetailNavigation reviewCount={productDetail.reviewCount} />
+      <ProductDescriptionSection html={test} />
       <div className="flex p-[24px] gap-[8px]">
         <Button variant={'outline'} size={'auth'}>
           배송/반품/교환 안내
@@ -33,7 +33,11 @@ export default async function ProductDetail() {
           상품정보제공고시
         </Button>
       </div>
-
+      <Divider />
+      {/* ReviewSummarySection */}
+      ReviewSummarySection
+      <Divider />
+      FewReviewSection
       {/* FewReviewsSection */}
     </main>
   )
