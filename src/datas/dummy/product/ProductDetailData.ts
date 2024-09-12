@@ -1,4 +1,4 @@
-export const productDetailData = {
+export const productDetailData: ProductDetailType = {
   productId: 2406262345,
   images: [
     'https://image.sivillage.com/upload/C00001/s3/goods/org/348/240812027288348.jpg?RS=750&SP=1',
@@ -19,4 +19,26 @@ export const productDetailData = {
   reviewCount: 1,
   isNew: true,
   description: '상세 정보 글~~',
+  hashTag: [
+    {
+      hashTagId: 1,
+      value: '겨울',
+    },
+    {
+      hashTagId: 2,
+      value: '긴팔',
+    },
+    {
+      hashTagId: 3,
+      value: '지퍼',
+    },
+    {
+      hashTagId: 4,
+      value: '캐쥬얼',
+    },
+    {
+      hashTagId: 5,
+      value: '퀼트/누빔',
+    },
+  ],
 }

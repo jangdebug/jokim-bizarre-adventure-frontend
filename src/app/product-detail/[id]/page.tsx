@@ -1,6 +1,7 @@
 import ProductDescriptionSection from '@/components/icons/product-detail/ProductDescriptionSection'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
+import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import { productDetailData } from '@/datas/dummy/product/ProductDetailData'
 
 async function getDescription(productId: number) {
@@ -17,7 +18,11 @@ export default async function ProductDetail() {
   const test = await getDescription(productDetail.productId)
   return (
     <main>
-      <ProductHashTagSection productId={productDetail.productId} />
+      <ProductHashTagSection hashTagList={productDetail.hashTag} />
+      <SlimEventSwiper />
+
+      {/* ProductDetailNavigation */}
+
       <ProductDescriptionSection html={test} id={productDetail.productId} />
 
       <div className="flex p-[24px] gap-[8px]">

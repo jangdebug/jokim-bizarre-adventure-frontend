@@ -23,4 +23,10 @@ interface ProductDetailType {
   reviewCount: number
   isNew: boolean
   description: string
+  hashTag: HashTagType[]
+}
+
+interface HashTagType {
+  hashTagId: number
+  value: string
 }
