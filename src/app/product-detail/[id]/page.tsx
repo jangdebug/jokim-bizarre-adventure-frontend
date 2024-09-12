@@ -1,9 +1,6 @@
 import ProductDescriptionSection from '@/components/icons/product-detail/ProductDescriptionSection'
-import ProductDetailSwiper from '@/components/product-detail/ProductDetailSwiper'
-import ProductSummarySection from '@/components/product-detail/ProductSummarySection'
+import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
-import Divider from '@/components/ui/Divider'
-import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import { productDetailData } from '@/datas/dummy/product/ProductDetailData'
 
 async function getDescription(productId: number) {
@@ -15,21 +12,14 @@ async function getDescription(productId: number) {
   }
 }
 
-export default async function ProductDetail({ slug }: { slug: string }) {
-  console.log(slug)
-
+export default async function ProductDetail() {
   const productDetail: ProductDetailType = productDetailData
-  const descriptionData: string = await getDescription(productDetail.productId)
+  const test = await getDescription(productDetail.productId)
   return (
     <main>
-      <ProductDetailSwiper productDetailImages={productDetail.images} />
-      <ProductSummarySection productDetailData={productDetail} />
-      <Divider />
+      <ProductHashTagSection productId={productDetail.productId} />
+      <ProductDescriptionSection html={test} id={productDetail.productId} />
 
-      <SlimEventSwiper />
-
-      {/* ProductDescriptionSection */}
-      <ProductDescriptionSection data={descriptionData} />
       <div className="flex p-[24px] gap-[8px]">
         <Button variant={'outline'} size={'auth'}>
           배송/반품/교환 안내

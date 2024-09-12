@@ -1,26 +1,8 @@
 'use client'
-import { useEffect, useState } from 'react'
-import DOMPurify from 'isomorphic-dompurify'
+import { useRef } from 'react'
 
-export default function ProductDescriptionSection({ data }: { data: string }) {
-  const [mounted, setMounted] = useState<boolean>(false)
+export default function ProductDescriptionSection({ html, id }: { html: string; id: number }) {
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  const filterText = (html: string) => {
-    return html.replace(/>([^<]+)</g, '><')
-  }
-  return (
-    <div
-      className="flex flex-col items-center"
-      dangerouslySetInnerHTML={{
-        __html: mounted
-          ? DOMPurify.sanitize(filterText(data), {
-              ALLOWED_TAGS: ['img'],
-            })
-          : '[LOADING...]',
-      }}
-    />
-  )
+  return <iframe ref={iframeRef} id="myFrame" width="100%" height={4000} srcDoc={html}></iframe>
 }

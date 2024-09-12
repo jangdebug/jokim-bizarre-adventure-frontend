@@ -12,15 +12,6 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // const pathName = usePathname()
-
-  // if (!pathName) return <div>Loading...</div>
-  // const pathSegments = pathName.split('/').filter(Boolean)
-  // const filteredPathSegments = pathSegments.slice(1).slice(-2)
-  // const decodedSegments = filteredPathSegments.map((segment) => decodeURIComponent(segment))
-
-  // console.log('layout decoded', decodedSegments)
-
   return (
     <>
       <ProductPageHeader />

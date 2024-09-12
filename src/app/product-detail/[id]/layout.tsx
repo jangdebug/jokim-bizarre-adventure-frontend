@@ -5,13 +5,17 @@ import ToTopButton from '@/components/util/ToTopButton'
 
 export default function Layout({
   children,
+  summary,
 }: Readonly<{
   children: React.ReactNode
+  summary: React.ReactNode
 }>) {
   return (
     <>
       <ProductDetailHeader />
+      {summary}
       {children}
+
       <ToTopButton moveWithBottomNav={false} />
       <Footer />
       <ProductDetailBottomNavigation />
