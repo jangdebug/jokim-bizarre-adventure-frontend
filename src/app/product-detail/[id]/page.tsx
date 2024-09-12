@@ -3,6 +3,7 @@ import ProductDetailSwiper from '@/components/product-detail/ProductDetailSwiper
 import ProductSummarySection from '@/components/product-detail/ProductSummarySection'
 import { Button } from '@/components/ui/button'
 import Divider from '@/components/ui/Divider'
+import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import { productDetailData } from '@/datas/dummy/product/ProductDetailData'
 
 async function getDescription(productId: number) {
@@ -24,6 +25,9 @@ export default async function ProductDetail({ slug }: { slug: string }) {
       <ProductDetailSwiper productDetailImages={productDetail.images} />
       <ProductSummarySection productDetailData={productDetail} />
       <Divider />
+
+      <SlimEventSwiper />
+
       {/* ProductDescriptionSection */}
       <ProductDescriptionSection data={descriptionData} />
       <div className="flex p-[24px] gap-[8px]">
