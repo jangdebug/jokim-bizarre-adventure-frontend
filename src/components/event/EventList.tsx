@@ -1,11 +1,12 @@
-import React from 'react'
-import EventListTitle from './EventListTitle'
+import { eventListType } from '@/types/ListDataTypes'
 import EventListContents from './EventListContents'
-import { getEventListData } from '@/actions/event/getEventListData'
+import EventListTitle from './EventListTitle'
 
-export default async function EventList() {
-  const eventListResData = await getEventListData()
+interface eventListProps {
+  eventListResData: eventListType[]
+}
 
+export default async function EventList({ eventListResData }: eventListProps) {
   return (
     <>
       <EventListTitle />

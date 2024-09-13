@@ -27,10 +27,17 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(url)
     }
   }
+  if (pathname.startsWith('/event-detail')) {
+    if (!searchParams.has('type')) {
+      searchParams.set('type', '0')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/product/:path*', '/category/:path*', '/sign-in/find-account/:path*'],
+  matcher: ['/product/:path*', '/category/:path*', '/sign-in/find-account/:path*', '/event-detail/:path*'],
 }
