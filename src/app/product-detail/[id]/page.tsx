@@ -1,6 +1,7 @@
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
+import ReviewListSection from '@/components/review/ReviewListSection'
 import ReviewSummarySection from '@/components/review/ReviewSummarySection'
 import { Button } from '@/components/ui/button'
 import Divider from '@/components/ui/Divider'
@@ -35,11 +36,10 @@ export default async function ProductDetail() {
         </Button>
       </div>
       <Divider />
-      {/* ReviewSummarySection */}
       <ReviewSummarySection />
       <Divider />
-      FewReviewSection
-      {/* FewReviewsSection */}
+
+      <ReviewListSection />
     </main>
   )
 }
