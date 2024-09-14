@@ -8,22 +8,18 @@ export default function StarAverage({
   showReviewCount = true,
   color = '#000000',
   size = 16,
+  className = '',
 }: {
   starAverage: number
   reviewCount: number
   showReviewCount?: boolean
   color?: string
   size?: number
+  className?: string
 }) {
-  const [average, setAverage] = useState<number>(0)
-
-  useEffect(() => {
-    setAverage(starAverage * 20) // Calculate percentage width based on starAverage
-  }, [starAverage])
-
   return (
     <>
-      <div className="mt-[32px] flex gap-[4px]">
+      <div className={`flex items-center gap-[4px] ${className}`}>
         <div className="relative w-fit bg-[#c8c8c8]" style={{ height: `${size}px` }}>
           <Image
             src={'https://cdn-mo.sivillage.com/mo/assets/comm/image/detail_starpoint.png'}
@@ -37,7 +33,7 @@ export default function StarAverage({
           <div
             className="absolute top-[50%] left-0 indent-[-9999px] "
             style={{
-              width: `${average}%`,
+              width: `${starAverage * 20}%`,
               backgroundColor: color,
               height: `${size - 2}px`,
               transform: `translateY(${((size - 2) / 2) * -1}px)`,

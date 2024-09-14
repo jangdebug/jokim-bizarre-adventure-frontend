@@ -76,6 +76,7 @@ export default function ProductSummarySection({ productDetailData }: { productDe
           starAverage={productDetailData.starAverage}
           reviewCount={productDetailData.reviewCount}
           size={12}
+          className="mt-[32px]"
         />
       </>
     </section>
