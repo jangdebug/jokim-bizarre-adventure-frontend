@@ -4,6 +4,7 @@ import LikeButton from '../ui/LikeButton'
 import ShareIcon from '../icons/product-detail/ShareIcon'
 import QuestionIcon from '../icons/product-detail/QuestionIcon'
 import Image from 'next/image'
+import StarAverage from '../ui/StarAverage'
 
 export default function ProductSummarySection({ productDetailData }: { productDetailData: ProductDetailType }) {
   return (
@@ -71,23 +72,11 @@ export default function ProductSummarySection({ productDetailData }: { productDe
       </>
 
       <>
-        <div className=" mt-[32px] flex gap-[4px]">
-          <div className="relative h-[12px] w-fit bg-[#c8c8c8]">
-            <Image
-              src={'https://cdn-mo.sivillage.com/mo/assets/comm/image/detail_starpoint.png'}
-              alt="starpoint"
-              width={68}
-              height={12}
-              className="z-[1] relative"
-            />
-            <p
-              className={`bg-black w-[${productDetailData.starAverage * 10}%] h-full absolute top-0 left-0  indent-[-9999px]`}
-            >
-              {productDetailData.starAverage}
-            </p>
-          </div>
-          <span className="text-[12px] leading-[14px] text-[#a0a0a0]">({productDetailData.reviewCount})</span>
-        </div>
+        <StarAverage
+          starAverage={productDetailData.starAverage}
+          reviewCount={productDetailData.reviewCount}
+          size={12}
+        />
       </>
     </section>
   )

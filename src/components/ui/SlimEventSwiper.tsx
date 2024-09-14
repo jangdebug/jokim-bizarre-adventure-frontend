@@ -53,7 +53,7 @@ export default function SlimEventSwiper() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full"
+        className="w-full slim-swiper"
       >
         {slimEventData.map((item, index) => (
           <SwiperSlide key={index}>

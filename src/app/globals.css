@@ -193,11 +193,11 @@ html {
   background: linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.swiper .swiper-pagination {
+.slim-swiper .swiper-pagination {
   position: relative;
 }
 
-.swiper .swiper-pagination-bullet {
+.slim-swiper .swiper-pagination-bullet {
   background-color: #000;
   height: 1px;
 }
