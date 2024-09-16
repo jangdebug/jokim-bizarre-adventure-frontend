@@ -21,12 +21,8 @@ export async function getEventDetailData(id: number): Promise<eventDetailType> {
 }
 
 //이벤트에 적용되는 대표 상품
-//카테고리를 BE로 category = [1, 3, 10], offset=8 이런식으로 보내면
+//카테고리를 BE로 /event-detail/{id}/{recommentCount}/{offset}, offset=8 이런식으로 보내면
 //이것을 3개의 카테고리에 각각 8개의 데이터씩
-// const queryString = data.map(item => `id=${item}`).join('&');
-// const response = await fetch(`https://api.example.com/endpoint?${queryString}`, {
-//   method: 'GET', // GET 요청
-// });
 export async function getEventRelationDatas(id: number) {
   const res = eventRelationDatas as eventRelationType[]
 
