@@ -98,12 +98,15 @@ export interface writenReviewType {
 export interface deliveryType {
   addressId: number
   addressName: string
+  dispCellNo: string
   recipient: string
   phone: string
   zipCode: string
-  address: string
+  addressRoad: string
+  addressJibeon: string
   addressDetail: string
   isDefault: boolean
+  deliveryPolicy: boolean
 }
 
 export interface phoneType {

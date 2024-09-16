@@ -6,9 +6,9 @@ export default async function AddDelivery() {
   const phoneDatas: phoneType[] = await getDeliveryPhoneDatas()
 
   return (
-    <section>
+    <main>
       <div className="my-5 text-xl font-bold flex justify-center">배송지 등록</div>
       <DeleveryAdd phoneDatas={phoneDatas} />
-    </section>
+    </main>
   )
 }

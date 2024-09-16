@@ -27,14 +27,16 @@ export default function DeliveryItem({ info }: DeliveryItemProps) {
               {`${info.isDefault ? ' (기본배송지)' : ''}`}
             </span>
           </p>
-          <p className="text-sm text-gray-500">수정 {`${info.isDefault ? '| 삭제' : ''}`}</p>
+          <p className="text-sm text-gray-500">수정 {`${info.isDefault ? '' : '| 삭제'}`}</p>
         </div>
         <div>
           <p className="mb-2">
-            ({info.zipCode}) {info.address} {info.addressDetail}
+            ({info.zipCode}) {info.addressRoad} {info.addressDetail}
           </p>
           <p>
-            <span className="text-sm text-gray-400">{info.phone}</span>
+            <span className="text-sm text-gray-400">
+              {info.dispCellNo}-{info.phone}
+            </span>
           </p>
         </div>
       </label>
