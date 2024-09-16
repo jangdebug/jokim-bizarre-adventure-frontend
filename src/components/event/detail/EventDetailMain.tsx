@@ -67,7 +67,7 @@ export default function EventDetailMain({ eventDetailData }: detailProps) {
       </div>
 
       {/* 쿠폰 */}
-      <div className="h-[300px] bg-blue-400 mb-12"> 쿠폰</div>
+      {/* <div className="h-[300px] bg-blue-400 mb-12"> 쿠폰</div> */}
     </section>
   )
 }
