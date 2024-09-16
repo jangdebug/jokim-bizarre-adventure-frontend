@@ -94,10 +94,6 @@ export interface writenReviewType {
 }
 
 ///////////////////////// Delivery /////////////////////////
-export interface defaultDeliveryType {
-  id: number
-  default: number
-}
 
 export interface deliveryType {
   addressId: number
@@ -107,6 +103,7 @@ export interface deliveryType {
   zipCode: string
   address: string
   addressDetail: string
+  isDefault: boolean
 }
 
 export interface phoneType {

@@ -1,9 +1,4 @@
-import { defaultDeliveryType, deliveryType, phoneType } from '@/types/MyPageTypes'
-
-export const myDefaultDeliveryData: defaultDeliveryType = {
-  id: 1,
-  default: 1,
-}
+import { deliveryType, phoneType } from '@/types/MyPageTypes'
 
 export const myDeliveryDatas: deliveryType[] = [
   {
@@ -14,6 +9,7 @@ export const myDeliveryDatas: deliveryType[] = [
     zipCode: '08806',
     address: '서울 관악구 남현1길 38-11',
     addressDetail: '123호',
+    isDefault: true,
   },
   {
     addressId: 2,
@@ -23,6 +19,7 @@ export const myDeliveryDatas: deliveryType[] = [
     zipCode: '48058',
     address: '부산 해운대구 센텀남대로 35',
     addressDetail: '705호',
+    isDefault: false,
   },
   {
     addressId: 3,
@@ -32,6 +29,7 @@ export const myDeliveryDatas: deliveryType[] = [
     zipCode: '48058',
     address: '부산 해운대구 센텀남대로 35',
     addressDetail: '704호',
+    isDefault: false,
   },
 ]
 
