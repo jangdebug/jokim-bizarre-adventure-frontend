@@ -24,10 +24,9 @@ export default function ReviewListItem({ reviewData }: { reviewData: ReviewType 
             <span>|</span>
             <span>{reviewData.modifyDate}</span>
           </li>
-          <li className="flex items-center gap-[5px]">
+          <li>
             {/* currentstate 를 백엔드에서 받아온 데이터를 통해 초기화 */}
-            <ThumbButton reviewId={reviewData.reviewId} currentState={true} />
-            <span>{reviewData.likeCount}</span>
+            <ThumbButton reviewId={reviewData.reviewId} currentState={true} likeCount={reviewData.likeCount} />
           </li>
         </ul>
         <p className="mt-[12px]">구매옵션 : {reviewData.productOption}</p>
