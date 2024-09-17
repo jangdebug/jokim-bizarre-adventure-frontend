@@ -44,6 +44,35 @@ export const reviewSummaryData: ReviewSummaryType = {
 export const reviewListData: ReviewType[] = [
   {
     productId: 2406262345,
+    reviewId: 3,
+    starPoint: 4,
+    type: 'text',
+    isBest: 0,
+    userId: 'example3',
+    modifyDate: '2024.09.21',
+    likeCount: 30,
+    productOption: '화이트/55',
+    content:
+      '내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰내용이 긴 리뷰',
+    evaluation: [
+      {
+        name: '사이즈',
+        value: '적당해요',
+      },
+      {
+        name: '색상',
+        value: '조금 어두워요',
+      },
+      {
+        name: '디자인',
+        value: '좋아요',
+      },
+    ],
+
+    image: [],
+  },
+  {
+    productId: 2406262345,
     reviewId: 2,
     starPoint: 2,
     type: 'preview',
@@ -111,6 +140,11 @@ export const reviewListData: ReviewType[] = [
       {
         reviewId: 1,
         imageId: 2,
+        imageUrl: 'https://image.sivillage.com/upload/C00001/eval/475/202311211155475_00001.jpg?RS=300&SP=1&AO=1',
+      },
+      {
+        reviewId: 1,
+        imageId: 4,
         imageUrl: 'https://image.sivillage.com/upload/C00001/eval/475/202311211155475_00001.jpg?RS=300&SP=1&AO=1',
       },
     ],

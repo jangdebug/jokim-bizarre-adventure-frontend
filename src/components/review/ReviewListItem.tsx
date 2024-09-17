@@ -9,7 +9,7 @@ import UpArrowGreyIcon from '../icons/review/UpArrowGreyIcon'
 
 export default function ReviewListItem({ reviewData }: { reviewData: ReviewType }) {
   const [isDetail, setIsDetail] = useState<boolean>(false)
-
+  const imagesToShow = isDetail ? reviewData.image : reviewData.image.slice(0, 2)
   const handleDetailState = () => {
     setIsDetail(() => !isDetail)
   }
@@ -31,7 +31,7 @@ export default function ReviewListItem({ reviewData }: { reviewData: ReviewType 
           </li>
         </ul>
         <p className="mt-[12px]">구매옵션 : {reviewData.productOption}</p>
-        <p className="mt-[12px] text-[13px] text-[#333] line-clamp-3">{reviewData.content}</p>
+        <p className={`mt-[12px] text-[13px] text-[#333] ${isDetail ? '' : 'line-clamp-3'}`}>{reviewData.content}</p>
       </div>
 
       <div>
@@ -44,19 +44,27 @@ export default function ReviewListItem({ reviewData }: { reviewData: ReviewType 
           <span className="text-[12px] leading-[12px] text-[#787878]">{isDetail ? '접기' : '더보기'}</span>
           {isDetail ? <UpArrowGreyIcon /> : <DownArrowGreyIcon />}
         </button>
-        <ul className="mt-[16px] flex flex-col gap-[8px]">
-          {reviewData.image.map((image) => (
-            <Image
+        <ul
+          className={`${reviewData.image.length > 2 && !isDetail ? 'review-image-container' : ''} mt-[16px] grid gap-[8px] ${isDetail ? 'grid-cols-1' : 'grid-cols-2'}`}
+        >
+          {imagesToShow.map((image) => (
+            <li
               key={image.imageId}
-              src={image.imageUrl}
-              alt="reviewImage"
-              height={100}
-              width={100}
-              className="w-full h-full"
-            />
+              className={`relative ${isDetail ? '' : ' aspect-square'}`}
+              data-more-count={reviewData.image.length - 2}
+            >
+              <Image
+                src={image.imageUrl}
+                alt="reviewImage"
+                height={100}
+                width={100}
+                className={`w-full h-full ${isDetail ? '' : 'object-cover'}`}
+              />
+            </li>
           ))}
         </ul>
       </div>
+      {/* 내가 쓴거면 수정, 남이 쓴거면 신고 */}
     </li>
   )
 }
