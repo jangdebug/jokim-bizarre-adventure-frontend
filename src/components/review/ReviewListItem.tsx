@@ -4,6 +4,8 @@ import StarAverage from '../ui/StarAverage'
 import ThumbButton from '../ui/ThumbButton'
 import { useState } from 'react'
 import ReviewEvaluation from './ReviewEvaluation'
+import DownArrowGreyIcon from '../icons/review/DownArrowGreyIcon'
+import UpArrowGreyIcon from '../icons/review/UpArrowGreyIcon'
 
 export default function ReviewListItem({ reviewData }: { reviewData: ReviewType }) {
   const [isDetail, setIsDetail] = useState<boolean>(false)
@@ -31,44 +33,17 @@ export default function ReviewListItem({ reviewData }: { reviewData: ReviewType 
         <p className="mt-[12px]">구매옵션 : {reviewData.productOption}</p>
         <p className="mt-[12px] text-[13px] text-[#333] line-clamp-3">{reviewData.content}</p>
       </div>
-      <button onClick={handleDetailState}>{isDetail ? '접기' : '더보기'}</button>
-      <div>
-        {/* <>
-          <ul className="flex flex-col mt-[16px] gap-[8px]">
-            <>
-              <li className="flex justify-between">
-                <ul className="flex gap-[12px]">
-                  <li className="bg-[#929292] text-[#fff] inline-flex items-center justify-center w-[62px] h-[20px] text-[10px] font-bold">
-                    {reviewData.evaluationItem1Name}
-                  </li>
-                  <li className="text-[14px] leading-[20px] text-[#141a23]">{reviewData.evaluationItem1Value}</li>
-                </ul>
-              </li>
-            </>
-            <>
-              <li className="flex justify-between">
-                <ul className="flex gap-[12px]">
-                  <li className="bg-[#929292] text-[#fff] inline-flex items-center justify-center w-[62px] h-[20px] text-[10px] font-bold">
-                    {reviewData.evaluationItem2Name}
-                  </li>
-                  <li className="text-[14px] leading-[20px] text-[#141a23]">{reviewData.evaluationItem2Value}</li>
-                </ul>
-              </li>
-            </>
-            <>
-              <li className="flex justify-between">
-                <ul className="flex gap-[12px]">
-                  <li className="bg-[#929292] text-[#fff] inline-flex items-center justify-center w-[62px] h-[20px] text-[10px] font-bold">
-                    {reviewData.evaluationItem3Name}
-                  </li>
-                  <li className="text-[14px] leading-[20px] text-[#141a23]">{reviewData.evaluationItem3Value}</li>
-                </ul>
-              </li>
-            </>
-          </ul>
-        </> */}
-        <ReviewEvaluation evaluationData={reviewData.evaluation} showRate={false} className="mt-[16px]" />
 
+      <div>
+        {isDetail ? (
+          <ReviewEvaluation evaluationData={reviewData.evaluation} showRate={false} className="mt-[16px]" />
+        ) : (
+          ''
+        )}
+        <button onClick={handleDetailState} className="flex flex-row items-center mt-[12px]">
+          <span className="text-[12px] leading-[12px] text-[#787878]">{isDetail ? '접기' : '더보기'}</span>
+          {isDetail ? <UpArrowGreyIcon /> : <DownArrowGreyIcon />}
+        </button>
         <ul className="mt-[16px] flex flex-col gap-[8px]">
           {reviewData.image.map((image) => (
             <Image
