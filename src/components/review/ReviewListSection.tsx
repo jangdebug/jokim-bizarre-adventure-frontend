@@ -1,7 +1,16 @@
+import { reviewListData } from '@/datas/dummy/review/ReviewData'
 import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
 import ReviewIcon from '../icons/review/ReviewIcon'
+import StarAverage from '../ui/StarAverage'
+import ThumbButton from '../ui/ThumbButton'
+import Image from 'next/image'
+import ReviewListItem from './ReviewListItem'
 
 export default function ReviewListSection() {
+  const reviewList: ReviewType[] = reviewListData
+
+  // 리뷰들에 대한 사용자의 좋아요 상태를 받아와야합니다.
+
   return (
     <section>
       <div className="relative px-[24px] flex items-center justify-start h-[56px] border-b border-[#f0f0f0]">
@@ -15,7 +24,13 @@ export default function ReviewListSection() {
           <ReviewIcon />
         </button>
       </div>
-      <div>helo</div>
+      <>
+        <ul>
+          {reviewList.map((item) => (
+            <ReviewListItem key={item.reviewId} reviewData={item} />
+          ))}
+        </ul>
+      </>
     </section>
   )
 }

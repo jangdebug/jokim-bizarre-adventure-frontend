@@ -11,7 +11,7 @@ export default function StarAverage({
   className = '',
 }: {
   starAverage: number
-  reviewCount: number
+  reviewCount?: number
   showReviewCount?: boolean
   color?: string
   size?: number

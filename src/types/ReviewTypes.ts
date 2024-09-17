@@ -4,39 +4,29 @@ interface ReviewImageType {
   imageUrl: string
 }
 
-interface Review {
+interface ReviewEvaluationType {
+  name: string
+  value: string
+  rate?: number
+}
+
+interface ReviewType {
   productId: number
   reviewId: number
   starPoint: number
   type: string
   isBest: number
-  parsingEmail: string
-  modifyDate: Date
+  userId: string
+  modifyDate: string
   likeCount: number
   productOption: string
   content: string
-  evaluationItem1Name: string
-  evaluationItem2Name: string
-  evaluationItem3Name: string
-  evaluationItem1BestValue: string
-  evaluationItem2BestValue: string
-  evaluationItem3BestValue: string
-  evaluation1Rate: number
-  evaluation2Rate: number
-  evaluation3Rate: number
+  evaluation: ReviewEvaluationType[]
   image: ReviewImageType[]
 }
 
 interface ReviewSummaryType {
   starAverage: number
-  evaluationItem1Name: string
-  evaluationItem2Name: string
-  evaluationItem3Name: string
-  evaluationItem1BestValue: string
-  evaluationItem2BestValue: string
-  evaluationItem3BestValue: string
-  evaluation1Rate: number
-  evaluation2Rate: number
-  evaluation3Rate: number
+  evaluation: ReviewEvaluationType[]
   image: ReviewImageType[]
 }

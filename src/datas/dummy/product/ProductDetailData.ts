@@ -16,7 +16,7 @@ export const productDetailData: ProductDetailType = {
   price: 1662500,
   rawPrice: 1750000,
   starAverage: 3.5,
-  reviewCount: 1,
+  reviewCount: 2,
   isNew: true,
   description: '상세 정보 글~~',
   hashTag: [
