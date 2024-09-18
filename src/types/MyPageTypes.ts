@@ -70,16 +70,25 @@ export interface selectSizeType {
   option: string
 }
 
-//MyPage Review Count
+//MyPage Review Count Type
 export interface reviewCountType {
   productCount: number
   ableCount: number
   alreadyCount: number
 }
 
-//MyPage Writewn Review Count
+//MyPage AbleReview Type
+export interface AbleReviewType {
+  productId: number
+  productName: string
+  imageUrl: string
+  review: string
+  writeDate: string
+}
+
+//MyPage WritenReview Type
 export interface writenReviewType {
-  id: number
+  productId: number
   productName: string
   imageUrl: string
   review: string

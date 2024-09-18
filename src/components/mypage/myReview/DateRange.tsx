@@ -10,7 +10,7 @@ interface rangeProps {
 
 export default function DateRange({ handleRange }: rangeProps) {
   return (
-    <div className="flex justify-end items-center">
+    <section className="flex justify-end items-center">
       <SizeFormItem label="">
         <Select name="Range" defaultValue={'1'} onValueChange={handleRange}>
           <SelectTrigger className="w-20 border-0">
@@ -23,6 +23,6 @@ export default function DateRange({ handleRange }: rangeProps) {
           </SelectContent>
         </Select>
       </SizeFormItem>
-    </div>
+    </section>
   )
 }

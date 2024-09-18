@@ -14,9 +14,9 @@ export default async function Writen() {
   }
 
   return (
-    <section>
+    <main>
       <DateRange handleRange={handleRange} />
       <WritenReview initialReviews={initialReviews} />
-    </section>
+    </main>
   )
 }

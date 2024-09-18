@@ -8,12 +8,12 @@ interface WritenReviewProps {
 
 export default function WritenReview({ initialReviews }: WritenReviewProps) {
   return (
-    <>
+    <div>
       {initialReviews.length > 0 ? (
         <div className="flex items-center mt-2 mb-[80px]">
           <ul className="w-5/6 m-auto">
             {initialReviews.map((item) => (
-              <WritenReviewItem key={item.id} item={item} />
+              <WritenReviewItem key={item.productId} item={item} />
             ))}
           </ul>
         </div>
@@ -22,7 +22,7 @@ export default function WritenReview({ initialReviews }: WritenReviewProps) {
           <p className="text-sm text-gray-500">작성하신 상품리뷰가 없습니다.</p>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
