@@ -55,12 +55,20 @@ export interface myRegisterType {
 
 //MyPage Size Type
 export interface mySizeType {
-  id: number
   height?: number | undefined
   weight?: number | undefined
   topSize?: string | undefined
   bottomSize?: string | undefined
   footSize?: string | undefined
+  agreement: boolean
+}
+
+export interface mySizeRegisterType {
+  height: number
+  weight: number
+  topSize: string
+  bottomSize: string
+  footSize: string
   agreement: boolean
 }
 
