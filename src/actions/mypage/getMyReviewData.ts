@@ -12,11 +12,11 @@ export async function getMyReviewCount() {
   return res
 }
 
-export async function getAbleReview(range: string): Promise<writenReviewType[]> {
+export async function getAbleReview(range: string): Promise<AbleReviewType[]> {
   const res = myAbleReviewDatas as AbleReviewType[]
 
   console.log(`getAbleReview -> `, range)
-  // const res = await fetch(`/mypage/not-reviewed-products/{range}`)
+  // const res = await fetch(`/mypage/not-reviewed/{range}`)
   // if(!res.ok){
   //   throw new Error('Fail to fetch')
   // }
@@ -29,7 +29,7 @@ export async function getMyWritenReview(range: string): Promise<writenReviewType
   const res = myWritenReviewDatas as writenReviewType[]
 
   console.log(`getMyWritenReview -> `, range)
-  // const res = await fetch(`/mypage/not-reviewed-products/{range}`)
+  // const res = await fetch(`/mypage/review/{range}`)
   // if(!res.ok){
   //   throw new Error('Fail to fetch')
   // }

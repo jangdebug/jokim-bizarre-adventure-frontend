@@ -80,17 +80,18 @@ export interface reviewCountType {
 //MyPage AbleReview Type
 export interface AbleReviewType {
   productId: number
+  brandName: string
   productName: string
   imageUrl: string
-  review: string
-  writeDate: string
+  orderDate: string
 }
 
 //MyPage WritenReview Type
 export interface writenReviewType {
   productId: number
+  brandName: string
   productName: string
   imageUrl: string
   review: string
-  writeDate: string
+  registDate: string
 }

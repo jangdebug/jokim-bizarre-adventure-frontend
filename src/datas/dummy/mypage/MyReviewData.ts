@@ -9,33 +9,35 @@ export const myReviewCountData: reviewCountType = {
 export const myAbleReviewDatas: AbleReviewType[] = [
   {
     productId: 1,
+    brandName: 'JAJU',
     productName: '상품able1',
     imageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/882/240815027809882.jpg?RS=450&SP=1',
-    review: '너무 좋아요!',
-    writeDate: '2024-09-09',
+    orderDate: '2024-09-09',
   },
   {
     productId: 2,
+    brandName: 'JAJU',
     productName: '상품able2',
     imageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/882/240815027809882.jpg?RS=450&SP=1',
-    review: '너무 싫어요!',
-    writeDate: '2024-09-09',
+    orderDate: '2024-09-09',
   },
 ]
 
 export const myWritenReviewDatas: writenReviewType[] = [
   {
     productId: 1,
+    brandName: 'JAJU',
     productName: '상품1',
     imageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/882/240815027809882.jpg?RS=450&SP=1',
     review: '너무 좋아요!',
-    writeDate: '2024-09-09',
+    registDate: '2024-09-09',
   },
   {
     productId: 2,
     productName: '상품2',
+    brandName: 'JAJU',
     imageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/882/240815027809882.jpg?RS=450&SP=1',
     review: '너무 싫어요!',
-    writeDate: '2024-09-09',
+    registDate: '2024-09-09',
   },
 ]
