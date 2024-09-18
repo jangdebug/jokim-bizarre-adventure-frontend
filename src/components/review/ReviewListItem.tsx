@@ -64,6 +64,10 @@ export default function ReviewListItem({ reviewData }: { reviewData: ReviewType 
         </ul>
       </div>
       {/* 내가 쓴거면 수정, 남이 쓴거면 신고 */}
+      <div className="flex items-center justify-end text-[12px] leading-[18px] mt-[12px]">
+        <button className="text-[#db3c3c]">신고</button>
+        {/* <button className="text-[#2a46ff]">수정</button> */}
+      </div>
     </li>
   )
 }
