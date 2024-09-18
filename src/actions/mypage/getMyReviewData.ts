@@ -8,7 +8,9 @@ export async function getMyReviewCount() {
 
 export async function getMyWritenReview(range: string): Promise<writenReviewType[]> {
   const res = myWritenReviewDatas as writenReviewType[]
-  // const res = await fetch()
+
+  console.log(`getMyWritenReview -> `, range)
+  // const res = await fetch(`/mypage/not-reviewed-products/{range}`)
   // if(!res.ok){
   //   throw new Error('Fail to fetch')
   // }

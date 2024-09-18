@@ -15,7 +15,7 @@ export default function AbleReview() {
   let count = 0
 
   return (
-    <>
+    <section>
       <DateRange defaultRange={range} handleRange={handleRange} />
 
       {count > 0 ? (
@@ -27,6 +27,6 @@ export default function AbleReview() {
           <p className="text-sm text-gray-500">작성 가능한 상품리뷰가 없습니다.</p>
         </div>
       )}
-    </>
+    </section>
   )
 }

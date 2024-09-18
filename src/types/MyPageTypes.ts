@@ -72,7 +72,6 @@ export interface selectSizeType {
 
 //MyPage Review Count
 export interface reviewCountType {
-  id: number
   productCount: number
   ableCount: number
   alreadyCount: number

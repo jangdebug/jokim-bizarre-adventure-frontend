@@ -1,7 +1,6 @@
 import { reviewCountType, writenReviewType } from '@/types/MyPageTypes'
 
 export const myReviewCountData: reviewCountType = {
-  id: 1,
   productCount: 20,
   ableCount: 7,
   alreadyCount: 13,
