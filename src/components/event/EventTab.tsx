@@ -3,6 +3,7 @@
 import { eventTabBadgeType } from '@/types/InitialDataTypes'
 import React, { useState } from 'react'
 import EventTabItem from './EventTabItem'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 interface EventTabProps {
   eventTabBageListDatas: eventTabBadgeType[]

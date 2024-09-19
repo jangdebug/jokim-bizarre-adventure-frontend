@@ -7,7 +7,7 @@ export default function EventListContentItem({ eventListData }: { eventListData:
   return (
     <>
       <li className="pl-6 pr-6">
-        <Link href={`/product/${eventListData.id}`}>
+        <Link href={`/event-detail/${eventListData.id}`}>
           <div className="flex mb-7 items-start">
             <div className="w-1/2 mr-4 items-start bg-[#f5f5f5]">
               <Image
