@@ -112,11 +112,6 @@ export interface writenReviewType {
 }
 
 ///////////////////////// Delivery /////////////////////////
-export interface defaultDeliveryType {
-  id: number
-  default: number
-}
-
 export interface deliveryType {
   addressId: number
   addressName: string
@@ -127,8 +122,8 @@ export interface deliveryType {
   addressRoad: string
   addressJibeon: string
   addressDetail: string
-  checkDefault?: boolean | false
-  deliveryPolicy?: boolean | false
+  isDefault: boolean
+  deliveryPolicy: boolean
 }
 
 export interface phoneType {
@@ -136,8 +131,20 @@ export interface phoneType {
   dispCellNo: string
 }
 
-///////////////////////// Order /////////////////////////
+export interface addDeliveryType {
+  addressName: string
+  recipient: string
+  dispCellNo: string
+  phone: string
+  zipCode: string
+  addressRoad: string
+  addressJibeon: string
+  addressDetail: string
+  isDefault: boolean
+  deliveryPolicy: boolean
+}
 
+///////////////////////// Order /////////////////////////
 export interface orderStepType {
   id: number
   StepImage: React.FC

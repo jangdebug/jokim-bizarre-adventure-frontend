@@ -1,9 +1,4 @@
-import { defaultDeliveryType, deliveryType, phoneType } from '@/types/MyPageTypes'
-
-export const myDefaultDeliveryData: defaultDeliveryType = {
-  id: 1,
-  default: 1,
-}
+import { deliveryType, phoneType } from '@/types/MyPageTypes'
 
 export const myDeliveryDatas: deliveryType[] = [
   {
@@ -16,6 +11,8 @@ export const myDeliveryDatas: deliveryType[] = [
     addressRoad: '[도로명] 서울 관악구 남현1길 38-11',
     addressJibeon: '[지번] 서울 관악구',
     addressDetail: '123호',
+    isDefault: true,
+    deliveryPolicy: true,
   },
   {
     addressId: 2,
@@ -27,6 +24,8 @@ export const myDeliveryDatas: deliveryType[] = [
     addressRoad: '[도로명] 부산 해운대구 센텀남대로 35',
     addressJibeon: '[지번] 부산 해운대구  35',
     addressDetail: '123호',
+    isDefault: false,
+    deliveryPolicy: true,
   },
   {
     addressId: 3,
@@ -38,6 +37,8 @@ export const myDeliveryDatas: deliveryType[] = [
     addressRoad: '[도로명] 부산 해운대구 센텀남대로 35',
     addressJibeon: '[지번] 부산 해운대구  35',
     addressDetail: '704호',
+    isDefault: false,
+    deliveryPolicy: true,
   },
 ]
 

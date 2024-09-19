@@ -1,15 +1,16 @@
-import { DeliveryResponse, getMyDelivery } from '@/actions/mypage/getMyDeliveryDatas'
+import { getMyDelivery } from '@/actions/mypage/getMyDeliveryDatas'
 import DeliveryList from '@/components/mypage/myDelivery/DeliveryList'
 import MyTab from '@/components/mypage/myTab'
 import { myDeliveryTabDatas } from '@/datas/dummy/mypage/MyTabData'
+import { deliveryType } from '@/types/MyPageTypes'
 
 export default async function MyDeliveryPage() {
-  const { defaultDelivery, deliveryList }: DeliveryResponse = await getMyDelivery()
+  const deliveryList: deliveryType[] = await getMyDelivery()
 
   return (
     <main>
       <MyTab tabData={myDeliveryTabDatas} />
-      <DeliveryList deliveryList={deliveryList} defaultDeliveryId={defaultDelivery.default} />
+      <DeliveryList deliveryList={deliveryList} />
     </main>
   )
 }
