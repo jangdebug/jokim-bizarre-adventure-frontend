@@ -6,9 +6,8 @@ interface QuickMenuBadgeType {
 }
 
 interface CategoryType {
-  categoryId: number
+  categoryCode: string
   categoryName: string
-  depth: number
 }
 
 interface BrandType {

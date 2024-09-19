@@ -15,7 +15,7 @@ export function middleware(req: NextRequest) {
 
   if (pathname.startsWith('/category')) {
     if (!searchParams.has('main')) {
-      searchParams.set('main', '2')
+      searchParams.set('main', '여성의류')
       url.search = searchParams.toString()
       return NextResponse.redirect(url)
     }

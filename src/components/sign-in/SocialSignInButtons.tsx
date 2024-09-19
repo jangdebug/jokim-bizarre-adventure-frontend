@@ -16,12 +16,12 @@ export default function SocialSignInButtons() {
         </Link>
       </li>
       <li className="inline-block px-4">
-        <button onClick={() => signIn('kakao')}>
+        <button onClick={() => signIn('kakao', { callbackUrl: '/' })}>
           <KakaoIcon />
         </button>
       </li>
       <li className="inline-block px-4">
-        <button onClick={() => signIn('naver')}>
+        <button onClick={() => signIn('naver', { callbackUrl: '/' })}>
           <Image src={NaverIcon} alt={'naverIcon'} style={{ maxWidth: 'none' }} />
         </button>
       </li>
