@@ -1,4 +1,4 @@
-import { myRegisterType, mySizeOptionType, mySizeType, selectSizeType } from '@/types/MyPageTypes'
+import { myRegisterType, mySizeType, selectSizeType } from '@/types/MyPageTypes'
 
 //My Beauty & Size Tab Datas
 export const myRegisterDatas: myRegisterType[] = [
@@ -14,47 +14,16 @@ export const myRegisterDatas: myRegisterType[] = [
   },
 ]
 
-//My Size Option Datas
-export const mySizeOptionDatas: mySizeOptionType[] = [
-  {
-    id: 1,
-    optionName: '키',
-    optionNameEn: 'height',
-    optionType: 'cm',
-  },
-  {
-    id: 2,
-    optionName: '몸무개',
-    optionNameEn: 'weight',
-    optionType: 'kg',
-  },
-  {
-    id: 3,
-    optionName: '평소 상의 사이즈',
-    optionNameEn: 'topSize',
-  },
-  {
-    id: 4,
-    optionName: '평소 하의 사이즈',
-    optionNameEn: 'bottomSize',
-  },
-  {
-    id: 5,
-    optionName: '평소 신발 사이즈',
-    optionNameEn: 'footSize',
-  },
-]
-
 //My Size Data
 export const mySizeData: mySizeType = {
-  id: 1,
   height: 180,
-  topSize: 'XL',
+  topSize: 'XS이상',
   bottomSize: '23이하',
+  agreement: false,
 }
 
-//Top Size Option Data
-export const topSizeOptionDatas: selectSizeType[] = [
+//Top Size Data
+export const topSizeDatas: selectSizeType[] = [
   {
     id: 1,
     option: 'XXS이하',
@@ -65,8 +34,8 @@ export const topSizeOptionDatas: selectSizeType[] = [
   },
 ]
 
-//Top Size Option Data
-export const bottomSizeOptionDatas: selectSizeType[] = [
+//Top Size Data
+export const bottomSizeDatas: selectSizeType[] = [
   {
     id: 1,
     option: '23이하',
@@ -77,8 +46,8 @@ export const bottomSizeOptionDatas: selectSizeType[] = [
   },
 ]
 
-//Top Size Option Data
-export const footSizeOptionDatas: selectSizeType[] = [
+//Top Size Data
+export const footSizeDatas: selectSizeType[] = [
   {
     id: 1,
     option: '150이하',

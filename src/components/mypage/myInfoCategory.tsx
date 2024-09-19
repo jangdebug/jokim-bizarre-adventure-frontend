@@ -121,7 +121,7 @@ const myPageCategory: myCategoryProps[] = [
       },
       {
         content: '사이즈 / 뷰티정보 설정',
-        src: '/',
+        src: '/mypage/beautysize',
       },
       {
         content: '로그인 정보 관리',
