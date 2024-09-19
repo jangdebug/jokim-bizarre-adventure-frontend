@@ -8,7 +8,7 @@ export default function DeliveryRegisterButton() {
   const router = useRouter()
 
   return (
-    <div className="mt-56 pt-3 border-t border-gray-500">
+    <div className="mt-44 w-full pt-3 border-t border-gray-500">
       <Button className="w-full p-6" onClick={() => router.back()}>
         배송지 적용
       </Button>
