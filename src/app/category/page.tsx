@@ -13,7 +13,7 @@ const categoryDatas: CategoryType[] = [
 ]
 
 export default function Category({ searchParams }: { searchParams: { main: number } }) {
-  console.log(searchParams)
+  console.log('category searchParams', searchParams)
 
   return (
     <main>

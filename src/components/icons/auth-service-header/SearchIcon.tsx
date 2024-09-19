@@ -1,14 +1,6 @@
-import React from 'react'
-
-export default function SearchIcon() {
+export default function SearchIcon({ color = 'black' }: { color?: string }) {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_42_163)">
         <mask
           id="mask0_42_163"
@@ -24,7 +16,7 @@ export default function SearchIcon() {
         <g mask="url(#mask0_42_163)">
           <path
             d="M28 28L20.408 20.408M14 23.5C19.247 23.5 23.5 19.247 23.5 14C23.5 8.753 19.247 4.5 14 4.5C8.753 4.5 4.5 8.753 4.5 14C4.5 19.247 8.753 23.5 14 23.5Z"
-            stroke="black"
+            stroke={color}
           />
         </g>
       </g>
