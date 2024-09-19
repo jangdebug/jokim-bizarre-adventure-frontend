@@ -41,3 +41,17 @@ export const myReviewTabDatas: myTabType[] = [
     link: '/mypage/review/products',
   },
 ]
+
+//My Delivery Tab Datas
+export const myDeliveryTabDatas: myTabType[] = [
+  {
+    id: 1,
+    name: '배송지 관리',
+    link: '/mypage/delivery-info',
+  },
+  {
+    id: 2,
+    name: '환불계좌 관리',
+    link: '/mypage/delivery-info/account',
+  },
+]

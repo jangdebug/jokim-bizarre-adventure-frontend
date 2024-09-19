@@ -6,15 +6,25 @@
 
 import { useScrollEvent } from '@/hooks/UseScrollEvent'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function ProductCategoryInfoHeader({ categoryInfo }: { categoryInfo?: string[] }) {
   // const catgoryInfo: string[] = ['아우터', '여성의류']
   const isVisible = useScrollEvent()
 
+  const pathName = usePathname()
+
+  if (!pathName) return <div>Loading...</div>
+  const pathSegments = pathName.split('/').filter(Boolean)
+  const filteredPathSegments = pathSegments.slice(1).slice(-2)
+  const decodedSegments = filteredPathSegments.map((segment) => decodeURIComponent(segment))
+
+  console.log('layout decoded', decodedSegments)
+
   return (
     <header className={`bg-white h-[48px] w-full z-[101] ${isVisible ? 'sticky top-0' : ''}`}>
       <ul className="flex items-center pr-[16px] pl-[24px]  box-border bg-[#fff] ">
-        {categoryInfo?.map((category, index) => (
+        {decodedSegments?.map((category, index) => (
           <li
             key={index}
             className={`category-item relative text-[16px] leading-[19px] p-[16px_18px_13px_0] overflow-ellipsis text-left`}

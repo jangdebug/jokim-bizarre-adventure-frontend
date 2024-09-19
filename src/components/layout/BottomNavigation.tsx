@@ -16,7 +16,7 @@ export default function BottomNavigation({ withFadeOption = false }: { withFadeO
     <>
       <ToTopButton moveWithBottomNav={withFadeOption ? isVisible : false} />
       <nav
-        className={` ${withFadeOption ? (!isVisible ? `h-[64px]` : 'h-0') : `h-[64px]`} transition-all duration-500 ease-in-out fixed w-full bottom-0 left-0 z-[111] overflow-hidden  border-t border-gray-300 bg-white `}
+        className={` ${withFadeOption ? (!isVisible ? `h-[56px]` : 'h-0') : `h-[56px]`} transition-all duration-500 ease-in-out fixed w-full bottom-0 left-0 z-[111] overflow-hidden  border-t border-gray-300 bg-white `}
       >
         <ul className=" flex justify-around w-full items-center ">
           <li className="overflow-x-hidden w-full  box-border flex items-center justify-center ">

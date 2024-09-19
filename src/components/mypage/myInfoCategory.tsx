@@ -16,8 +16,8 @@ const myPageCategory: myCategoryProps[] = [
     title: '나의 쇼핑정보',
     item: [
       {
-        content: '주몬/배송 조회',
-        src: '/',
+        content: '주문/배송 조회',
+        src: '/mypage/order',
       },
       {
         content: '오프라인 주문 조회',
@@ -113,7 +113,7 @@ const myPageCategory: myCategoryProps[] = [
       },
       {
         content: '배송지/환불계좌 관리',
-        src: '/',
+        src: '/mypage/delivery-info',
       },
       {
         content: '회원탈퇴',
