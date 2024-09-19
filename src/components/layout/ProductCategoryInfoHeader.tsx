@@ -19,8 +19,6 @@ export default function ProductCategoryInfoHeader({ categoryInfo }: { categoryIn
   const filteredPathSegments = pathSegments.slice(1).slice(-2)
   const decodedSegments = filteredPathSegments.map((segment) => decodeURIComponent(segment))
 
-  console.log('layout decoded', decodedSegments)
-
   return (
     <header className={`bg-white h-[48px] w-full z-[101] ${isVisible ? 'sticky top-0' : ''}`}>
       <ul className="flex items-center pr-[16px] pl-[24px]  box-border bg-[#fff] ">
