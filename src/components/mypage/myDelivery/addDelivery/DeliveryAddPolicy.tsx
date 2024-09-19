@@ -1,9 +1,10 @@
+'use client'
+
 import DownArrowIcon from '@/components/icons/footer/DownArrowIcon.png'
 import UpArrowIcon from '@/components/icons/footer/UpArrowIcon.png'
-import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function DeliveryAddPolicy() {
   const [isDetail, setIsDetail] = useState<boolean>(false)
@@ -13,7 +14,7 @@ export default function DeliveryAddPolicy() {
 
   return (
     <div>
-      <div className="px-[24px] m-auto mt-5 pb-5 border-b border-gray-400 flex justify-between items-center">
+      <div className="px-[24px] m-auto mt-5 pb-5 border-b border-gray-300 flex justify-between items-center">
         <div className="flex items-center">
           <Checkbox name="deliveryPolicy" id="policy" defaultChecked={false} />
           <label className="mx-3" htmlFor="policy">
@@ -26,7 +27,7 @@ export default function DeliveryAddPolicy() {
       </div>
 
       <div
-        className={`my-[24px] bg-gray-100 text-xs overflow-hidden transition-all duration-500 ease-in-out h-0 ${isDetail ? `h-[160px]` : 'h-0'}`}
+        className={`my-[10px] bg-gray-100 text-xs overflow-hidden transition-all duration-500 ease-in-out h-0 ${isDetail ? `h-[160px]` : 'h-0'}`}
       >
         <div className="p-[24px]">
           <p>
