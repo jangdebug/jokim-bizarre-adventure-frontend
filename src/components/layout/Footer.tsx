@@ -15,12 +15,13 @@ const footerNavItem: string[] = ['ABOUT', '회사소개', '매장안내', '고�
 interface SocialIcon {
   src: StaticImageData
   alt: string
+  url: string
 }
 
 const socialIcons: SocialIcon[] = [
-  { src: FacebookIcon, alt: 'Facebook Icon' },
-  { src: InstagramIcon, alt: 'Instagram Icon' },
-  { src: YoutubeIcon, alt: 'Youtube Icon' },
+  { src: FacebookIcon, alt: 'Facebook Icon', url: 'https://www.facebook.com/' },
+  { src: InstagramIcon, alt: 'Instagram Icon', url: 'https://www.instagram.com/' },
+  { src: YoutubeIcon, alt: 'Youtube Icon', url: 'https://www.youtube.com/' },
 ]
 export default function Footer() {
   const [isDetail, setIsDetail] = useState<boolean>(false)
@@ -72,13 +73,19 @@ export default function Footer() {
           </div>
           <ul className="mt-[16px] flex justify-start]">
             <li className="mr-[16px]">
-              <Link className="flex flex-row items-end" href={'/'}>
+              <Link
+                className="flex flex-row items-end"
+                href={'https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2018153657&apv_perm_no='}
+              >
                 사업자정보확인
                 <RightArrowIcon />
               </Link>
             </li>
             <li className="mr-[16px]">
-              <Link className="flex flex-row items-end" href={'/'}>
+              <Link
+                className="flex flex-row items-end"
+                href={'https://pg.nicepay.co.kr/issue/IssueEscrow.jsp?CoNo=2018153657'}
+              >
                 에스크로서비스가입확인
                 <RightArrowIcon />
               </Link>
@@ -105,7 +112,7 @@ export default function Footer() {
       <ul className="p-[0_24px] flex flex-row">
         {socialIcons.map((icon, idx) => (
           <li className="mr-[6px]" key={idx}>
-            <Link href={'/'}>
+            <Link href={icon.url}>
               <Image src={icon.src} alt={icon.alt} />
               <span className="sr-only">{icon.alt} 로 이동</span>
             </Link>

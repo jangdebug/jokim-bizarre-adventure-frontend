@@ -34,7 +34,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 4,
-    productId: 345376,
+    productId: 2406262345,
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/414/240829029793414.jpg?RS=450&SP=1',
     brandName: 'HERNO',
     name: '남성 니트 패치 하이넥 다운 패딩 코트',

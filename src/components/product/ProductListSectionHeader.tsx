@@ -13,7 +13,6 @@ export default function ProductListSectionHeader({ currentViewMode = 0 }: { curr
 
   const handleViewModeChange = () => {
     SetViewMode((prev) => (prev + 1 > 2 ? 0 : prev + 1))
-    // console.log(viewMode + 1 > 2 ? 0 : viewMode + 1)
 
     router.replace(`${currentPath}?type=${viewMode + 1 > 2 ? 0 : viewMode + 1}`)
   }

@@ -145,6 +145,18 @@ html {
   transform: translateY(-50%);
 }
 
+.category-item:first-child::after {
+  width: 18px;
+  height: 18px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/05Icon16ArrowGray.svg'); /* 첫 번째 아이템의 이미지 */
+}
+
+.category-item:last-child::after {
+  width: 14px;
+  height: 14px;
+  background-image: url('https://cdn-mo.sivillage.com/mo/assets/comm/image/icon_v_symbol_category.svg'); /* 마지막 아이템의 이미지 */
+}
+
 /* 3줄 이상 넘어가면 ellipsis */
 .truncate-lines {
   display: -webkit-box;
@@ -156,4 +168,55 @@ html {
 
 .header-font {
   font-family: 'RegularBoldCello', sans-serif;
+}
+
+.h-category {
+  height: calc(100dvh - 220px);
+}
+.h-sub-category {
+  height: calc(100dvh - 168px);
+}
+
+.pagination-text {
+  text-shadow:
+    -1px 1px 0 rgba(255, 255, 255, 0.6),
+    -1px -1px 0 rgba(255, 255, 255, 0.6),
+    1px 1px 0 rgba(255, 255, 255, 0.6),
+    1px -1px 0 rgba(255, 255, 255, 0.6),
+    1px 0 0 rgba(255, 255, 255, 0.6),
+    -1px 0 0 rgba(255, 255, 255, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.6),
+    0 -1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.product-image-linear-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.slim-swiper .swiper-pagination {
+  position: relative;
+}
+
+.slim-swiper .swiper-pagination-bullet {
+  background-color: #000;
+  height: 1px;
+}
+
+.review-image-container li:last-child::after {
+  content: '+ ' attr(data-more-count);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 16, 16, 0.56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #fefefe;
+  pointer-events: none;
+  z-index: 1;
 }

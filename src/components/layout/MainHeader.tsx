@@ -15,10 +15,15 @@ export default function MainHeader() {
       className={`flex flex-col justify-center w-full h-[56px] px-[16px] bg-white ${isVisible ? 'sticky top-0 left-0' : ''}`}
     >
       <nav>
-        <ul className="">
-          <li className="absolute left-0 top-0 ">
+        <ul className=" ">
+          <li className="absolute left-0 top-0">
             <Link href={'/'}>
-              <Image src={MainHeaderLogo} alt="mainHeaderLogo" priority={true} />
+              <Image
+                src={`https://image.sivillage.com/upload/C00001/s3/dspl/banner/90/411/30/240900000505411_20240904175544.gif?cVer=04055544`}
+                alt="mainHeaderLogo"
+                width={184}
+                height={56}
+              />
             </Link>
           </li>
 
@@ -27,7 +32,7 @@ export default function MainHeader() {
               <li>
                 <Link href={'/search'}>
                   <SearchIcon />
-                </Link>{' '}
+                </Link>
               </li>
               <li className="relative">
                 <Link href={'/basket'}>

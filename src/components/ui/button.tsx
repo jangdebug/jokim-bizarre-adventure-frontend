@@ -17,6 +17,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         kakao: 'bg-[#fee500] text-[#333333] hover:bg-[##fee500]/90',
+        grey: 'bg-[#787878] text-primary-foreground',
       },
       size: {
         default: 'h-10 px-4 py-2',
@@ -24,6 +25,7 @@ const buttonVariants = cva(
         lg: 'h-11 rounded-md px-8',
         icon: 'h-10 w-10',
         auth: 'w-full h-[48px]',
+        full: 'w-full h-full',
       },
     },
     defaultVariants: {

@@ -1,4 +1,7 @@
-import SignUpForm from '@/components/sign-up/simple/SignUpForm'
+import EssentialSignUpField from '@/components/sign-up/simple/EssentialSignUpField'
+import OptionalSignUpField from '@/components/sign-up/simple/OptionalSignUpField'
+import RightsSignUpField from '@/components/sign-up/simple/RightsSignUpField'
+import Divider from '@/components/ui/Divider'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -11,8 +14,14 @@ export default function Simple() {
     console.log('data', simpleSignUpFormData)
   }
   return (
-    <div className="w-full">
-      <SignUpForm handleSignUp={handleSignUp} />
-    </div>
+    <main className="w-full pb-[80px]">
+      <form action={handleSignUp}>
+        <EssentialSignUpField />
+        <Divider />
+        <OptionalSignUpField />
+        <Divider />
+        <RightsSignUpField />
+      </form>{' '}
+    </main>
   )
 }

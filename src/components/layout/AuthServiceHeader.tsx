@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import TitleHeader from '../ui/TitleHeader'
@@ -10,15 +10,22 @@ import { useScrollEvent } from '@/hooks/UseScrollEvent'
 
 export default function AuthServiceHeader() {
   const pathName = usePathname()
-
+  const router = useRouter()
   const [title, setTitle] = useState<string>('')
   const lastSegment = pathName.split('/').pop()
+  const isVisible = useScrollEvent()
+
+  const handleBackClick = () => {
+    router.back()
+  }
 
   // console.log(pathName, lastSegment)
 
   useEffect(() => {
     if (lastSegment === 'sign-in') {
       setTitle('로그인')
+    } else if (lastSegment === 'find-account' || lastSegment === 'find-result') {
+      setTitle('ID/PW 찾기')
     } else if (lastSegment === 'sign-up') {
       setTitle('회원가입')
     } else if (lastSegment === 'phone') {
@@ -27,12 +34,10 @@ export default function AuthServiceHeader() {
       setTitle('온라인 간편가입')
     } else if (lastSegment === 'mypage') {
       setTitle('마이페이지')
-    } else if (lastSegment === 'brand') {
+    } else if (lastSegment === 'brand' || lastSegment === 'favorite') {
       setTitle('BRAND')
     }
   }, [lastSegment])
-
-  const isVisible = useScrollEvent()
 
   return (
     <header
@@ -41,9 +46,9 @@ export default function AuthServiceHeader() {
       <nav>
         <ul className="flex justify-between">
           <li>
-            <Link href={'/'}>
+            <button onClick={handleBackClick}>
               <LeftArrowIcon />
-            </Link>
+            </button>
           </li>
           <li className="absolute left-[50%] translate-x-[-50%] ">
             <TitleHeader title={title} textStyle="text-[18px] font-medium leading-[34px]" />

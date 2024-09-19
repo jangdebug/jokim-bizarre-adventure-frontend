@@ -13,9 +13,24 @@ export function middleware(req: NextRequest) {
     }
   }
 
+  if (pathname.startsWith('/category')) {
+    if (!searchParams.has('main')) {
+      searchParams.set('main', '2')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
+  if (pathname.startsWith('/sign-in/find-account')) {
+    if (!searchParams.has('target')) {
+      searchParams.set('target', 'id')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
+
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/product/:path*'],
+  matcher: ['/product/:path*', '/category/:path*', '/sign-in/find-account/:path*'],
 }

@@ -11,7 +11,7 @@ import Image from 'next/image'
 
 export default function SignInForm({ handleSignIn }: { handleSignIn: (formData: FormData) => void }) {
   return (
-    <div className="p-[28px_24px_112px] ">
+    <section className="p-[28px_24px_112px] ">
       <form className="flex flex-col gap-[8px]" action={handleSignIn}>
         <SignInField />
         <Button type="submit" size={'auth'} className="mt-[20px] w-full ">
@@ -43,6 +43,6 @@ export default function SignInForm({ handleSignIn }: { handleSignIn: (formData: 
       <Link href={'/'} className="mt-[25px] inline-block w-full text-center underline text-[14px] text-[#787878]">
         비회원 주문조회
       </Link>
-    </div>
+    </section>
   )
 }
