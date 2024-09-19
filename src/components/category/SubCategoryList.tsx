@@ -10,7 +10,7 @@ export default async function SubCategoryList({ parentCategory }: { parentCatego
     <>
       <ul className="h-full pb-[24px] col-span-5 overflow-auto border-l border-[#f0f0f0] no-scrollbar">
         <DummySubCategoryBanner />
-        <Link href={`/product/main/all`}>
+        <Link href={`/product/${parentCategory?.categoryName}`}>
           <li className="flex justify-between items-center text-[14px] leading-[22px] text-[#000] p-[14px_20px_12px_24px]">
             전체
             <RightArrowIcon />
