@@ -55,7 +55,6 @@ export interface myRegisterType {
 
 //MyPage Size Type
 export interface mySizeType {
-  id: number
   height?: number | undefined
   weight?: number | undefined
   topSize?: string | undefined
@@ -64,34 +63,17 @@ export interface mySizeType {
   agreement: boolean
 }
 
+export interface mySizeRegisterType {
+  height: number
+  weight: number
+  topSize: string
+  bottomSize: string
+  footSize: string
+  agreement: boolean
+}
+
 //MyPage Top, Bottom, Foot Size Data Type
 export interface selectSizeType {
   id: number
   option: string
-}
-
-//MyPage Review Count Type
-export interface reviewCountType {
-  productCount: number
-  ableCount: number
-  alreadyCount: number
-}
-
-//MyPage AbleReview Type
-export interface AbleReviewType {
-  productId: number
-  brandName: string
-  productName: string
-  imageUrl: string
-  orderDate: string
-}
-
-//MyPage WritenReview Type
-export interface writenReviewType {
-  productId: number
-  brandName: string
-  productName: string
-  imageUrl: string
-  review: string
-  registDate: string
 }

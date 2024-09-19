@@ -16,7 +16,6 @@ export const myRegisterDatas: myRegisterType[] = [
 
 //My Size Data
 export const mySizeData: mySizeType = {
-  id: 1,
   height: 180,
   topSize: 'XS이상',
   bottomSize: '23이하',
