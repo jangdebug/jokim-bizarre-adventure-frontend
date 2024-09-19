@@ -4,8 +4,6 @@ import { productListData } from '@/datas/dummy/product/ProductListData'
 export default function ProductList({ viewMode = 0 }: { viewMode?: number }) {
   // 상품 리스트 데이터
 
-  const test: number[] = [2, 4, 1]
-  console.log('plist', viewMode, test[viewMode])
   const productList: ProductCardType[] = productListData
 
   return (

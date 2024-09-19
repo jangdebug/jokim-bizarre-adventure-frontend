@@ -10,7 +10,7 @@ export default function SignUpSelection() {
   const membershipDescriptions: membershipDescriptionType[] = membershipDescriptionData
 
   return (
-    <div className="w-full px-[24px] pb-[60px] mt-[55px]">
+    <section className=" px-[24px] pb-[60px] mt-[55px]">
       <p className="text-[20px] leading-[26px] font-bold">신세계인터내셔날 통합 멤버십 가입</p>
       <div className="mt-[16px] flex flex-col gap-[12px]">
         <Link href={'/'}>
@@ -60,6 +60,6 @@ export default function SignUpSelection() {
           </Button>
         </Link>
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,24 +1,24 @@
-import MySize from './mySize'
-import { mySizeType, selectSizeType } from '@/types/MyPageTypes'
 import {
   getMySize,
   getSelectBottomSize,
   getSelectFootSize,
   getSelectTopSize,
 } from '@/actions/mypage/getMyBeautySizeData'
+import { mySizeType, selectSizeType } from '@/types/MyPageTypes'
+import MySize from './mySize'
 
 export default async function MyBeautySize() {
   const mySizeData: mySizeType = await getMySize()
-  const topSizeOptionDatas: selectSizeType[] = await getSelectTopSize()
-  const bottomSizeOptionDatas: selectSizeType[] = await getSelectBottomSize()
-  const footSizeOptionDatas: selectSizeType[] = await getSelectFootSize()
+  const topSizeDatas: selectSizeType[] = await getSelectTopSize()
+  const bottomSizeDatas: selectSizeType[] = await getSelectBottomSize()
+  const footSizeDatas: selectSizeType[] = await getSelectFootSize()
 
   return (
     <MySize
       mySizeData={mySizeData}
-      topSizeOptionDatas={topSizeOptionDatas}
-      bottomSizeOptionDatas={bottomSizeOptionDatas}
-      footSizeOptionDatas={footSizeOptionDatas}
+      topSizeDatas={topSizeDatas}
+      bottomSizeDatas={bottomSizeDatas}
+      footSizeDatas={footSizeDatas}
     />
   )
 }

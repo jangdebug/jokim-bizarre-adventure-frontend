@@ -27,3 +27,31 @@ export const myBeautySizeTabDatas: myTabType[] = [
     link: '/mypage/beautysize/beauty',
   },
 ]
+
+//My Review Tab Datas
+export const myReviewTabDatas: myTabType[] = [
+  {
+    id: 1,
+    name: '상품리뷰 작성',
+    link: '/mypage/review',
+  },
+  {
+    id: 2,
+    name: '작성한 상품리뷰',
+    link: '/mypage/review/products',
+  },
+]
+
+//My Delivery Tab Datas
+export const myDeliveryTabDatas: myTabType[] = [
+  {
+    id: 1,
+    name: '배송지 관리',
+    link: '/mypage/delivery-info',
+  },
+  {
+    id: 2,
+    name: '환불계좌 관리',
+    link: '/mypage/delivery-info/account',
+  },
+]
