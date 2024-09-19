@@ -1,10 +1,7 @@
-// 'use client'
-
-import React, { useState } from 'react'
-import SizeFormItem from './SizeFormItem'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { mySizeType, selectSizeType } from '@/types/MyPageTypes'
+import SizeFormItem from './SizeFormItem'
 
 interface beautySizeType {
   mySizeData: mySizeType
@@ -14,26 +11,6 @@ interface beautySizeType {
 }
 
 export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, footSizeDatas }: beautySizeType) {
-  //   const [formData, setFormData] = useState<mySizeType>({
-  //     id: mySizeData.id,
-  //     height: mySizeData.height,
-  //     weight: mySizeData.weight,
-  //     topSize: mySizeData.topSize,
-  //     bottomSize: mySizeData.bottomSize,
-  //     footSize: mySizeData.footSize,
-  //     agreement: mySizeData.agreement,
-  //   })
-
-  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     e.preventDefault()
-  //     const { name, value } = e.target
-
-  //     setFormData({
-  //       ...formData,
-  //       [name]: value,
-  //     })
-  //   }
-
   return (
     <>
       <SizeFormItem label="키">
@@ -43,7 +20,6 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
           name="height"
           placeholder="입력"
           defaultValue={mySizeData.height}
-          //   onChange={handleInputChange}
         />
         <span className="w-1/6 h-[48px] border border-[#e0e0e0] border-l-0 text-center leading-10">cm</span>
       </SizeFormItem>
@@ -55,7 +31,6 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
           name="weight"
           placeholder="입력"
           defaultValue={mySizeData.weight}
-          //   onChange={handleInputChange}
         />
         <span className="w-1/6 h-[48px] border border-[#e0e0e0] border-l-0 text-center leading-10">kg</span>
       </SizeFormItem>

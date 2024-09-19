@@ -5,7 +5,7 @@ export default function SignUpNotification() {
   const notifications: notificationType[] = notificationData
 
   return (
-    <div className="mt-[20px] px-[24px] pb-[72px]">
+    <section className="mt-[20px] px-[24px] pb-[72px]">
       <p className="text-[16px] leading-[48px] font-bold">안내사항</p>
       <ul className="ml-[14px] list-outside marker:text-[6px] list-disc ">
         {notifications.map((notification) => (
@@ -17,6 +17,6 @@ export default function SignUpNotification() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
