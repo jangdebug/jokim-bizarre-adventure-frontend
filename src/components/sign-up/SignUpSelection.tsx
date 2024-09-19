@@ -4,7 +4,7 @@ import Link from 'next/link'
 import KakaoIcon from '../icons/sign-up/KakaoIcon-sm.png'
 import PhoneIcon from '../icons/sign-up/PhoneIcon-sm.png'
 import Image from 'next/image'
-import { membershipDescriptionData } from '@/datas/dummy/sign-up/SignUpDatas'
+import { membershipDescriptionData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 
 export default function SignUpSelection() {
   const membershipDescriptions: membershipDescriptionType[] = membershipDescriptionData

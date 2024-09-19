@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import InputWithClear from '../dummy/InputWithClear'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { phoneHeaderData } from '@/datas/dummy/sign-up/signUpDatas'
+import { phoneHeaderData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 
 export default function FindAccountForm({ findType }: { findType: string }) {
   const [values, setValues] = useState<{
