@@ -1,8 +1,6 @@
 export interface userDataType {
   accessToken: string
-  name: string
-  uuid: string
-  email: string
+  refreshToken: string
 }
 
 export interface commonResType<T> {

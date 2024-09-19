@@ -7,10 +7,10 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function SignInSection() {
   const auth = useSession()
-  const router = useRouter()
   useEffect(() => {
     console.log('LogInForm auth', auth)
   }, [auth])
+
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
