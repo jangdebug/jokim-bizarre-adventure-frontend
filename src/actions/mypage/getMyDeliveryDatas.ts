@@ -17,6 +17,7 @@ export async function getMyDelivery(): Promise<deliveryType[]> {
 
 ///////////////////// 기본 배송지 설정 /////////////////////
 export const updateDefaultDelivery = async (formData: FormData) => {
+  console.log('updateDefaultDelivery ->', formData)
   try {
     // const response = await fetch('/api/v1/mypage/delivery/set-default-address', {
     //   method: 'PUT',

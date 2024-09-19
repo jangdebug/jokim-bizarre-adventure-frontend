@@ -1,12 +1,8 @@
 'use client'
 
 import Divider from '@/components/ui/Divider'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { mySizeType, selectSizeType } from '@/types/MyPageTypes'
-import React, { useState } from 'react'
 import MyRegister from './MyRegister'
-import SizeFormItem from './SizeFormItem'
 import SizeInput from './SizeInput'
 
 interface beautySizeType {
