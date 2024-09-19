@@ -1,14 +1,5 @@
 import { StringDecoder } from 'string_decoder'
 
-///////////////////////// TAB /////////////////////////
-//MyPage WishTap Type
-export interface myTabType {
-  id: number
-  name: string
-  link: string
-}
-
-///////////////////////// MyPage Main /////////////////////////
 //MyPage Info Type
 export interface myInfoType {
   myGradeUrl: string
@@ -27,7 +18,13 @@ export interface myLookUpType {
   deliveryComplete: number
 }
 
-///////////////////////// MyPage Wish /////////////////////////
+//MyPage WishTap Type
+export interface myTabType {
+  id: number
+  name: string
+  link: string
+}
+
 //MyPage WishProduct Type
 export interface myWishProductType {
   id: number
@@ -49,7 +46,6 @@ export interface myWishEventType {
   wishEndDate: string
 }
 
-///////////////////////// Register /////////////////////////
 //MyPage Register Type
 export interface myRegisterType {
   id: number
@@ -57,7 +53,6 @@ export interface myRegisterType {
   currentLink: String
 }
 
-///////////////////////// BeautySize /////////////////////////
 //MyPage Size Type
 export interface mySizeType {
   id: number
@@ -75,76 +70,28 @@ export interface selectSizeType {
   option: string
 }
 
-///////////////////////// Review /////////////////////////
 //MyPage Review Count Type
 export interface reviewCountType {
-  id: number
   productCount: number
   ableCount: number
   alreadyCount: number
 }
 
-//MyPage Writen Review Count Type
+//MyPage AbleReview Type
+export interface AbleReviewType {
+  productId: number
+  brandName: string
+  productName: string
+  imageUrl: string
+  orderDate: string
+}
+
+//MyPage WritenReview Type
 export interface writenReviewType {
-  id: number
+  productId: number
+  brandName: string
   productName: string
   imageUrl: string
   review: string
-  writeDate: string
-}
-
-///////////////////////// Delivery /////////////////////////
-export interface defaultDeliveryType {
-  id: number
-  default: number
-}
-
-export interface deliveryType {
-  addressId: number
-  addressName: string
-  dispCellNo: string
-  recipient: string
-  phone: string
-  zipCode: string
-  addressRoad: string
-  addressJibeon: string
-  addressDetail: string
-  checkDefault?: boolean | false
-  deliveryPolicy?: boolean | false
-}
-
-export interface phoneType {
-  id: number
-  dispCellNo: string
-}
-
-///////////////////////// Order /////////////////////////
-
-export interface orderStepType {
-  id: number
-  StepImage: React.FC
-  StepName: string
-}
-
-export interface orderPolicyType {
-  id: number
-  step: string
-  title: string
-  contents: string[]
-  sub: string[]
-}
-
-export interface orderListType {
-  id: number
-  productId: number
-  productImageUrl: String
-  brandName: String
-  productName: String
-  productOption: String
-  quantity: number
-  amount: number
-  address: String
-  couponCode?: String | null
-  deliveryState: String
-  purchaseDate: String
+  registDate: string
 }
