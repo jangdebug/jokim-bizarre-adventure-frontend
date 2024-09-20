@@ -1,26 +1,36 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { signIn } from 'next-auth/react'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    try {
-      const response = await fetch(`${process.env.API_BASE_URL}/v1/auth/sign-up/simple`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: req.body,
+export const postNewUser = async (convertedForm: signupDataType) => {
+  'use server'
+
+  try {
+    const res = await fetch(`${process.env.API_BASE_URL}/v1/auth/sign-up/simple`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(convertedForm),
+    })
+    console.log('body', JSON.stringify(convertedForm))
+
+    console.log('signup res', res)
+
+    if (res.ok) {
+      console.log('회원가입이 완료되었습니다. 바로 로그인 수행합니다.')
+      signIn('credentials', {
+        email: convertedForm.email as string,
+        password: convertedForm.password as string,
+        redirect: true,
+        callbackUrl: '/',
       })
 
-      if (response.ok) {
-        res.status(200).json({ success: true })
-      } else {
-        res.status(response.status).json({ success: false })
-      }
-    } catch (error) {
-      res.status(500).json({ success: false, message: 'Internal server error' })
+      return true
+    } else {
+      console.log('회원가입에 실패했습니다.')
+      return false
     }
-  } else {
-    res.setHeader('Allow', ['POST'])
-    res.status(405).end(`Method ${req.method} Not Allowed`)
+  } catch (error) {
+    console.log(error)
+    return false
   }
 }

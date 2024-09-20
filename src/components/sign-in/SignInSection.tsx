@@ -2,7 +2,6 @@
 import { useEffect } from 'react'
 import { Button } from '../ui/button'
 import SignInField from './SignInField'
-import { useRouter } from 'next/navigation'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function SignInSection() {

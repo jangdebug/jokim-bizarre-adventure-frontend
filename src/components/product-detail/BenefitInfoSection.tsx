@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import QuestionIcon from '../icons/product-detail/QuestionIcon'
 
-export default function BenefitInfoSection({ productId, productPrice }: { productId: number; productPrice: number }) {
+export default function BenefitInfoSection({ productId, productPrice }: { productId: string; productPrice: number }) {
   return (
     <section className="p-[24px]">
       <ul className="flex flex-col gap-[16px]">

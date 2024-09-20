@@ -1,9 +1,7 @@
 import { reviewListData } from '@/datas/dummy/review/ReviewData'
 import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
 import ReviewIcon from '../icons/review/ReviewIcon'
-import StarAverage from '../ui/StarAverage'
-import ThumbButton from '../ui/ThumbButton'
-import Image from 'next/image'
+
 import ReviewListItem from './ReviewListItem'
 
 export default function ReviewListSection() {
