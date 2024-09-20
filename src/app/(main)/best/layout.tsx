@@ -11,7 +11,7 @@ export default function Layout({
     <>
       <BestTabMenu />
       <BestFilterMenu />
-      {/* <BestHidingTab /> */}
+      <BestHidingTab />
       {children}
     </>
   )
