@@ -3,11 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export default function MainSwiperItem({
-  swiperItem,
-}: {
-  swiperItem: mainSwiperItem
-}) {
+export default function MainSwiperItem({ swiperItem }: { swiperItem: mainSwiperItem }) {
   return (
     <>
       <Link href={`/event/${swiperItem.eventId}`} className="relative">
