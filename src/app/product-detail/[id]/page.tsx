@@ -1,8 +1,6 @@
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
-import ReviewListSection from '@/components/review/ReviewListSection'
-import ReviewSummarySection from '@/components/review/ReviewSummarySection'
 import { Button } from '@/components/ui/button'
 import Divider from '@/components/ui/Divider'
 import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
@@ -33,7 +31,6 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
     <main>
       <ProductHashTagSection hashTagList={productDetail.hashTag} />
       <SlimEventSwiper />
-      {/* ProductDetailNavigation */}
       <ProductDetailNavigation reviewCount={productDetail.reviewCount} />
       <ProductDescriptionSection html={html} />
       <div className="flex p-[24px] gap-[8px]">

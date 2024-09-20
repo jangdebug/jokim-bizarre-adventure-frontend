@@ -2,6 +2,7 @@ import { Button } from '../ui/button'
 
 export default function ProductDetailBottomNavigation() {
   // 버튼 눌렀을 때 생기는 모달 및 같은 버튼 두번 눌렸을 때 로직 처리
+
   return (
     <nav className="fixed bottom-0 left-0 h-[56px] w-full z-[55]">
       <ul className="flex items-center justify-between w-full h-full">
@@ -11,7 +12,7 @@ export default function ProductDetailBottomNavigation() {
           </Button>
         </li>
         <li className="w-full h-full">
-          <Button size={'full'}>쇼핑백</Button>
+          <Button size={'full'}>바로구매</Button>
         </li>
       </ul>
     </nav>
