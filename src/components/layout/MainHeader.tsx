@@ -12,7 +12,7 @@ export default function MainHeader() {
 
   return (
     <header
-      className={`flex flex-col justify-center w-full h-[56px] px-[16px] bg-white ${isVisible ? 'sticky top-0 left-0' : ''}`}
+      className={`z-10 flex flex-col justify-center w-full h-[56px] px-[16px] bg-white ${isVisible ? 'sticky top-0 left-0' : ''}`}
     >
       <nav>
         <ul className=" ">

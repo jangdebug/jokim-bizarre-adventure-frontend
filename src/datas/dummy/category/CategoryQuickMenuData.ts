@@ -8,7 +8,7 @@ export const categoryQuickMenuData: QuickMenuBadgeType[] = [
   },
   {
     id: 2,
-    targetUrl: '/best',
+    targetUrl: '/best/popular',
     categoryName: '베스트',
     categoryBadgeImageUrl:
       'https://image.sivillage.com/upload/C00001/dspl/banner/90/487/00/230900000396487.png?cVer=21072442',
