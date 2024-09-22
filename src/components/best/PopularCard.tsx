@@ -11,7 +11,7 @@ export default function PopularCard({ item }: PopularCardProps) {
   return (
     <li className="w-full flex flex-col relative">
       <div className="absolute top-[8px] right-[8px] z-[2]">
-        <LikeButton type="product" targetId={Number(item.productCode)} />
+        <LikeButton type="best" targetId={Number(item.productCode)} />
       </div>
       <Link href={`/product-detail/${item.productCode}`} className="w-full h-full flex flex-col">
         <div className="w-full h-[70%] flex-grow flex items-center justify-center">

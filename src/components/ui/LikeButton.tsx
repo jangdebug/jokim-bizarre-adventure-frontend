@@ -9,7 +9,7 @@ export default function LikeButton({
   targetId,
   currentState = false,
 }: {
-  type: 'product' | 'event' | 'brand'
+  type: 'product' | 'event' | 'brand' | 'best' | 'basket'
   targetId: number
   currentState?: boolean
 }) {
