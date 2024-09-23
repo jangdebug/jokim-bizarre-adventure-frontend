@@ -10,6 +10,7 @@ import { basketCheckUpdate } from '@/actions/basket/getBasketListData'
 import BasketPolicy from './BasketPolicy'
 import SlimEventSwiper from '../ui/SlimEventSwiper'
 import BasketStickyBottom from './BasketStickyBottom'
+import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
 
 interface basketProps {
   basketListDatas: basketListType[]
@@ -33,11 +34,9 @@ export default function BasketList({ basketListDatas }: basketProps) {
     <section>
       <div className="h-[56px] px-[24px] flex items-center justify-between">
         <fieldset className="flex gap-2">
-          <input
-            type="checkbox"
+          <CheckboxWithSvg
             id="all"
             name="전체선택"
-            className="w-[24px] h-[24px] appearance-none checked:bg-black checked:border-0"
             checked={basketListDatas.every((item) => item.isChecked)}
             onChange={handleCheckAll}
           />
@@ -54,14 +53,13 @@ export default function BasketList({ basketListDatas }: basketProps) {
             <li className="px-[24px] py-[32px] border-b-2" key={item.productCode}>
               <div className="flex items-center justify-between mb-4">
                 <fieldset className="flex items-center gap-4 ">
-                  <input
-                    type="checkbox"
+                  <CheckboxWithSvg
                     id={item.productCode}
                     name={`${item.brandName} ${item.productName}`}
-                    className="w-[24px] h-[24px] appearance-none checked:bg-black checked:border-0"
                     checked={item.isChecked}
                     onChange={(e) => handleItemCheck(e, item, e.target.checked)}
                   />
+
                   <label htmlFor={item.productCode}>
                     <p className="text-xs">
                       <span className="font-bold">{item.brandName}</span> {item.productName}

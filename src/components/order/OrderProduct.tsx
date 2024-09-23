@@ -37,7 +37,7 @@ export default function OrderProduct({ basketListDatas }: { basketListDatas: bas
       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isDetail ? '' : 'hidden'}`}>
         <ul>
           {basketListDatas.map((item) => (
-            <li className="py-[32px] border-b-[1px] w-full">
+            <li key={item.productCode} className="py-[32px] border-b-[1px] w-full">
               <div className="mb-[32px] flex gap-4">
                 <div className="w-1/5">
                   <Image src={item.productImageUrl} width={200} height={200} alt={item.productName} priority />
