@@ -18,7 +18,6 @@ export default function Review({
       <ReviewSummarySection />
       <Divider />
       <ReviewListSection />
-      <Link href={`/reviews/${params.id}`}>test</Link>
     </>
   )
 }

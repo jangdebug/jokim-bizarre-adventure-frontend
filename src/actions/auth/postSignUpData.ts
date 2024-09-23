@@ -11,22 +11,22 @@ export const postNewUser = async (convertedForm: signupDataType) => {
       },
       body: JSON.stringify(convertedForm),
     })
-    console.log('body', JSON.stringify(convertedForm))
+    // console.log('body', JSON.stringify(convertedForm))
 
-    console.log('signup res', res)
+    // console.log('signup res', res)
 
     if (res.ok) {
       console.log('회원가입이 완료되었습니다. 바로 로그인 수행합니다.')
-      signIn('credentials', {
-        email: convertedForm.email as string,
-        password: convertedForm.password as string,
-        redirect: true,
-        callbackUrl: '/',
-      })
+      // signIn('credentials', {
+      //   email: convertedForm.email as string,
+      //   password: convertedForm.password as string,
+      //   redirect: true,
+      //   callbackUrl: '/',
+      // })
 
       return true
     } else {
-      console.log('회원가입에 실패했습니다.')
+      console.log('회원가입에 실패했습니다.', res)
       return false
     }
   } catch (error) {
