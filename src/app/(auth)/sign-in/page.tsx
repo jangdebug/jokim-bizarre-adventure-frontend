@@ -1,11 +1,6 @@
-import KakaoIcon from '@/components/icons/sign-in/KakaoIcon'
-import PhoneIcon from '@/components/icons/sign-in/PhoneIcon'
-import NaverIcon from '@/components/icons/sign-in/NaverIcon.png'
 import { Button } from '@/components/ui/button'
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
-import SignInField from '@/components/sign-in/SignInField'
 import SignInSection from '@/components/sign-in/SignInSection'
 import SocialSignInButtons from '@/components/sign-in/SocialSignInButtons'
 

@@ -1,7 +1,4 @@
-import EssentialSignUpField from '@/components/sign-up/simple/EssentialSignUpField'
-import OptionalSignUpField from '@/components/sign-up/simple/OptionalSignUpField'
-import RightsSignUpField from '@/components/sign-up/simple/RightsSignUpField'
-import Divider from '@/components/ui/Divider'
+import SignUpForm from '@/components/sign-up/simple/SignUpForm'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -9,19 +6,16 @@ export const metadata: Metadata = {
 }
 
 export default function Simple() {
-  const handleSignUp = async (simpleSignUpFormData: FormData) => {
-    'use server'
-    console.log('data', simpleSignUpFormData)
-  }
   return (
     <main className="w-full pb-[80px]">
-      <form action={handleSignUp}>
+      {/* <form action={handleSignUp}>
         <EssentialSignUpField />
         <Divider />
         <OptionalSignUpField />
         <Divider />
         <RightsSignUpField />
-      </form>{' '}
+      </form> */}
+      <SignUpForm />
     </main>
   )
 }

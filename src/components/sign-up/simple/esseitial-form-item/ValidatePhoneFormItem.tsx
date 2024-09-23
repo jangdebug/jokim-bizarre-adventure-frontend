@@ -1,7 +1,7 @@
 import InputWithClear from '@/components/dummy/InputWithClear'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { phoneHeaderData } from '@/datas/dummy/sign-up/SignUpDatas'
+import { phoneHeaderData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 import React from 'react'
 import { useFormValidation } from '@/hooks/UseFormValidation'
 

@@ -7,6 +7,7 @@ import ReviewEvaluation from './ReviewEvaluation'
 
 export default function ReviewSummarySection() {
   const reviewSummary: ReviewSummaryType = reviewSummaryData
+  // console.log('in review summary id is ', searchParams)
 
   return (
     <section id="review" className="scroll-m-[36px] px-[24px] pb-[24px]">

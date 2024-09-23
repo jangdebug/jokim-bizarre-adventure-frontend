@@ -1,4 +1,4 @@
-import { commonResType, userDataType } from '@/types/ResponseTypes'
+import { userDataType } from '@/types/ResponseTypes'
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import KakaoProvider from 'next-auth/providers/kakao'
@@ -21,8 +21,7 @@ export const options: NextAuthOptions = {
           return null
         }
 
-        console.log('credentials', credentials)
-        const res = await fetch(`http://localhost:8080/api/v1/auth/sign-in`, {
+        const res = await fetch(`${process.env.API_BASE_URL}/v1/auth/sign-in`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -32,12 +31,14 @@ export const options: NextAuthOptions = {
             password: credentials.password,
           }),
         })
+        console.log('credentials', credentials)
 
         if (res.ok) {
-          const user = (await res.json()) as commonResType<userDataType>
-          console.log('user', user.data)
-          const data = user.data as userDataType
+          const user = await res.json()
+          const data = user.result as userDataType
           return data
+        } else {
+          console.log('post error', res)
         }
         return null
       },
@@ -54,42 +55,52 @@ export const options: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log('signIn', user, account, profile)
       if (profile) {
-        console.log(profile)
-        // 회원인지 아닌지 확인
-        const res = await fetch(`${process.env.API_BASE_URL}/auth/oauth2`, {
+        const res = await fetch(`${process.env.API_BASE_URL}/v1/auth/sign-in/oauth`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            oauthId: user.id,
+            oauthSocialId: account?.providerAccountId,
+            email: user.email,
+            name: user.name,
           }),
         })
-        console.log(res)
+
         if (res.ok) {
-          const user = await res.json()
-          console.log('ssg user', user)
-          this.session = user
-          // 회원정보를 받아서 세션에 저장
+          const responseData = await res.json()
+          if (responseData.isSuccess) {
+            const data = responseData.result as userDataType
+
+            user.accessToken = data.accessToken
+            user.refreshToken = data.refreshToken
+
+            return true
+          } else {
+            return '/sign-up'
+          }
         }
-
-        console.log('not ssg user', user)
-        // 회원이 아니면 회원가입 페이지로 이동
-
-        //
       }
-
-      return 'sign-up'
+      return true
     },
 
     async jwt({ token, user }) {
-      return { ...token, ...user }
+      if (user) {
+        token.accessToken = user.accessToken
+        token.refreshToken = user.refreshToken
+      }
+
+      return token
     },
 
     async session({ session, token }) {
-      session.user = token as any
+      session.user = {
+        ...session.user,
+        accessToken: token.accessToken,
+        refreshToken: token.refreshToken,
+      }
+
       return session
     },
   },

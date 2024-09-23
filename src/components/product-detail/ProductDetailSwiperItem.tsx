@@ -10,6 +10,7 @@ export default function ProductDetailSwiperItem({ url }: { url: string }) {
         alt="productImage"
         width={0}
         height={0}
+        priority={true}
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
       />

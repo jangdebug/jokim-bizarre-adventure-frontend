@@ -11,7 +11,7 @@ interface ProductCardType {
 }
 
 interface ProductDetailType {
-  productId: number
+  productId: string
   images: string[]
   brandName: string
   brandId: number

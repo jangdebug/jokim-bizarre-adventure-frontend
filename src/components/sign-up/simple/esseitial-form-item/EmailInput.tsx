@@ -1,7 +1,7 @@
 import InputWithClear from '@/components/dummy/InputWithClear'
 import React, { useState } from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { emailDomainData } from '@/datas/dummy/sign-up/signUpDatas'
+import { emailDomainData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 import { useFormValidation } from '@/hooks/UseFormValidation'
 
 export default function EmailInput() {

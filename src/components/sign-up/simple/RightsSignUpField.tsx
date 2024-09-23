@@ -2,7 +2,7 @@
 import CheckboxWithSvg from '@/components/dummy/CheckboxWithSvg'
 import RightArrowIcon from '@/components/icons/sign-up/RightArrowIcon'
 import { Button } from '@/components/ui/button'
-import { rightAgreementsData } from '@/datas/dummy/sign-up/SignUpDatas'
+import { rightAgreementsData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 import Link from 'next/link'
 import React, { useState } from 'react'
 

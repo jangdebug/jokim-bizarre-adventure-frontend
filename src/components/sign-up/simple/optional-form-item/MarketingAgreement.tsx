@@ -4,7 +4,7 @@ import CheckboxWithSvg from '@/components/dummy/CheckboxWithSvg'
 import RightArrowIcon from '@/components/icons/sign-up/RightArrowIcon'
 
 import Link from 'next/link'
-import { marketingAgreementsData } from '@/datas/dummy/sign-up/SignUpDatas'
+import { marketingAgreementsData } from '@/datas/dummy/sign-up/SignUpElementDatas'
 
 export default function MarketingAgreement() {
   const [marketingAgreements, setMarketingAgreements] = useState<marketingAgreementType[]>(marketingAgreementsData)
