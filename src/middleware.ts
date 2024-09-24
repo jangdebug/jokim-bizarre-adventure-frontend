@@ -9,6 +9,7 @@ const FALLBACK_URL = '/'
 const withAuth = async (req: NextRequest, token: boolean) => {
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
+
   if (!token) {
     url.pathname = routes.signIn
     url.search = `callbackUrl=${pathname}`

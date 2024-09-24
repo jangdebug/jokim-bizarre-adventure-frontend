@@ -1,3 +1,7 @@
+interface ProductCodeType {
+  productCode: string
+}
+
 interface ProductCardType {
   id: number
   productId: number

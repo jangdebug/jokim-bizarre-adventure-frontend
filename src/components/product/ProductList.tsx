@@ -1,10 +1,10 @@
+import { getProductListData } from '@/actions/product/getProductData'
 import ProductCard from './ProductCard'
-import { productListData } from '@/datas/dummy/product/ProductListData'
 
-export default function ProductList({ viewMode = 0 }: { viewMode?: number }) {
+export default async function ProductList({ viewMode = 0 }: { viewMode?: number }) {
   // 상품 리스트 데이터
 
-  const productList: ProductCardType[] = productListData
+  const productList: ProductCardType[] = await getProductListData()
 
   return (
     <>

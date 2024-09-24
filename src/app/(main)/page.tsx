@@ -11,8 +11,8 @@ export default async function Home() {
   const categoryBadgeResData: categoryBadgeType[] = await getCategoryBadgeData()
   const mainSwiperData = await getMainSwiperItem()
 
+  // check session
   const session = await getServerSession(options)
-  const isAuth = session?.user ? true : false
   console.log(session)
 
   return (
