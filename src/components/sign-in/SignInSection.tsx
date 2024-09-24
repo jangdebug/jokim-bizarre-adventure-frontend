@@ -1,13 +1,11 @@
 'use client'
 import { Button } from '../ui/button'
 import SignInField from './SignInField'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 export default function SignInSection() {
-  const router = useRouter()
-
   const handleSignIn = async (formData: FormData) => {
     console.log(formData.get('email'))
     console.log(formData.get('password'))
@@ -23,7 +21,7 @@ export default function SignInSection() {
       console.log('Error:', res)
     } else {
       console.log('Success:', res)
-      router.replace('/')
+      redirect('/')
     }
   }
 
@@ -35,11 +33,6 @@ export default function SignInSection() {
           로그인
         </Button>
       </form>
-
-      {/* 임시 signout 입니다 */}
-      <Button type="submit" size={'auth'} className="mt-[20px] w-full " onClick={() => signOut()}>
-        로그아웃
-      </Button>
     </section>
   )
 }
