@@ -38,9 +38,10 @@ export const options: NextAuthOptions = {
           const data = user.result as userDataType
           return data
         } else {
-          console.log('post error', res)
+          const errorResponse = await res.json()
+          console.log('post error', errorResponse)
+          throw new Error(errorResponse.message || 'Login failed')
         }
-        return null
       },
     }),
     KakaoProvider({

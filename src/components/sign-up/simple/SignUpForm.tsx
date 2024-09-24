@@ -4,8 +4,8 @@ import Divider from '@/components/ui/Divider'
 import OptionalSignUpField from './OptionalSignUpField'
 import RightsSignUpField from './RightsSignUpField'
 import { formDataToSignupFormType, transformToSignupData } from '@/components/util/SignUpFormConverter'
-import { postNewUser } from '@/actions/auth/postSignUpData'
 import { signIn } from 'next-auth/react'
+import { postNewUser } from '@/actions/auth/userData'
 
 export default function SignUpForm() {
   const handleSignUp = async (simpleSignUpFormData: FormData) => {
