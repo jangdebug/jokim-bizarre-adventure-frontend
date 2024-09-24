@@ -1,18 +1,21 @@
+'use client'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function ProductPageHeader() {
+  const router = useRouter()
   return (
     <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">
       <nav>
         <ul className="flex justify-between items-center">
           <li>
             {/* 뒤로가기 기능으로 변경해야합니다 */}
-            <Link href={'/'}>
+            <button onClick={() => router.back()}>
               <LeftArrowIcon />
-            </Link>
+            </button>
           </li>
 
           <Link href={'/'} className="w-full border-b border-[#000] mx-[16px]  pb-[5px] text-left ">

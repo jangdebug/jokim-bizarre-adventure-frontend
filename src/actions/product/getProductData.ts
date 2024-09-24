@@ -1,6 +1,6 @@
 import { productListData } from '@/datas/dummy/product/ProductListData'
 
-export async function getProductListData(): Promise<ProductCardType[]> {
+export async function getProductListData(categoryCode?: string): Promise<ProductCardType[]> {
   return productListData
 }
 export async function getProductCodeList(): Promise<ProductCodeType[]> {

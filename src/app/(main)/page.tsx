@@ -13,7 +13,7 @@ export default async function Home() {
 
   // check session
   const session = await getServerSession(options)
-  console.log(session)
+  // console.log(session)
 
   return (
     <main>
