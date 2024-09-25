@@ -34,3 +34,12 @@ interface HashTagType {
   hashTagId: number
   value: string
 }
+
+interface ProductOptionType {
+  productCode: string
+  optionCode: string
+  optionName: string
+  optionValue: string
+  quantity: number
+  price: number
+}

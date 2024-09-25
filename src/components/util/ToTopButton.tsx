@@ -36,7 +36,7 @@ export default function ToTopButton({ moveWithBottomNav }: { moveWithBottomNav?:
           : isVisible
             ? 'block bottom-[73px] opacity-100'
             : 'bottom-[-73px] opacity-0'
-      } z-[100] rounded-full flex items-center justify-center`}
+      } z-[48] rounded-full flex items-center justify-center`}
       style={{
         transitionProperty: 'visibility, opacity, bottom',
         transitionDuration: '0.1s, 0.4s, 0.45s',

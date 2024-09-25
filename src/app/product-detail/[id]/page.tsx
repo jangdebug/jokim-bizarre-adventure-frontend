@@ -1,4 +1,6 @@
+import { getProductOptions } from '@/actions/product/getProductData'
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
+import ProductDetailBottomNavigation_tet from '@/components/product-detail/ProductDetailBottomNavigation_tet'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
@@ -25,6 +27,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
   // params 로 받아온 상품 id 를 통해 데이터를 받아와야함
   const productDetail: ProductDetailType = productDetailData
   const html = await getDescription(productDetail.productId)
+  const productOptions: ProductOptionType[] = await getProductOptions(params.id)
   // console.log(params.id)
 
   return (
@@ -42,6 +45,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         </Button>
       </div>
       <Divider />
+      <ProductDetailBottomNavigation_tet productOptions={productOptions} />
     </main>
   )
 }

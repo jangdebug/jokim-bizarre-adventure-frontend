@@ -220,3 +220,14 @@ html {
   pointer-events: none;
   z-index: 1;
 }
+
+/* input - number 타입 스피너 제거 */
+.no-spinner {
+  -moz-appearance: textfield;
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -35,18 +35,39 @@ export default function BrandFilterBar() {
           {selected === 'english' &&
             englishLetters.map((item) => (
               <Link key={item} href={`#${item}`}>
-                <LetterButton letter={item} isSelected={selectedLetter === item} onClick={handleLetterClick} />
+                <LetterButton
+                  className="w-[32px] h-[32px]"
+                  letter={item}
+                  isSelected={selectedLetter === item}
+                  onClick={handleLetterClick}
+                />
               </Link>
             ))}
           {selected === 'korean' &&
             koreanLetters.map((item) => (
-              <LetterButton key={item} letter={item} isSelected={selectedLetter === item} onClick={handleLetterClick} />
+              <LetterButton
+                className="w-[32px] h-[32px]"
+                key={item}
+                letter={item}
+                isSelected={selectedLetter === item}
+                onClick={handleLetterClick}
+              />
             ))}
           <Link href={`#0-9`}>
-            <LetterButton letter={'0~9'} isSelected={selectedLetter === '0~9'} onClick={handleLetterClick} />
+            <LetterButton
+              className="w-[32px] h-[32px]"
+              letter={'0~9'}
+              isSelected={selectedLetter === '0~9'}
+              onClick={handleLetterClick}
+            />
           </Link>
           <Link href={`#etc`}>
-            <LetterButton letter={'etc'} isSelected={selectedLetter === 'etc'} onClick={handleLetterClick} />
+            <LetterButton
+              className="w-[32px] h-[32px]"
+              letter={'etc'}
+              isSelected={selectedLetter === 'etc'}
+              onClick={handleLetterClick}
+            />
           </Link>
         </ul>
       </div>

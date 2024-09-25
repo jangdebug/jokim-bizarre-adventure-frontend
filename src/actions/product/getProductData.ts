@@ -17,3 +17,9 @@ export async function getProductSummaryData(): Promise<any> {
 export async function getProductImageData(): Promise<any[]> {
   return []
 }
+
+export async function getProductOptions(productCode: string): Promise<ProductOptionType[]> {
+  console.log('in server getproductCode', productCode)
+
+  return []
+}

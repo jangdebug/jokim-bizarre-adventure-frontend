@@ -7,7 +7,9 @@ export default async function ProductList({
   viewMode?: number
   productList: ProductCardType[]
 }) {
-  // 상품 리스트 데이터
+  // 상품 리스트 데이터 호출
+
+  // 무한페이지 하단 도착 시 새 데이터 호출
 
   return (
     <>

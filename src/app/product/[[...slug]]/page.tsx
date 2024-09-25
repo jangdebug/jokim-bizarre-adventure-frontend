@@ -17,7 +17,6 @@ export default async function Product({
   params: { slug: string[] }
   searchParams: ProductSearchParamType
 }) {
-  // check path
   const slug = params.slug
   const slugArray = Array.isArray(slug) ? slug : [slug]
   const decodedSlugArray = slugArray.map((element) => decodeURIComponent(element))
@@ -25,8 +24,6 @@ export default async function Product({
 
   const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
-  console.log('searchparam is', searchParams)
-  console.log('subcat res is ', subCatgories)
 
   return (
     <main>

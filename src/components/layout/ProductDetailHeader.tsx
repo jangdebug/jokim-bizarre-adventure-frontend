@@ -38,7 +38,7 @@ export default function ProductDetailHeader() {
 
   return (
     <header
-      className={`z-[100] flex flex-col justify-center w-full h-[56px] px-[16px]  ${isBlack ? (isVisible ? 'bg-white fixed top-0' : 'absolute top-0 left-0') : 'absolute top-0 left-0'} `}
+      className={`z-[49] flex flex-col justify-center w-full h-[56px] px-[16px]  ${isBlack ? (isVisible ? 'bg-white fixed top-0' : 'absolute top-0 left-0') : 'absolute top-0 left-0'} `}
     >
       <nav>
         <ul className="flex justify-between">

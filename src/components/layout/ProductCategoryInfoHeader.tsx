@@ -1,5 +1,4 @@
 'use client'
-
 import { useScrollEvent } from '@/hooks/UseScrollEvent'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
