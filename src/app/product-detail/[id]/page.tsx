@@ -30,6 +30,10 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
   const productOptions: ProductOptionType[] = await getProductOptions(params.id)
   // console.log(params.id)
 
+  // 쇼핑백으로 보내는 서버액션
+
+  // 바로구매 진행하는 서버액션
+
   return (
     <main>
       <ProductHashTagSection hashTagList={productDetail.hashTag} />

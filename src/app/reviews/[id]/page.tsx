@@ -22,7 +22,7 @@ export default function Reviews({
       <ReviewListSection />
       <div className="px-[24px] pt-[12px] pb-[20px]">
         <Button variant={'outline'} size={'auth'}>
-          더보기 <DownArrowIcon />
+          <p className="text-[14px] leading-[24px] tracking-[0.023rem]">더보기</p> <DownArrowIcon />
         </Button>
       </div>
     </main>
