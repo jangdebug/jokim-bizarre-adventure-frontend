@@ -3,13 +3,21 @@ import { productListData } from '@/datas/dummy/product/ProductListData'
 export async function getProductListData(categoryCode?: string): Promise<ProductCardType[]> {
   return productListData
 }
-export async function getProductCodeList(categoryCode: string): Promise<ProductCodeType[]> {
+export async function getProductCodeList(
+  mainCategoryCode: string,
+  secondaryCategoryCode?: string,
+  tertiaryCategoryCode?: string,
+  quaternaryCategoryCode?: string,
+): Promise<ProductCodeType[]> {
   'use server'
-  console.log('cat code is : ', categoryCode)
+  console.log('cat code is : ', mainCategoryCode)
 
-  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-category?mainCategoryCode=${categoryCode}`, {
-    method: 'GET',
-  })
+  const res = await fetch(
+    `${process.env.API_BASE_URL}/v1/product-category?mainCategoryCode=${mainCategoryCode}&secondaryCategoryCode=${secondaryCategoryCode}&tertiaryCategoryCode=${tertiaryCategoryCode}&quaternaryCategoryCode=${quaternaryCategoryCode}`,
+    {
+      method: 'GET',
+    },
+  )
 
   if (res.ok) {
     const data = (await res.json()).result

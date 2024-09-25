@@ -41,12 +41,10 @@ const productOptionsDummy: ProductOptionType[] = [
 ]
 
 export default function ProductDetailBottomNavigation({ productOptions }: { productOptions: ProductOptionType[] }) {
-  // 모달 상태 관리
-
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedOption, setSelectedOption] = useState<string>()
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
-  // 버튼 클릭 시 모달 토글
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       console.log('이미 열린 상태', e.currentTarget.name)
@@ -63,7 +61,6 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
     setSelectedOption(() => selected)
   }
 
-  // 모달 바깥 클릭 시 모달 닫기
   const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       setIsOpen(false)
@@ -71,16 +68,12 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
   }
 
   useEffect(() => {
-    console.log('modal status', isOpen)
-
-    // 모달이 열렸을 때 body 스크롤 방지
     if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
 
-    // Cleanup: 모달이 닫히면 스크롤을 다시 허용
     return () => {
       document.body.style.overflow = ''
     }
@@ -89,17 +82,17 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
   // counter
 
   const handleMinus = () => {
-    setCurrentQuantity((prevValue) => Math.max(prevValue - 1, 1)) // 1보다 작아지지 않도록 설정
+    setCurrentQuantity((prevValue) => Math.max(prevValue - 1, 1))
   }
 
   const handlePlus = () => {
-    setCurrentQuantity((prevValue) => prevValue + 1) // 값 증가
+    setCurrentQuantity((prevValue) => prevValue + 1)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value)
     if (newValue >= 1) {
-      setCurrentQuantity(newValue) // 1보다 크거나 같으면 상태 업데이트
+      setCurrentQuantity(newValue)
     }
   }
 
@@ -119,6 +112,7 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
           </li>
         </ul>
       </nav>
+      {/* modal */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 z-[50] flex justify-center items-end transition-opacity duration-500 ease-in-out 
           ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}

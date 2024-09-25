@@ -21,12 +21,12 @@ export default async function Product({
   const slugArray = Array.isArray(slug) ? slug : [slug]
   const decodedSlugArray = slugArray.map((element) => decodeURIComponent(element))
   const parentCategoryName = decodedSlugArray[decodedSlugArray.length - 1]
+  console.log('decoded', decodedSlugArray)
 
   const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
 
   const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code)
-  // console.log('plist', productCodes)
 
   return (
     <main>
