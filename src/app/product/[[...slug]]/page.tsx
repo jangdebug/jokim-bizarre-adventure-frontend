@@ -1,5 +1,5 @@
 import { getChildCategory } from '@/actions/category/getCategoryData'
-import { getProductListData } from '@/actions/product/getProductData'
+import { getProductCodeList, getProductListData } from '@/actions/product/getProductData'
 import ProductStickyHeader from '@/components/layout/ProductStickyHeader'
 import FilterBar from '@/components/product/FilterBar'
 import ProductList from '@/components/product/ProductList'
@@ -24,6 +24,9 @@ export default async function Product({
 
   const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
+
+  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code)
+  // console.log('plist', productCodes)
 
   return (
     <main>

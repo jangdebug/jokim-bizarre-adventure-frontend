@@ -3,8 +3,24 @@ import { productListData } from '@/datas/dummy/product/ProductListData'
 export async function getProductListData(categoryCode?: string): Promise<ProductCardType[]> {
   return productListData
 }
-export async function getProductCodeList(): Promise<ProductCodeType[]> {
-  return []
+export async function getProductCodeList(categoryCode: string): Promise<ProductCodeType[]> {
+  'use server'
+  console.log('cat code is : ', categoryCode)
+
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-category?mainCategoryCode=${categoryCode}`, {
+    method: 'GET',
+  })
+
+  if (res.ok) {
+    const data = (await res.json()).result
+    console.log('data', data.content)
+
+    return data.content
+  } else {
+    console.error('error with getting product code')
+
+    return []
+  }
 }
 
 // api 명세 기반 데이터 타입 선정

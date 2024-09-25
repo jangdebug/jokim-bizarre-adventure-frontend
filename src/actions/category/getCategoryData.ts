@@ -19,8 +19,12 @@ export const getChildCategory = async (parentCategory: string | undefined) => {
         method: 'GET',
       },
     )
-    const data = (await res.json()).result
-
-    return data
+    if (res.ok) {
+      const data = (await res.json()).result
+      return data
+    } else {
+      console.log('error with get subcat')
+      return []
+    }
   }
 }
