@@ -7,13 +7,13 @@ export async function getProductCodeList(categoryCode: string): Promise<ProductC
   'use server'
   console.log('cat code is : ', categoryCode)
 
-  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-category?mainCategoryCode=${categoryCode}`, {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-category/${categoryCode}`, {
     method: 'GET',
   })
 
   if (res.ok) {
     const data = (await res.json()).result
-    console.log('data', data.content)
+    console.log('get product code data', data.content)
 
     return data.content
   } else {
