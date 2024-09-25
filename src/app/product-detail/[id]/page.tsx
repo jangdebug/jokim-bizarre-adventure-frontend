@@ -1,6 +1,6 @@
 import { getProductOptions } from '@/actions/product/getProductData'
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
-import ProductDetailBottomNavigation_tet from '@/components/product-detail/ProductDetailBottomNavigation_tet'
+import ProductDetailBottomNavigation from '@/components/product-detail/ProductDetailBottomNavigation'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
@@ -45,7 +45,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         </Button>
       </div>
       <Divider />
-      <ProductDetailBottomNavigation_tet productOptions={productOptions} />
+      <ProductDetailBottomNavigation productOptions={productOptions} />
     </main>
   )
 }
