@@ -10,7 +10,7 @@ export default function LikeButton({
   currentState = false,
 }: {
   type: 'product' | 'event' | 'brand' | 'best' | 'basket'
-  targetId: number
+  targetId: string
   currentState?: boolean
 }) {
   const [isLiked, setIsLiked] = useState<boolean>(currentState)

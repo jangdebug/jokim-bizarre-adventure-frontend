@@ -1,17 +1,13 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useCallback } from 'react'
 
-export default function FadeUpSection({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function FadeUpSection({ children }: { children: React.ReactNode }) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [lastScrollY, setLastScrollY] = useState<number>(0)
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (sectionRef.current) {
       const rect = sectionRef.current.getBoundingClientRect()
       const currentScrollY = window.scrollY
@@ -28,19 +24,16 @@ export default function FadeUpSection({
 
       setLastScrollY(currentScrollY)
     }
-  }
+  }, [lastScrollY])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  }, [handleScroll])
 
   return (
-    <section
-      ref={sectionRef}
-      className={`fade-up ${isVisible ? 'visible' : ''}`}
-    >
+    <section ref={sectionRef} className={`fade-up ${isVisible ? 'visible' : ''}`}>
       {children}
     </section>
   )

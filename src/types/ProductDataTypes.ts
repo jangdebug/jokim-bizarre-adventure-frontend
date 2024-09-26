@@ -4,7 +4,7 @@ interface ProductCodeType {
 
 interface ProductCardType {
   id: number
-  productId: number
+  productId: string
   thumbnailImageUrl: string
   brandName: string
   name: string

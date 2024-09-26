@@ -22,7 +22,7 @@ export default function BasketItem({ item }: BasketItemProps) {
       <div className="flex">
         <div className="w-1/5 mr-6 relative">
           <div className="absolute top-[0px] right-[0px] z-[2]">
-            <LikeButton type="product" targetId={Number(item.productCode)} />
+            <LikeButton type="product" targetId={item.productCode} />
           </div>
           <Image src={item.productImageUrl} width={200} height={200} alt={item.productName} priority />
           <div className="flex justify-center">

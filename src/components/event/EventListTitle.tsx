@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '../ui/button'
 
 export default function EventListTitle() {
   const temp = 111

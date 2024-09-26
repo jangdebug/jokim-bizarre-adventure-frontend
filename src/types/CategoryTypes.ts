@@ -12,7 +12,7 @@ interface CategoryType {
 
 interface BrandType {
   id: number
-  brandId: number
+  brandId: string
   name: string
   englishName?: string
   koreanName?: string

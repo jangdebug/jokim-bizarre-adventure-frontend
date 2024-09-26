@@ -28,7 +28,7 @@ export interface eventDetailTab {
 }
 
 export interface eventCategoryItemType {
-  id: number
+  id: string
   productImageUrl: string
   brandName: string
   productName: string

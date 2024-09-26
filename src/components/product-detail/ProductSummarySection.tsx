@@ -3,7 +3,6 @@ import RightArrowIcon from '../icons/sign-up/RightArrowIcon'
 import LikeButton from '../ui/LikeButton'
 import ShareIcon from '../icons/product-detail/ShareIcon'
 import QuestionIcon from '../icons/product-detail/QuestionIcon'
-import Image from 'next/image'
 import StarAverage from '../ui/StarAverage'
 
 export default function ProductSummarySection({ productDetailData }: { productDetailData: ProductDetailType }) {
