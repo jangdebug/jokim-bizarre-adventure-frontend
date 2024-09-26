@@ -36,3 +36,9 @@ export interface eventCategoryItemType {
   likeAverage?: number
   likeCount?: number
 }
+
+export interface slimEventType {
+  id: number
+  url: string
+  targetEventId: number
+}
