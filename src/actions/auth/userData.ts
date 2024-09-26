@@ -1,7 +1,9 @@
-import { signIn } from 'next-auth/react'
+'use server'
+import { redirect } from 'next/navigation'
 
 export const postNewUser = async (convertedForm: signupDataType) => {
   'use server'
+  console.log('user signup action', convertedForm)
 
   try {
     const res = await fetch(`${process.env.API_BASE_URL}/v1/auth/sign-up/simple`, {
@@ -11,26 +13,17 @@ export const postNewUser = async (convertedForm: signupDataType) => {
       },
       body: JSON.stringify(convertedForm),
     })
-    // console.log('body', JSON.stringify(convertedForm))
-
-    // console.log('signup res', res)
 
     if (res.ok) {
-      console.log('회원가입이 완료되었습니다. 바로 로그인 수행합니다.')
-      // signIn('credentials', {
-      //   email: convertedForm.email as string,
-      //   password: convertedForm.password as string,
-      //   redirect: true,
-      //   callbackUrl: '/',
-      // })
+      console.log('회원가입이 완료되었습니다.')
 
       return true
     } else {
-      console.log('회원가입에 실패했습니다.', res)
+      console.log('회원가입에 실패했습니다.')
       return false
     }
   } catch (error) {
-    console.log(error)
-    return false
+    console.log('sign up', error)
+    return true
   }
 }

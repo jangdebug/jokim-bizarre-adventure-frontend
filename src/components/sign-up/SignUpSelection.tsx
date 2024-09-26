@@ -12,7 +12,7 @@ export default function SignUpSelection() {
     <section className=" px-[24px] pb-[60px] mt-[55px]">
       <p className="text-[20px] leading-[26px] font-bold">신세계인터내셔날 통합 멤버십 가입</p>
       <div className="mt-[16px] flex flex-col gap-[12px]">
-        <Link href={'/'}>
+        <Link href={'#'}>
           <Button size={'auth'} variant={'kakao'} className="gap-[6px]">
             <Image src={KakaoIcon} alt="kakaoIcon" />
             카카오로 가입하기
@@ -35,12 +35,12 @@ export default function SignUpSelection() {
       </ul>
 
       <div className="mt-[12px]  flex flex-row gap-[8px] font-[400] tracking-[-1px] ">
-        <Link href={'/'} className="w-full ">
+        <Link href={'#'} className="w-full ">
           <Button variant={'outline'} className="py-[6px] w-full h-full text-[12px]  font-[400] ">
             회원등급 혜택 자세히보기
           </Button>
         </Link>
-        <Link href={'/'} className="w-full">
+        <Link href={'#'} className="w-full">
           <Button variant={'outline'} className="py-[6px] w-full h-full text-[12px]   font-[400] ">
             통합 멤버십 포인트 자세히보기
           </Button>

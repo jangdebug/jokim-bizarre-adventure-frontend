@@ -4,7 +4,6 @@ import FindAccountNavigation from '@/components/find-account/FindAccountNavigati
 import { Button } from '@/components/ui/button'
 import LinkButton from '@/components/ui/LinkButton'
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {

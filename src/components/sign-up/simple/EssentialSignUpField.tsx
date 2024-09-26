@@ -12,7 +12,6 @@ export default function EssentialSignUpField() {
 
   const handleAgeCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target
-    console.log(name, checked)
     setValues((prev) => ({ ...prev, [name]: checked }))
   }
 
@@ -30,6 +29,7 @@ export default function EssentialSignUpField() {
           onBlur={handleBlur}
           onClear={() => setValues((prev) => ({ ...prev, name: '' }))}
           placeholder="이름"
+          maxLength={10}
         />
         <p
           className={`${isEmpty.name ? 'pb-[16px]' : 'invisible pb-[16px]'} text-[#db3c3c] text-[14px] leading-[20px]`}

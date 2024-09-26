@@ -1,6 +1,5 @@
 import FindIdResultSection from '@/components/find-account/FindIdResultSection'
 import FindPasswordResultSection from '@/components/find-account/FindPasswordResultSection'
-import LinkButton from '@/components/ui/LinkButton'
 
 export default function FindResult({ searchParams }: { searchParams: { maskedId?: string; loginId?: string } }) {
   const { maskedId, loginId } = searchParams
