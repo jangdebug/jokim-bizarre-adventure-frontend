@@ -38,7 +38,7 @@ export async function changePasswordAction(newPasswordForm: FormData) {
 
   console.log('res --> ', res)
 
-  if (res.status === 200) {
+  if (res.ok) {
     return 'success'
   }
   return 'fail'

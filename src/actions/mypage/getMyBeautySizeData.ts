@@ -74,7 +74,7 @@ export async function sizeRegistAction(sizeFormData: FormData) {
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     revalidateTag('updateSize')
     return true
   }

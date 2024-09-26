@@ -1,7 +1,6 @@
 import { options } from '@/app/api/auth/[...nextauth]/options'
 import { addDeliveryType, deliveryType, modDeliveryType } from '@/types/MyPageTypes'
 import { getServerSession } from 'next-auth'
-import { useSession } from 'next-auth/react'
 import { revalidateTag } from 'next/cache'
 
 async function getSessionAuth() {
@@ -64,7 +63,7 @@ export const updateDefaultDelivery = async (formData: FormData) => {
       Authorization: `Bearer ${accessToken}`,
     },
   })
-  if (res.status === 200) {
+  if (res.ok) {
     return true
   } else {
     return false
@@ -97,7 +96,7 @@ export async function addDeliveryAction(deliveryFormData: FormData) {
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     revalidateTag('addAddress')
     return true
   } else return false
@@ -130,7 +129,7 @@ export async function modifyDeliveryAction(deliveryFormData: FormData) {
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     revalidateTag('addAddress')
     return true
   } else return false
@@ -146,7 +145,7 @@ export const deleteDelivery = async (addressCode: string, token: string | undefi
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     return true
   } else return false
 }

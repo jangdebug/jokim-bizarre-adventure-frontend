@@ -28,7 +28,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const session = await getServerSession(options)
-  const isAuth = session?.user ? true : false
+  const isAuth = session?.user ? session.user : null
   return (
     <html lang="ko">
       <body className={notoSansKR.className}>
