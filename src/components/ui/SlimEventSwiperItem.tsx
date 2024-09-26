@@ -1,7 +1,8 @@
+import { slimEventType } from '@/types/EventTypes'
 import Image from 'next/image'
 import React from 'react'
 
-export default function SlimEventSwiperItem({ slimEvent }: { slimEvent: SlimEventType }) {
+export default function SlimEventSwiperItem({ slimEvent }: { slimEvent: slimEventType }) {
   return (
     <>
       <Image

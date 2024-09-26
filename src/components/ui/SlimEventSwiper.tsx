@@ -5,8 +5,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination, Autoplay } from 'swiper/modules'
 import SlimEventSwiperItem from './SlimEventSwiperItem'
+import { slimEventType } from '@/types/EventTypes'
 
-const slimEventData: SlimEventType[] = [
+const slimEventData: slimEventType[] = [
   {
     id: 1,
     url: 'https://image.sivillage.com/upload/C00001/s3/dspl/banner/99/340/00/240900000506340_20240904162227.jpg?RS=750&SP=1',
