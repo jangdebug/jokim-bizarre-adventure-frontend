@@ -5,9 +5,10 @@ import Link from 'next/link'
 interface DeliveryItemProps {
   info: deliveryType
   changeList: React.Dispatch<React.SetStateAction<deliveryType[]>>
+  token: string | undefined
 }
 
-export default function DeliveryItem({ info, changeList }: DeliveryItemProps) {
+export default function DeliveryItem({ info, changeList, token }: DeliveryItemProps) {
   const formatPhone = (phone: string) => {
     if (phone.length === 7) return `${phone.slice(0, 3)}-${phone.slice(3)}`
     else if (phone.length === 8) return `${phone.slice(0, 4)}-${phone.slice(4)}`
@@ -39,7 +40,12 @@ export default function DeliveryItem({ info, changeList }: DeliveryItemProps) {
             <Link href={`/mypage/delivery-info/modify?code=${info.addressCode}`}>수정</Link>
             {`${info.isDefault ? '' : '| '}`}
             {!info.isDefault && (
-              <DeliveryDelete addressCode={info.addressCode} addressName={info.addressName} changeList={changeList} />
+              <DeliveryDelete
+                addressCode={info.addressCode}
+                addressName={info.addressName}
+                changeList={changeList}
+                token={token}
+              />
             )}
           </p>
         </div>

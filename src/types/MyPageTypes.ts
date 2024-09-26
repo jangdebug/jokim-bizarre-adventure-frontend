@@ -145,6 +145,20 @@ export interface addDeliveryType {
   deliveryPolicy: boolean
 }
 
+export interface modDeliveryType {
+  addressCode: string
+  addressName: string
+  recipient: string
+  dispCellNo: string
+  phone: string
+  zipCode: string
+  addressRoad: string
+  addressJibeon: string
+  addressDetail: string
+  isDefault: boolean
+  deliveryPolicy: boolean
+}
+
 ///////////////////////// Order /////////////////////////
 export interface orderStepType {
   id: number

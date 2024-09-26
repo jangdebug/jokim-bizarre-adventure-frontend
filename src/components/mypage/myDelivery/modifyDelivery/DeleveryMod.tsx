@@ -16,6 +16,7 @@ export default function DeliveryMod({ modifyData, handleDeliveryMod }: modifyPro
     <form action={handleDeliveryMod}>
       <section>
         <div className="px-[24px] m-auto">
+          <input type="hidden" name="addressCode" value={modifyData.addressCode} />
           <DeliveryModInput name={modifyData.addressName} recip={modifyData.recipient} />
           <DeliveryModZipcode
             zip={modifyData.zipCode}
