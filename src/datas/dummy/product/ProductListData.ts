@@ -1,7 +1,7 @@
 export const productListData: ProductCardType[] = [
   {
     id: 1,
-    productId: 534,
+    productId: '534',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/545/240826029289545.jpg?RS=450&SP=1',
     brandName: 'GIORGIO ARMANI',
     name: '남성 글로시 울 캐시미어 싱글 수트',
@@ -12,7 +12,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 2,
-    productId: 424,
+    productId: '424',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/486/240628023010486.jpg?RS=450&SP=1',
     brandName: 'RICK OWENS',
     name: '[MEN] 지퍼 후드 부클레 메가 파카',
@@ -23,7 +23,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 3,
-    productId: 4574,
+    productId: '4574',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/763/240627022883763.jpg?RS=450&SP=1',
     brandName: 'RICK OWENS',
     name: '[MEN] 드로스트링 레더 쇼츠',
@@ -34,7 +34,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 4,
-    productId: 2406262345,
+    productId: '2406262345',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/414/240829029793414.jpg?RS=450&SP=1',
     brandName: 'HERNO',
     name: '남성 니트 패치 하이넥 다운 패딩 코트',
@@ -45,7 +45,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 5,
-    productId: 34768,
+    productId: '34768',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/527/240828029603527.jpg?RS=450&SP=1',
     brandName: 'HERNO',
     name: '남성 스트링 헴 후드 다운 패딩 자켓',
@@ -56,7 +56,7 @@ export const productListData: ProductCardType[] = [
   },
   {
     id: 6,
-    productId: 54856,
+    productId: '54856',
     thumbnailImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/364/240812027288364.jpg?RS=450&SP=1',
     brandName: 'HERNO',
     name: '남성 디태처블 후드 다운 패딩 코트',

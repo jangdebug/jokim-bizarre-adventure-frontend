@@ -179,7 +179,7 @@ export const eventDetailTabDatas: eventDetailTab[] = [
 
 export const eventCategoryItemDatas: eventCategoryItemType[] = [
   {
-    id: 1,
+    id: '1',
     productImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/775/240723025142775.jpg?RS=450&SP=1',
     brandName: 'JAJU',
     productName: '고밀도 피치스킨 차렵이불_SS_베이지',
@@ -188,7 +188,7 @@ export const eventCategoryItemDatas: eventCategoryItemType[] = [
     likeCount: 3,
   },
   {
-    id: 2,
+    id: '2',
     productImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/082/240304009745082.jpg?RS=450&SP=1',
     brandName: 'JAJU',
     productName: '고밀도 피치스킨 차렵이불_SS_차콜',
@@ -197,7 +197,7 @@ export const eventCategoryItemDatas: eventCategoryItemType[] = [
     likeCount: 132,
   },
   {
-    id: 3,
+    id: '3',
     productImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/113/240304009745113.jpg?RS=450&SP=1',
     brandName: 'JAJU',
     productName: '고밀도 피치스킨 차렵이불_SS_네이비',
@@ -206,7 +206,7 @@ export const eventCategoryItemDatas: eventCategoryItemType[] = [
     likeCount: 3,
   },
   {
-    id: 4,
+    id: '4',
     productImageUrl: 'https://image.sivillage.com/upload/C00001/s3/goods/org/135/240304009745135.jpg?RS=450&SP=1',
     brandName: 'JAJU',
     productName: '모달 차렵이불_S/SS_화이트',
