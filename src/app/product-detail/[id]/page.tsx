@@ -1,4 +1,6 @@
+import { getProductOptions } from '@/actions/product/getProductData'
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
+import ProductDetailBottomNavigation from '@/components/product-detail/ProductDetailBottomNavigation'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
 import ProductHashTagSection from '@/components/product-detail/ProductHashTagSection'
 import { Button } from '@/components/ui/button'
@@ -25,7 +27,12 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
   // params 로 받아온 상품 id 를 통해 데이터를 받아와야함
   const productDetail: ProductDetailType = productDetailData
   const html = await getDescription(productDetail.productId)
+  const productOptions: ProductOptionType[] = await getProductOptions(params.id)
   // console.log(params.id)
+
+  // 쇼핑백으로 보내는 서버액션
+
+  // 바로구매 진행하는 서버액션
 
   return (
     <main>
@@ -42,6 +49,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         </Button>
       </div>
       <Divider />
+      <ProductDetailBottomNavigation productOptions={productOptions} />
     </main>
   )
 }

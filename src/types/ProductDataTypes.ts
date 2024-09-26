@@ -1,3 +1,7 @@
+interface ProductCodeType {
+  productCode: string
+}
+
 interface ProductCardType {
   id: number
   productId: number
@@ -29,4 +33,13 @@ interface ProductDetailType {
 interface HashTagType {
   hashTagId: number
   value: string
+}
+
+interface ProductOptionType {
+  productCode: string
+  optionCode: string
+  optionName: string
+  optionValue: string
+  quantity: number
+  price: number
 }

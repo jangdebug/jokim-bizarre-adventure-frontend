@@ -4,6 +4,8 @@ import MainCategory from '@/components/main/MainCategory'
 import { getMainSwiperItem } from '@/actions/main/getMainSwiperItem'
 import { categoryBadgeType } from '@/types/InitialDataTypes'
 import { getCategoryBadgeData } from '@/actions/main/getCategoryBadgeData'
+import { getServerSession } from 'next-auth'
+import { options } from '../api/auth/[...nextauth]/options'
 
 export default async function Home() {
   const categoryBadgeResData: categoryBadgeType[] = await getCategoryBadgeData()

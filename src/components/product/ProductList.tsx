@@ -1,10 +1,15 @@
 import ProductCard from './ProductCard'
-import { productListData } from '@/datas/dummy/product/ProductListData'
 
-export default function ProductList({ viewMode = 0 }: { viewMode?: number }) {
-  // 상품 리스트 데이터
+export default async function ProductList({
+  viewMode = 0,
+  productList,
+}: {
+  viewMode?: number
+  productList: ProductCardType[]
+}) {
+  // 상품 리스트 데이터 호출
 
-  const productList: ProductCardType[] = productListData
+  // 무한페이지 하단 도착 시 새 데이터 호출
 
   return (
     <>

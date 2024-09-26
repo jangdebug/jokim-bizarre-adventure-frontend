@@ -3,6 +3,7 @@ import { myCategoryProps } from '../myInfoCategory'
 import MyInfoCategoryItem from './myInfoCategoryItem'
 import Link from 'next/link'
 import Image from 'next/image'
+import MyLogOut from '../myLogout'
 
 export default function MyInfoCategoryArticle({ category }: { category: myCategoryProps }) {
   return (
@@ -27,15 +28,12 @@ export default function MyInfoCategoryArticle({ category }: { category: myCatego
       )}
 
       <ul>
-        {category.item && category.item.length > 0 ? (
-          category.item.map((item, itemIndex) => <MyInfoCategoryItem item={item} key={itemIndex} />)
-        ) : (
-          <Link href={`/logout`}>
-            <div className="my-8">
-              <span className="text-sm">로그아웃</span>
-            </div>
-          </Link>
-        )}
+        {category.item && category.item.length > 0
+          ? category.item.map((item, itemIndex) => <MyInfoCategoryItem item={item} key={itemIndex} />)
+          : null}
+        <li>
+          <MyLogOut />
+        </li>
       </ul>
     </div>
   )
