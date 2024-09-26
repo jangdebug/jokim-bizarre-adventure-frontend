@@ -10,9 +10,6 @@ import CheckboxWithSvg from '@/components/dummy/CheckboxWithSvg'
 export default function EssentialSignUpField() {
   const { values, errors, isEmpty, setValues, handleChange, handleBlur } = useFormValidation()
 
-  // const clearInput = (name: string) => {
-  //   setValues((prev) => ({ ...prev, [name]: '' }))
-  // }
   const handleAgeCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target
     console.log(name, checked)

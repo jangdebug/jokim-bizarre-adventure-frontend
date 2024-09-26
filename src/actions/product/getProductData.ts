@@ -12,16 +12,13 @@ export async function getProductCodeList(
   'use server'
   console.log('cat code is : ', mainCategoryCode)
 
-  const res = await fetch(
-    `${process.env.API_BASE_URL}/v1/product-category?mainCategoryCode=${mainCategoryCode}&secondaryCategoryCode=${secondaryCategoryCode}&tertiaryCategoryCode=${tertiaryCategoryCode}&quaternaryCategoryCode=${quaternaryCategoryCode}`,
-    {
-      method: 'GET',
-    },
-  )
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-category/${mainCategoryCode}`, {
+    method: 'GET',
+  })
 
   if (res.ok) {
     const data = (await res.json()).result
-    console.log('data', data.content)
+    console.log('get product code data', data.content)
 
     return data.content
   } else {

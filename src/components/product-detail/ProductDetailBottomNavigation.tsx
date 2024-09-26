@@ -4,6 +4,7 @@ import { Button } from '../ui/button'
 import LetterButton from '../brand/LetterButton'
 import PlusButtonIcon from '../icons/basket/PlusButtonIcon'
 import MinusButtonIcon from '../icons/basket/MinusButtonIcon'
+import Counter from './Counter'
 
 const productOptionsDummy: ProductOptionType[] = [
   {
@@ -41,10 +42,12 @@ const productOptionsDummy: ProductOptionType[] = [
 ]
 
 export default function ProductDetailBottomNavigation({ productOptions }: { productOptions: ProductOptionType[] }) {
+  // 모달 상태 관리
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedOption, setSelectedOption] = useState<string>()
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
 
+  // 버튼 클릭 시 모달 토글
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       console.log('이미 열린 상태', e.currentTarget.name)
@@ -73,28 +76,10 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
     } else {
       document.body.style.overflow = ''
     }
-
     return () => {
       document.body.style.overflow = ''
     }
   }, [isOpen])
-
-  // counter
-
-  const handleMinus = () => {
-    setCurrentQuantity((prevValue) => Math.max(prevValue - 1, 1))
-  }
-
-  const handlePlus = () => {
-    setCurrentQuantity((prevValue) => prevValue + 1)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value)
-    if (newValue >= 1) {
-      setCurrentQuantity(newValue)
-    }
-  }
 
   return (
     <>
@@ -145,31 +130,13 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
               )}
             </ul>
             {/* counter */}
-            <div className="flex flex-row justify-center items-center">
-              <button
-                className="border w-[48px] h-[48px] shrink-0 flex items-center justify-center"
-                onClick={handleMinus}
-              >
-                <MinusButtonIcon />
-              </button>
-              <input
-                type="number"
-                value={currentQuantity}
-                onChange={handleChange}
-                min="1" // 입력 필드에서 최소값을 1로 설정
-                className="text-center focus-visible:outline-none w-full h-[48px] border no-spinner"
-              />
-              <button
-                className="border w-[48px] h-[48px] shrink-0 flex items-center justify-center"
-                onClick={handlePlus}
-              >
-                <PlusButtonIcon />
-              </button>
-            </div>
+            <Counter currentQuantity={currentQuantity} setCurrentQuantity={setCurrentQuantity} />
+
             {/* price */}
             <p className="flex justify-between items-center">
               <span className="text-[14px] leading-[20px] text-[#404040]">판매가</span>
               <span className=" font-bold text-[#131922]">
+                {/* 해당 옵션의 가격을 정해줘야합니다. */}
                 <span className="text-[24px] leading-[30px] pr-[2px]">{(currentQuantity * 4000).toLocaleString()}</span>
                 <span className="text-[16px]">원</span>
               </span>
