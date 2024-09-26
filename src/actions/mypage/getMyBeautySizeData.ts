@@ -1,9 +1,24 @@
-import { bottomSizeDatas, footSizeDatas, mySizeData, topSizeDatas } from '@/datas/dummy/mypage/MyRegisterData'
-import { mySizeRegisterType, mySizeType, selectSizeType } from '@/types/MyPageTypes'
+'use server'
 
-export async function getMySize() {
-  const res = mySizeData as mySizeType
-  return res
+import { bottomSizeDatas, footSizeDatas, topSizeDatas } from '@/datas/dummy/mypage/MyRegisterData'
+import { mySizeRegisterType, mySizeType, selectSizeType } from '@/types/MyPageTypes'
+import { revalidateTag } from 'next/cache'
+
+export async function getMySize(): Promise<mySizeType> {
+  'use server'
+  //const res = mySizeData as mySizeType
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/size`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    next: { tags: ['updateSize'] },
+  })
+
+  const data = (await res.json()).result as mySizeType
+
+  return data
 }
 
 export async function getSelectTopSize() {
@@ -31,19 +46,20 @@ export async function sizeRegistAction(sizeFormData: FormData) {
     agreement: sizeFormData.get('agreement') === 'on',
   }
 
-  console.log('action payload', payload)
+  // console.log('action payload', payload)
 
-  // const res = await fetch(`${process.env.API_BASE_URL}/api/v1/mypage/size`, {
-  //   method: 'POST',
-  //   body: JSON.stringify(payload),
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // })
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/size`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+  })
 
-  // console.log(res)
-  // if (res.ok) {
-  //   return await res.json()
-  // }
-  return null
+  if (res.status === 200) {
+    revalidateTag('updateSize')
+    return true
+  }
+  return false
 }

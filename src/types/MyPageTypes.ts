@@ -54,7 +54,8 @@ export interface myWishEventType {
 export interface myRegisterType {
   id: number
   registerName: string
-  currentLink: String
+  modifyName?: string | undefined
+  currentLink: string
 }
 
 ///////////////////////// BeautySize /////////////////////////
@@ -113,7 +114,7 @@ export interface writenReviewType {
 
 ///////////////////////// Delivery /////////////////////////
 export interface deliveryType {
-  addressId: number
+  addressCode: string
   addressName: string
   dispCellNo: string
   recipient: string
@@ -172,4 +173,9 @@ export interface orderListType {
   couponCode?: String | null
   deliveryState: String
   purchaseDate: String
+}
+
+///////////////////////// newPassword /////////////////////////
+export interface newPasswordType {
+  password: string
 }

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import withPWAInit from '@ducanh2912/next-pwa';
+import withPWAInit from '@ducanh2912/next-pwa'
 
 const withPWA = withPWAInit({
   dest: 'public',
@@ -9,7 +9,7 @@ const withPWA = withPWAInit({
   workboxOptions: {
     disableDevLogs: true,
   },
-});
+})
 const nextConfig = withPWA({
   // output: 'standalone',
   images: {
@@ -34,9 +34,10 @@ const nextConfig = withPWA({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     KAKAO_CLIENT_ID: process.env.KAKAO_CLIENT_ID,
     KAKAO_CLIENT_SECRET: process.env.KAKAO_CLIENT_SECRET,
-    NAVER_CLIENT_ID:process.env.NAVER_CLIENT_ID,
-    NAVER_CLIENT_SECRET:process.env.NAVER_CLIENT_SECRET
+    NAVER_CLIENT_ID: process.env.NAVER_CLIENT_ID,
+    NAVER_CLIENT_SECRET: process.env.NAVER_CLIENT_SECRET,
+    ACCESS_TOKEN: process.env.ACCESS_TOKEN,
   },
-});
+})
 
-export default nextConfig;
+export default nextConfig

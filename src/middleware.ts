@@ -93,6 +93,13 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(url)
     }
   }
+  if (pathname.startsWith('/mypage/beautysize')) {
+    if (!searchParams.has('type')) {
+      searchParams.set('type', 'Add')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
 
   // 그 외 경로는 다음 미들웨어로 진행
   return NextResponse.next()
@@ -105,6 +112,7 @@ export const config = {
     '/category/:path*',
     '/sign-in/find-account/:path*',
     '/best/:path*',
+    '/mypage/beautysize/:path*',
     '/((?!api|_next/static|_next/image|favicon.ico|fonts|images).*)', // 인증 미들웨어 적용 경로
   ],
 }
