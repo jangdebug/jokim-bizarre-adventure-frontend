@@ -27,14 +27,20 @@ export default async function Product({
   const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
 
-  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code)
+  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code, 1)
+  console.log('in page', productCodes)
 
   return (
     <main>
       <ProductStickyHeader parentCategoryName={parentCategoryName} subCategories={subCatgories} />
       <FilterBar />
       <ProductListSectionHeader currentViewMode={searchParams.type} />
-      <ProductList viewMode={searchParams.type} productList={productList} />
+      <ProductList
+        viewMode={searchParams.type}
+        productList={productList}
+        intialProductCodes={productCodes}
+        categoryCode={searchParams.code}
+      />
     </main>
   )
 }
