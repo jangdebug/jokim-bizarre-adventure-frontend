@@ -2,7 +2,7 @@ import { deliveryType, phoneType } from '@/types/MyPageTypes'
 
 export const myDeliveryDatas: deliveryType[] = [
   {
-    addressId: 1,
+    addressCode: '1',
     addressName: '조김',
     recipient: '조김의 아지트',
     dispCellNo: '010',
@@ -15,7 +15,7 @@ export const myDeliveryDatas: deliveryType[] = [
     deliveryPolicy: true,
   },
   {
-    addressId: 2,
+    addressCode: '2',
     addressName: '테스터',
     recipient: '신세카이',
     dispCellNo: '010',
@@ -28,7 +28,7 @@ export const myDeliveryDatas: deliveryType[] = [
     deliveryPolicy: true,
   },
   {
-    addressId: 3,
+    addressCode: '3',
     addressName: '관리자',
     recipient: '롯데',
     dispCellNo: '010',

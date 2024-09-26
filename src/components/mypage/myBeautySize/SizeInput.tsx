@@ -8,9 +8,16 @@ interface beautySizeType {
   topSizeDatas: selectSizeType[]
   bottomSizeDatas: selectSizeType[]
   footSizeDatas: selectSizeType[]
+  regType: string
 }
 
-export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, footSizeDatas }: beautySizeType) {
+export default function SizeInput({
+  mySizeData,
+  topSizeDatas,
+  bottomSizeDatas,
+  footSizeDatas,
+  regType,
+}: beautySizeType) {
   return (
     <>
       <SizeFormItem label="키">
@@ -20,8 +27,13 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
           name="height"
           placeholder="입력"
           defaultValue={mySizeData.height}
+          disabled={regType === 'Exist'}
         />
-        <span className="w-1/6 h-[48px] border border-[#e0e0e0] border-l-0 text-center leading-10">cm</span>
+        <span
+          className={`w-1/6 h-[48px]   text-center leading-10 ${regType === 'Exist' ? 'bg-[#EFEFEF]' : 'border border-[#e0e0e0] border-l-0'}`}
+        >
+          cm
+        </span>
       </SizeFormItem>
 
       <SizeFormItem label="몸무게">
@@ -31,12 +43,17 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
           name="weight"
           placeholder="입력"
           defaultValue={mySizeData.weight}
+          disabled={regType === 'Exist'}
         />
-        <span className="w-1/6 h-[48px] border border-[#e0e0e0] border-l-0 text-center leading-10">kg</span>
+        <span
+          className={`w-1/6 h-[48px] text-center leading-10 ${regType === 'Exist' ? 'bg-[#EFEFEF]' : 'border border-[#e0e0e0] border-l-0'}`}
+        >
+          kg
+        </span>
       </SizeFormItem>
 
       <SizeFormItem label="평소 상의 사이즈">
-        <Select name="topSize" defaultValue={mySizeData.topSize}>
+        <Select name="topSize" defaultValue={mySizeData.topSize} disabled={regType === 'Exist'}>
           <SelectTrigger>
             <SelectValue placeholder="선택" />
           </SelectTrigger>
@@ -51,7 +68,7 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
       </SizeFormItem>
 
       <SizeFormItem label="평소 하의 사이즈">
-        <Select name="bottomSize" defaultValue={mySizeData.bottomSize}>
+        <Select name="bottomSize" defaultValue={mySizeData.bottomSize} disabled={regType === 'Exist'}>
           <SelectTrigger>
             <SelectValue placeholder="선택" />
           </SelectTrigger>
@@ -66,7 +83,7 @@ export default function SizeInput({ mySizeData, topSizeDatas, bottomSizeDatas, f
       </SizeFormItem>
 
       <SizeFormItem label="평소 신발 사이즈">
-        <Select name="footSize" defaultValue={mySizeData.footSize}>
+        <Select name="footSize" defaultValue={mySizeData.footSize} disabled={regType === 'Exist'}>
           <SelectTrigger>
             <SelectValue placeholder="선택" />
           </SelectTrigger>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function MyRegister({ agreement }: { agreement: boolean }) {
+export default function MyRegister({ agreement, regType }: { agreement: boolean; regType: string }) {
   const currentURI = usePathname()
 
   return (
@@ -36,9 +36,32 @@ export default function MyRegister({ agreement }: { agreement: boolean }) {
         {myRegisterDatas &&
           myRegisterDatas.map((data) =>
             currentURI && data.currentLink === currentURI ? (
-              <Button key={data.id} className="w-full h-12">
-                {data.registerName}
-              </Button>
+              regType === 'Add' ? (
+                <Button key={data.id} className="w-full h-12">
+                  {data.registerName}
+                </Button>
+              ) : regType === 'Mod' ? (
+                <div key={data.id} className="w-full h-12 flex justify-between gap-2">
+                  <Link href={'/mypage'} className="w-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-[0.875rem]  font-bold">뒤로</span>
+                  </Link>
+                  <Button className="w-full h-full bg-primary">
+                    <span className="text-[0.875rem]  text-primary-foreground">{data.registerName}</span>
+                  </Button>
+                </div>
+              ) : (
+                <div key={data.id} className="w-full h-12 flex justify-between gap-2">
+                  <Link href={'/mypage'} className="w-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-[0.875rem] font-bold">뒤로</span>
+                  </Link>
+                  <Link
+                    href={'/mypage/beautysize?type=Mod'}
+                    className="w-full bg-primary flex items-center justify-center "
+                  >
+                    <span className="text-[0.875rem] text-primary-foreground">{data.modifyName}</span>
+                  </Link>
+                </div>
+              )
             ) : null,
           )}
       </div>

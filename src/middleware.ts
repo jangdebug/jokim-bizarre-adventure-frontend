@@ -41,10 +41,23 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(url)
     }
   }
+  if (pathname.startsWith('/mypage/beautysize')) {
+    if (!searchParams.has('type')) {
+      searchParams.set('type', 'Add')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/product/:path*', '/category/:path*', '/sign-in/find-account/:path*', '/best/:path*'],
+  matcher: [
+    '/product/:path*',
+    '/category/:path*',
+    '/sign-in/find-account/:path*',
+    '/best/:path*',
+    '/mypage/beautysize/:path*',
+  ],
 }

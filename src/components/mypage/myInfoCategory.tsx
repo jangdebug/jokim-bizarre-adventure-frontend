@@ -105,7 +105,7 @@ const myPageCategory: myCategoryProps[] = [
       },
       {
         content: '비밀번호 변경',
-        src: '/',
+        src: '/mypage/modPassword',
       },
       {
         content: 'SNS 연결 관리',
