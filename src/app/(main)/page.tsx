@@ -13,7 +13,7 @@ export default async function Home() {
 
   const session = await getServerSession(options)
   const isAuth = session?.user ? session.user : null
-  console.log('user sesstion', isAuth)
+  // console.log('user sesstion', isAuth)
 
   return (
     <main>

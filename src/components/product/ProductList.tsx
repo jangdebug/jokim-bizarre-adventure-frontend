@@ -1,6 +1,7 @@
+import React, { Suspense } from 'react'
 import ProductCard from './ProductCard'
 
-export default async function ProductList({
+export default function ProductList({
   viewMode = 0,
   productList,
 }: {
@@ -10,6 +11,7 @@ export default async function ProductList({
   // 상품 리스트 데이터 호출
 
   // 무한페이지 하단 도착 시 새 데이터 호출
+  const LazyProductCard = React.lazy(() => import('./ProductCard'))
 
   return (
     <>
@@ -26,7 +28,16 @@ export default async function ProductList({
           } w-full  px-[24px]`}
       >
         {productList.map((item) => (
-          <ProductCard key={item.id} productCard={item} viewMode={viewMode} />
+          <Suspense
+            key={item.id}
+            fallback={
+              <div className="w-full h-[380px] p-[4px]">
+                <div className="w-full h-full bg-[#f2f2f2]"></div>
+              </div>
+            }
+          >
+            <ProductCard productCard={item} viewMode={viewMode} />
+          </Suspense>
         ))}
       </ul>
     </>

@@ -4,6 +4,7 @@ import ProductStickyHeader from '@/components/layout/ProductStickyHeader'
 import FilterBar from '@/components/product/FilterBar'
 import ProductList from '@/components/product/ProductList'
 import ProductListSectionHeader from '@/components/product/ProductListSectionHeader'
+import { Suspense } from 'react'
 
 interface ProductSearchParamType {
   code: string

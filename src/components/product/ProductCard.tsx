@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SmallStarIcon from '../icons/product/SmallStarIcon'
 import LikeButton from '../ui/LikeButton'
+import { Suspense } from 'react'
 
 export default function ProductCard({
   productCard,
@@ -23,8 +24,6 @@ export default function ProductCard({
             height={0}
             sizes="100vw"
             style={{ width: '100%', height: 'auto' }}
-            // loader={}
-            // loading=''
           />
           {/* 상품 상세로 link */}
           {viewMode == 1 ? null : (
