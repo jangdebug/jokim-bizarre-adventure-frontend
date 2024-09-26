@@ -1,25 +1,27 @@
-import { updateDefaultDelivery } from '@/actions/mypage/getMyDeliveryDatas'
+'use client'
+
+import { getMyDelivery, updateDefaultDelivery } from '@/actions/mypage/getMyDeliveryDatas'
 import DeliveryActionButtons from './DeliveryActionButtons'
 import { deliveryType } from '@/types/MyPageTypes'
 import DeliveryItem from './DeliveryItem'
 import DeliveryEmpty from './DeliveryEmpty'
+import { useState } from 'react'
 
 interface DeliveryListProps {
   deliveryList: deliveryType[]
 }
 
-export default async function DeliveryList({ deliveryList }: DeliveryListProps) {
-  const handleDefaultSettingClick = async (formData: FormData) => {
-    'use server'
-    try {
-      const changeDefaultDelivery = await updateDefaultDelivery(formData)
+export default function DeliveryList({ deliveryList }: DeliveryListProps) {
+  console.log(deliveryList)
+  const [dList, setDList] = useState<deliveryType[]>(deliveryList)
 
-      // if (changeDefaultDelivery.status === 200) {
-      //   console.log('배송지가 변경되었습니다.');
-      //   revalidateTag('deliveryAddress');
-      // }
-    } catch (error) {
-      console.error('Error updating default delivery:', error)
+  const handleDefaultSettingClick = async (formData: FormData) => {
+    const res = await updateDefaultDelivery(formData)
+
+    if (!res) console.log('Failed to update default delivery')
+    else {
+      const changeList: deliveryType[] = await getMyDelivery()
+      setDList(changeList)
     }
   }
 
@@ -27,8 +29,8 @@ export default async function DeliveryList({ deliveryList }: DeliveryListProps) 
     <form action={handleDefaultSettingClick}>
       <DeliveryActionButtons dataLength={deliveryList.length} />
       <section className="w-11/12 mx-auto min-h-[calc(100vh-112px)]">
-        {deliveryList.length > 0 ? (
-          deliveryList.map((info) => <DeliveryItem key={info.addressId} info={info} />)
+        {dList.length > 0 ? (
+          dList.map((info) => <DeliveryItem key={info.addressCode} info={info} changeList={setDList} />)
         ) : (
           <DeliveryEmpty />
         )}

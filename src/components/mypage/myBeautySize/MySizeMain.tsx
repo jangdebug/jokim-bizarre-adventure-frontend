@@ -11,6 +11,7 @@ interface beautySizeType {
   bottomSizeDatas: selectSizeType[]
   footSizeDatas: selectSizeType[]
   handleSize: (formData: FormData) => void
+  regType: string
 }
 
 export default function MySizeMain({
@@ -19,6 +20,7 @@ export default function MySizeMain({
   bottomSizeDatas,
   footSizeDatas,
   handleSize,
+  regType,
 }: beautySizeType) {
   return (
     <section>
@@ -30,12 +32,13 @@ export default function MySizeMain({
               topSizeDatas={topSizeDatas}
               bottomSizeDatas={bottomSizeDatas}
               footSizeDatas={footSizeDatas}
+              regType={regType}
             />
           </ul>
         </div>
 
         <Divider />
-        <MyRegister agreement={mySizeData.agreement} />
+        <MyRegister agreement={mySizeData.agreement} regType={regType} />
       </form>
     </section>
   )
