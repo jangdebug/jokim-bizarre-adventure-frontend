@@ -1,11 +1,11 @@
 import { basketListType } from '@/types/BasketTypes'
 import Image from 'next/image'
-import { useState } from 'react'
 import CouponDownloadIcon from '../icons/basket/CouponDownloadIcon'
 import MinusButtonIcon from '../icons/basket/MinusButtonIcon'
 import PlusButtonIcon from '../icons/basket/PlusButtonIcon'
-import LikeButton from '../ui/LikeButton'
+
 import { basketQuantityChange } from '@/actions/basket/getBasketListData'
+import LikeButton from '../ui/LikeButton'
 
 interface BasketItemProps {
   item: basketListType

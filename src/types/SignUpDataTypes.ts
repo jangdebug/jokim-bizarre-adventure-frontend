@@ -85,6 +85,7 @@ interface signupFormType {
   name: string
   phoneHeader: string
   phoneBody: string
+  isOverFourTeen: string
   year: string
   month: string
   day: string
@@ -105,6 +106,7 @@ interface signupDataType {
   birth: string
   phone: string
   address: string
+  isOverFourTeen: boolean
   smsAgreement: boolean
   emailAgreement: boolean
   dmAgreement: boolean

@@ -28,9 +28,8 @@ const withOutAuth = async (req: NextRequest, token: boolean, to: string | null) 
 }
 
 const withAuthList = [routes.basket, routes.mypage]
-const withOutAuthList = [routes.signIn]
+const withOutAuthList = [routes.signIn, routes.signup, routes.simpleSignup]
 
-// 두 코드를 합친 통합 미들웨어 함수
 export default async function middleware(request: NextRequest) {
   const token = await getToken({
     req: request,
@@ -93,9 +92,20 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(url)
     }
   }
+
+  // 마이페이지/내 사이즈에 'type' 파라미터 추가
   if (pathname.startsWith('/mypage/beautysize')) {
     if (!searchParams.has('type')) {
       searchParams.set('type', 'Add')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
+
+  //브랜드 eng/kor 'language' 파라미터 추가
+  if (pathname.startsWith('/brand')) {
+    if (!searchParams.has('language')) {
+      searchParams.set('language', 'english')
       url.search = searchParams.toString()
       return NextResponse.redirect(url)
     }
@@ -113,6 +123,7 @@ export const config = {
     '/sign-in/find-account/:path*',
     '/best/:path*',
     '/mypage/beautysize/:path*',
+    '/brand/:path*',
     '/((?!api|_next/static|_next/image|favicon.ico|fonts|images).*)', // 인증 미들웨어 적용 경로
   ],
 }

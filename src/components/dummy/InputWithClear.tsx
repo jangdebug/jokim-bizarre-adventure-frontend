@@ -10,6 +10,7 @@ interface InputWithClearProps {
   onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
   disabled?: boolean
   placeholder?: string
+  maxLength?: number
 }
 
 const InputWithClear: React.FC<InputWithClearProps> = ({
@@ -22,6 +23,7 @@ const InputWithClear: React.FC<InputWithClearProps> = ({
   onBlur,
   disabled = false,
   placeholder,
+  maxLength = 100,
 }) => {
   return (
     <div className={`relative ${className}`}>
@@ -34,6 +36,7 @@ const InputWithClear: React.FC<InputWithClearProps> = ({
         disabled={disabled}
         placeholder={placeholder}
         onBlur={onBlur}
+        maxLength={maxLength}
       />
       {value && !disabled && (
         <button

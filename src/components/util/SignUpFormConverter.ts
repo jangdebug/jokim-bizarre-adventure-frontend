@@ -13,6 +13,7 @@ export function transformToSignupData(formData: signupFormType): signupDataType 
     birth: birth, // ISO 8601 형식으로 변환된 생년월일
     phone: phone,
     address: '', // 이 값은 formData에 없으니 기본값으로 빈 문자열 설정
+    isOverFourTeen: convertToBoolean(formData.isOverFourTeen),
     smsAgreement: convertToBoolean(formData.smsAgreement),
     emailAgreement: convertToBoolean(formData.emailAgreement),
     dmAgreement: convertToBoolean(formData.dmAgreement),
@@ -33,6 +34,7 @@ export function formDataToSignupFormType(formData: FormData): signupFormType {
     name: formData.get('name') as string,
     phoneHeader: formData.get('phoneHeader') as string,
     phoneBody: formData.get('phoneBody') as string,
+    isOverFourTeen: formData.get('isOverFourTeen') as string,
     year: formData.get('year') as string,
     month: formData.get('month') as string,
     day: formData.get('day') as string,

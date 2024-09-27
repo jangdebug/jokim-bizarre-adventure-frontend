@@ -5,7 +5,7 @@ export default function BrandFilterButton({
   label,
 }: {
   value: 'english' | 'korean'
-  selectedValue: 'english' | 'korean'
+  selectedValue: string
   onSelect: (value: 'english' | 'korean') => void
   label: string
 }) {

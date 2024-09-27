@@ -1,8 +1,6 @@
 //Main Category Badge Type
 export interface categoryBadgeType {
-  id: number
-  categoryId: number
-  categoryName: string
+  categoryCode: string
   categoryBadgeImageUrl: string
 }
 
