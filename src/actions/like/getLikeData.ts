@@ -1,10 +1,32 @@
-export async function changeLikeAction(isLike: boolean, type: string, targetId: string, token: string) {
+import { options } from '@/app/api/auth/[...nextauth]/options'
+import { getServerSession } from 'next-auth'
+import { revalidateTag } from 'next/cache'
+
+async function getSessionAuth() {
+  const session = await getServerSession(options)
+  const isAuth = session?.user ? session.user : null
+
+  if (!isAuth) {
+    throw new Error('Unauthorized: No valid session found.')
+  }
+
+  return isAuth
+}
+
+export async function changeLikeAction(likeData: FormData) {
+  const auth = getSessionAuth()
+  if (!auth) return
+
+  let isLike = likeData.get('currentState') === 'true'
+  let type = likeData.get('type')
+  let targetId = likeData.get('targetId')
+
   if (isLike) {
     const res = await fetch(`${process.env.API_BASE_URL}/v1/wishlist/${type}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${(await auth).accessToken}`,
       },
       body: JSON.stringify({
         brandCode: targetId,
@@ -14,8 +36,9 @@ export async function changeLikeAction(isLike: boolean, type: string, targetId: 
     if (!res.ok) {
       throw new Error(`Error: ${res.statusText}`)
     }
-    const data = await res.json()
-    return data
+
+    // const data = await res.json()
+    // return data
   }
 
   if (!isLike) {
@@ -23,7 +46,7 @@ export async function changeLikeAction(isLike: boolean, type: string, targetId: 
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${(await auth).accessToken}`,
       },
     })
 
@@ -31,9 +54,10 @@ export async function changeLikeAction(isLike: boolean, type: string, targetId: 
     if (!res.ok) {
       throw new Error(`Error: ${res.statusText}`)
     }
-    const data = await res.json()
-    return data
+    // const data = await res.json()
+    // return data
   }
 
+  revalidateTag(`${type}-ChangeLike`)
   return null
 }

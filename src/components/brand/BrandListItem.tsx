@@ -2,7 +2,12 @@ import { brandListType } from '@/types/BrandTypes'
 import Link from 'next/link'
 import LikeButton from '../ui/LikeButton'
 
-export default async function BrandListItem({ brand }: { brand: brandListType }) {
+interface brandItemProps {
+  brand: brandListType
+  isLike: boolean
+}
+
+export default async function BrandListItem({ brand, isLike }: brandItemProps) {
   return (
     <li key={brand.brandCode} className="py-[20px] pl-[12px] flex items-start justify-between">
       <Link href={'#'} className="flex flex-col gap-[12px]">
@@ -11,7 +16,7 @@ export default async function BrandListItem({ brand }: { brand: brandListType })
           {brand.koreanName}
         </p>
       </Link>
-      <LikeButton type="brand" targetId={brand.brandCode} />
+      <LikeButton type="brand" targetId={brand.brandCode} currentState={isLike} />
     </li>
   )
 }

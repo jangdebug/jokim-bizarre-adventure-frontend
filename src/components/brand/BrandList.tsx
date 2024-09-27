@@ -1,12 +1,13 @@
-import { brandListType } from '@/types/BrandTypes'
+import { brandListType, checkWishByBrandType } from '@/types/BrandTypes'
 import BrandListItem from './BrandListItem'
 
 interface brandListProps {
   brandListDatas: brandListType[]
+  wishCheckArr: checkWishByBrandType[]
   language: string
 }
 
-export default function BrandList({ brandListDatas, language }: brandListProps) {
+export default function BrandList({ brandListDatas, language, wishCheckArr }: brandListProps) {
   const splitKeys =
     language === 'english' ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('') : 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ'.split('')
   const groupedBrands: Record<string, brandListType[]> = splitKeys.reduce(
@@ -54,7 +55,15 @@ export default function BrandList({ brandListDatas, language }: brandListProps) 
           >
             {index}
           </p>
-          <ul>{groupedBrands[index]?.map((item) => <BrandListItem key={item.brandCode} brand={item} />)}</ul>
+          <ul>
+            {groupedBrands[index]?.map((item) => (
+              <BrandListItem
+                key={item.brandCode}
+                brand={item}
+                isLike={wishCheckArr.some((wishItem: checkWishByBrandType) => wishItem.brandCode === item.brandCode)}
+              />
+            ))}
+          </ul>
         </div>
       ))}
     </section>
