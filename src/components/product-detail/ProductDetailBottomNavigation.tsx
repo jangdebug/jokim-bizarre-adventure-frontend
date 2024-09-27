@@ -54,6 +54,8 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
       console.log('이미 열린 상태', target)
       const res = await postProduct(target)
       console.log('in prod-detail', res)
+      // 로직수행 후 성공하면
+      setIsOpen(() => false)
     } else {
       setIsOpen(() => true)
     }
