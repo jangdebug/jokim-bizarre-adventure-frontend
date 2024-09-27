@@ -28,7 +28,7 @@ export async function getAbleReview(range: string): Promise<AbleReviewType[]> {
 export async function getMyWritenReview(range: string): Promise<writenReviewType[]> {
   const res = myWritenReviewDatas as writenReviewType[]
 
-  console.log(`getMyWritenReview -> `, range)
+  //console.log(`getMyWritenReview -> `, range)
   // const res = await fetch(`/mypage/review/{range}`)
   // if(!res.ok){
   //   throw new Error('Fail to fetch')
