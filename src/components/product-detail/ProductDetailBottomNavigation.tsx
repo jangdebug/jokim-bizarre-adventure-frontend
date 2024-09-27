@@ -1,8 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Button } from '../ui/button'
 import LetterButton from '../brand/LetterButton'
-
+import { Button } from '../ui/button'
 import Counter from './Counter'
 import { postProduct } from '@/actions/product/postProductData'
 

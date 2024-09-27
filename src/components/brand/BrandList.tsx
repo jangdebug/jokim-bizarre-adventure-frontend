@@ -1,32 +1,49 @@
-import { brandDatas } from '@/datas/dummy/category/BrandData'
+import { brandListType, checkWishByBrandType } from '@/types/BrandTypes'
 import BrandListItem from './BrandListItem'
 
-export default function BrandList() {
-  const alphabetKeys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-  const groupedBrands: Record<string, BrandType[]> = alphabetKeys.reduce(
+interface brandListProps {
+  brandListDatas: brandListType[]
+  wishCheckArr: checkWishByBrandType[]
+  language: string
+}
+
+export default function BrandList({ brandListDatas, language, wishCheckArr }: brandListProps) {
+  const splitKeys =
+    language === 'english' ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('') : 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ'.split('')
+  const groupedBrands: Record<string, brandListType[]> = splitKeys.reduce(
     (acc, letter) => {
       acc[letter] = []
       return acc
     },
-    {} as Record<string, BrandType[]>,
+    {} as Record<string, brandListType[]>,
   )
 
   groupedBrands['0-9'] = []
   groupedBrands['etc'] = []
 
-  brandDatas.forEach((brand) => {
-    const firstLetter = (brand.englishName ?? '').charAt(0).toUpperCase()
+  brandListDatas.forEach((brand) => {
+    //const firstLetter = (brand.englishName ?? '').charAt(0).toUpperCase()
 
-    if (/^[A-Z]$/.test(firstLetter)) {
-      groupedBrands[firstLetter].push(brand)
-    } else if (/^\d$/.test(firstLetter)) {
-      groupedBrands['0-9'].push(brand)
-    } else {
-      groupedBrands['etc'].push(brand)
+    if (language === 'english') {
+      if (/^[A-Z]$/.test(brand.englishInitial)) {
+        groupedBrands[brand.englishInitial].push(brand)
+      } else if (/^\d$/.test(brand.englishInitial)) {
+        groupedBrands['0-9'].push(brand)
+      } else {
+        groupedBrands['etc'].push(brand)
+      }
+    } else if (language === 'korean') {
+      if (/^[ㄱ-ㅎ]$/.test(brand.koreanInitial)) {
+        groupedBrands[brand.koreanInitial].push(brand)
+      } else if (/^\d$/.test(brand.koreanInitial)) {
+        groupedBrands['0-9'].push(brand)
+      } else {
+        groupedBrands['etc'].push(brand)
+      }
     }
   })
 
-  const sortedKeys = [...alphabetKeys, '0-9', 'etc']
+  const sortedKeys = [...splitKeys, '0-9', 'etc']
 
   return (
     <section className="px-[24px]">
@@ -38,7 +55,15 @@ export default function BrandList() {
           >
             {index}
           </p>
-          <ul>{groupedBrands[index]?.map((item) => <BrandListItem key={item.id} brand={item} />)}</ul>
+          <ul>
+            {groupedBrands[index]?.map((item) => (
+              <BrandListItem
+                key={item.brandCode}
+                brand={item}
+                isLike={wishCheckArr.some((wishItem: checkWishByBrandType) => wishItem.brandCode === item.brandCode)}
+              />
+            ))}
+          </ul>
         </div>
       ))}
     </section>
