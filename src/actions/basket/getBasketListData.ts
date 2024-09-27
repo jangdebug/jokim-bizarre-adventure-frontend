@@ -1,22 +1,41 @@
-//'use server'
+'use server'
 
-import { basketListDatas } from '@/datas/dummy/basket/ListData'
+import { options } from '@/app/api/auth/[...nextauth]/options'
 import { basketListType } from '@/types/BasketTypes'
+import { getServerSession } from 'next-auth'
+
+async function getSessionAuth() {
+  const session = await getServerSession(options)
+  const isAuth = session?.user ? session.user : null
+
+  if (!isAuth) {
+    throw new Error('Unauthorized: No valid session found.')
+  }
+
+  return isAuth
+}
 
 export async function getBasketListAction(): Promise<basketListType[]> {
-  const res: basketListType[] = basketListDatas
-  return res
+  const auth = await getSessionAuth()
 
-  // const res = await fetch(`${process.env.API_BASE_URL}/basket`, {
-  //   method: 'GET',
-  //   next: { tags: ['checkBasket, changeQuantity, addBasket, delBasket'] },
-  //   cache: 'no-cache',
-  // })
-  // if (!res.ok) {
-  //   throw new Error('Failed to fetch cart item list')
-  // }
-  // const data = await res.json()
-  // return data
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/basket`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${(await auth).accessToken}`,
+    },
+    next: { tags: ['checkBasket, changeQuantity, addBasket, delBasket'] },
+    cache: 'no-cache',
+  })
+
+  console.log('res -> ', res)
+
+  if (!res.ok) {
+    console.log('Failed to fetch cart item list')
+    return []
+  } else {
+    return (await res.json()).result as basketListType[]
+  }
 }
 
 export const basketCheckUpdate = async (item: basketListType, checked: boolean) => {
