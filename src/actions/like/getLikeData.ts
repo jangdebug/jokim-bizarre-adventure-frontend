@@ -19,9 +19,13 @@ export async function changeLikeAction(likeData: FormData) {
   const auth = getSessionAuth()
   if (!auth) return
 
-  let isLike = likeData.get('currentState') === 'true'
-  let type = likeData.get('type')
-  let targetId = likeData.get('targetId')
+  const isLike = likeData.get('currentState') === 'true'
+  const type = likeData.get('type')
+  const targetId = likeData.get('targetId')
+  const targetType = String(type + 'Code')
+
+  const reqData: { [key: string]: any } = {}
+  reqData[targetType] = targetId
 
   if (isLike) {
     const res = await fetch(`${process.env.API_BASE_URL}/v1/wishlist/${type}`, {
@@ -30,13 +34,13 @@ export async function changeLikeAction(likeData: FormData) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${(await auth).accessToken}`,
       },
-      body: JSON.stringify({
-        brandCode: targetId,
-      }),
+      body: JSON.stringify(reqData),
     })
+    const data = await res.json()
+    console.log('data', data)
 
     if (!res.ok) {
-      throw new Error(`Error: ${res.statusText}`)
+      console.error(`Error: ${res.statusText}`)
     }
 
     // const data = await res.json()
