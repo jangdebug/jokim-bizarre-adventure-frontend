@@ -14,10 +14,15 @@ export default function Error() {
           <span>빠른 시일내로 문제를 해결하여</span>
           <span>원활한 서비스를 이용가능하도록 하겠습니다.</span>
         </p>
+        <div className="flex w-full gap-[16px]">
+          <Button size={'auth'} onClick={() => router.back()}>
+            돌아가기
+          </Button>
+          <Button size={'auth'} onClick={() => router.refresh()}>
+            새로고침
+          </Button>
+        </div>
       </div>
-      <Button size={'auth'} onClick={() => router.back()}>
-        돌아가기
-      </Button>
     </main>
   )
 }
