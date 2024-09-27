@@ -1,9 +1,6 @@
 export async function changeLikeAction(isLike: boolean, type: string, targetId: string, token: string) {
-  let path = ''
-  if (type === 'brand') path = '/v1/wishlist/brand'
-
   if (isLike) {
-    const res = await fetch(`${process.env.API_BASE_URL}${path}`, {
+    const res = await fetch(`${process.env.API_BASE_URL}/v1/wishlist/${type}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +19,7 @@ export async function changeLikeAction(isLike: boolean, type: string, targetId: 
   }
 
   if (!isLike) {
-    const res = await fetch(`${process.env.API_BASE_URL}${path}/${targetId}`, {
+    const res = await fetch(`${process.env.API_BASE_URL}/v1/wishlist/${type}/${targetId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
