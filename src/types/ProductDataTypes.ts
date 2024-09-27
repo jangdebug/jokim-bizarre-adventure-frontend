@@ -43,3 +43,21 @@ interface ProductOptionType {
   quantity: number
   price: number
 }
+
+///////////////////// api connection
+
+interface ProductCardDataType {
+  productCode: string
+  productName: string
+  discountRate: number
+  amount: number
+  price: number
+  detail: string
+  brandCode: string
+}
+
+interface BrandDataType {
+  englishName: string | null
+  koreanName: string | null
+  logoMediaUrl: string | null
+}

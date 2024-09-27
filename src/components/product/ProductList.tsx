@@ -15,7 +15,7 @@ export default function ProductList({
   categoryCode: string
 }) {
   const [productCodeList, setProductCodeList] = useState<ProductCodeType[]>(intialProductCodes)
-  const [pageNo, setPageNo] = useState(2)
+  const [pageNo, setPageNo] = useState(1)
   const [loading, setLoading] = useState(false)
   const observerRef = useRef<HTMLDivElement | null>(null)
   // 상품 리스트 데이터 호출
@@ -65,21 +65,12 @@ export default function ProductList({
                   : 'grid-cols-2 gap-x-[8px]'
           } w-full  px-[24px]`}
       >
-        {initialProductList.map((item) => (
-          <Suspense
-            key={item.id}
-            fallback={
-              <div className="w-full h-[380px] p-[4px]">
-                <div className="w-full h-full bg-[#f2f2f2]"></div>
-              </div>
-            }
-          >
-            <ProductCard productCard={item} viewMode={viewMode} />
-          </Suspense>
+        {productCodeList.map((item) => (
+          <ProductCard key={item.productCode} productCode={item} viewMode={viewMode} />
         ))}
       </ul>
       {/* 로딩 */}
-      {loading && <div className="text-center p-4">상품을 불러오는 중...</div>}
+      {loading && <div className="text-center p-4">LOADING...</div>}
 
       {/* 스크룰 감지용*/}
       <div ref={observerRef} className="w-full h-[1px]"></div>

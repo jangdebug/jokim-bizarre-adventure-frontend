@@ -27,7 +27,7 @@ export default async function Product({
   const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
 
-  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code, 1)
+  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code, 0)
   console.log('in page', productCodes)
 
   return (
