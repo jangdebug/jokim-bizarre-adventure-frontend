@@ -1,5 +1,4 @@
 import { categoryBadgeDatas } from '@/datas/dummy/main/CategoryDatas'
-import { categoryBadgeType } from '@/types/InitialDataTypes'
 
 export async function getCategoryBadgeImage(categoryCode: string) {
   // fetch

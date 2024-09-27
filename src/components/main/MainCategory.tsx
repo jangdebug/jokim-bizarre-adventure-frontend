@@ -1,11 +1,8 @@
-import { categoryBadgeType } from '@/types/InitialDataTypes'
 import MainCategoryItem from './MainCategoryItem'
 import { getParentCategories } from '@/actions/category/getCategoryData'
-// import { getCategoryBadgeData } from '@/actions/main/getCategoryBadgeData'
 
 export default async function MainCategory() {
   const categoryDatas: CategoryType[] = await getParentCategories()
-  // const categoryBadgeResData: categoryBadgeType[] = await getCategoryBadgeData()
 
   console.log(categoryDatas)
 

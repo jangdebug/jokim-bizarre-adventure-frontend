@@ -1,16 +1,9 @@
-import { categoryBadgeType } from '@/types/InitialDataTypes'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getCategoryBadgeImage } from '@/actions/main/getCategoryBadgeData'
 
-export default async function MainCategoryItem({
-  // categoryBadgeData,
-  categoryData,
-}: {
-  // categoryBadgeData: categoryBadgeType
-  categoryData: CategoryType
-}) {
+export default async function MainCategoryItem({ categoryData }: { categoryData: CategoryType }) {
   const imageUrl = await getCategoryBadgeImage(categoryData.categoryCode)
 
   return (
@@ -40,7 +33,6 @@ export default async function MainCategoryItem({
               )}
             </React.Fragment>
           ))}
-          {/* {categoryData.categoryName} */}
         </p>
       </Link>
     </li>
