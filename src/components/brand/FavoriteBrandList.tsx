@@ -8,7 +8,7 @@ interface listProps {
 
 export default function FavoriteBrandList({ favoriteList }: listProps) {
   return (
-    <div>
+    <div className="mb-[32px]">
       <ul>
         {favoriteList.length > 0 ? (
           favoriteList?.map((item) => <FavoriteBrandListItem key={item.brandCode} brandCode={item.brandCode} />)
