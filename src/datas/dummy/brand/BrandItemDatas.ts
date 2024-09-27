@@ -44,7 +44,7 @@ export const recommendBrandDatas: recommendBrandInfoType[] = [
     rank: 7,
   },
   {
-    brandCode: 'BR-8121A787',
+    brandCode: 'asdfasdf',
     englishName: 'PAUL SMITH',
     koreanName: '폴스미스',
     rank: 8,

@@ -49,7 +49,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         </Button>
       </div>
       <Divider />
-      <ProductDetailBottomNavigation productOptions={productOptions} />
+      <ProductDetailBottomNavigation productCode={productDetail.productId} productOptions={productOptions} />
     </main>
   )
 }

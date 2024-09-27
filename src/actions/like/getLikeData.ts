@@ -37,7 +37,7 @@ export async function changeLikeAction(likeData: FormData) {
       body: JSON.stringify(reqData),
     })
     const data = await res.json()
-    console.log('data', data)
+    // console.log('data', data)
 
     if (!res.ok) {
       console.error(`Error: ${res.statusText}`)

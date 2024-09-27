@@ -4,6 +4,7 @@ import LetterButton from '../brand/LetterButton'
 import { Button } from '../ui/button'
 import Counter from './Counter'
 import { postProduct } from '@/actions/product/postProductData'
+import { useRouter } from 'next/navigation'
 
 const productOptionsDummy: ProductOptionType[] = [
   {
@@ -40,7 +41,14 @@ const productOptionsDummy: ProductOptionType[] = [
   },
 ]
 
-export default function ProductDetailBottomNavigation({ productOptions }: { productOptions: ProductOptionType[] }) {
+interface productBasketProps {
+  productCode: string
+  productOptions: ProductOptionType[]
+}
+
+export default function ProductDetailBottomNavigation({ productCode, productOptions }: productBasketProps) {
+  const router = useRouter()
+
   // 모달 상태 관리
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedOption, setSelectedOption] = useState<string>()
@@ -50,11 +58,13 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       const target = e.currentTarget.name
-      console.log('이미 열린 상태', target)
-      const res = await postProduct(target)
-      console.log('in prod-detail', res)
-      // 로직수행 후 성공하면
-      setIsOpen(() => false)
+      //console.log('이미 열린 상태', target)
+      const res = await postProduct(target, productCode, selectedOption, String(currentQuantity))
+      //console.log('in prod-detail', res)
+      if (res) {
+        setIsOpen(() => false)
+        router.push('/order')
+      }
     } else {
       setIsOpen(() => true)
     }
