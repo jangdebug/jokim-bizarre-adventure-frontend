@@ -8,13 +8,6 @@ export const metadata: Metadata = {
 export default function Simple() {
   return (
     <main className="w-full pb-[80px]">
-      {/* <form action={handleSignUp}>
-        <EssentialSignUpField />
-        <Divider />
-        <OptionalSignUpField />
-        <Divider />
-        <RightsSignUpField />
-      </form> */}
       <SignUpForm />
     </main>
   )

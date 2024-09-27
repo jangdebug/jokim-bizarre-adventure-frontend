@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import LetterButton from '../brand/LetterButton'
 import { Button } from '../ui/button'
 import Counter from './Counter'
+import { postProduct } from '@/actions/product/postProductData'
 
 const productOptionsDummy: ProductOptionType[] = [
   {
@@ -46,9 +47,14 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
 
   // 버튼 클릭 시 모달 토글
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
-      console.log('이미 열린 상태', e.currentTarget.name)
+      const target = e.currentTarget.name
+      console.log('이미 열린 상태', target)
+      const res = await postProduct(target)
+      console.log('in prod-detail', res)
+      // 로직수행 후 성공하면
+      setIsOpen(() => false)
     } else {
       setIsOpen(() => true)
     }
@@ -89,7 +95,7 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
             </Button>
           </li>
           <li className="w-full h-full">
-            <Button name="buy" size={'full'} onClick={handleClick}>
+            <Button name="order" size={'full'} onClick={handleClick}>
               바로구매
             </Button>
           </li>
