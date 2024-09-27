@@ -50,9 +50,11 @@ export default function ProductCard({
 
   if (!productData || !productThumbnailUrl) {
     return (
-      <div className="w-full h-[380px] p-[4px]">
-        <div className="w-full h-full bg-[#f2f2f2]"></div>
-      </div>
+      <Link href={`/product-detail/${productCode.productCode}`}>
+        <div className="w-full h-[380px] p-[4px]">
+          <div className="w-full h-full bg-black bg-opacity-[0.03]"></div>
+        </div>
+      </Link>
     )
   }
 
