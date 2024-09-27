@@ -204,6 +204,7 @@ html {
 
 .main-swiper .swiper-pagination {
   top: 0;
+  pointer-events: none;
 }
 
 .review-image-container li:last-child::after {
