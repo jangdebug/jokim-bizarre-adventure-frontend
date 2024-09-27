@@ -202,6 +202,10 @@ html {
   height: 1px;
 }
 
+.main-swiper .swiper-pagination {
+  top: 0;
+}
+
 .review-image-container li:last-child::after {
   content: '+ ' attr(data-more-count);
   position: absolute;

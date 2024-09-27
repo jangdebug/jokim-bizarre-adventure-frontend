@@ -9,11 +9,7 @@ import { EffectCreative, Pagination, Navigation } from 'swiper/modules'
 import { mainSwiperItem } from '@/types/MainSwiperItem'
 import MainSwiperItem from './MainSwiperItem'
 
-export default function MainSwiper({
-  swiperItems,
-}: {
-  swiperItems: mainSwiperItem[]
-}) {
+export default function MainSwiper({ swiperItems }: { swiperItems: mainSwiperItem[] }) {
   const swiperRef = useRef<any>(null)
   const [autoplayEnabled, setAutoplayEnabled] = useState<boolean>(true)
 
@@ -72,7 +68,7 @@ export default function MainSwiper({
           },
         }}
         modules={[EffectCreative, Autoplay, Pagination, Navigation]}
-        className="w-full"
+        className="w-full main-swiper"
       >
         {swiperItems.map((swiperItem) => (
           <SwiperSlide key={swiperItem.id}>
@@ -81,10 +77,7 @@ export default function MainSwiper({
         ))}
 
         {/* swiper renderCustom 이 jsx 지원이 되지 않아 해당 버튼 위 덮어씌움.. */}
-        <button
-          onClick={toggleAutoplay}
-          className=" z-20 absolute top-4 right-[5.5rem] w-[16px] h-[16px]"
-        />
+        <button onClick={toggleAutoplay} className=" z-20 absolute top-4 right-[5.5rem] w-[16px] h-[16px]" />
       </Swiper>
     </>
   )

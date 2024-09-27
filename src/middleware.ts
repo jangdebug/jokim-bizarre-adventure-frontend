@@ -28,9 +28,8 @@ const withOutAuth = async (req: NextRequest, token: boolean, to: string | null) 
 }
 
 const withAuthList = [routes.basket, routes.mypage]
-const withOutAuthList = [routes.signIn]
+const withOutAuthList = [routes.signIn, routes.signup, routes.simpleSignup]
 
-// 두 코드를 합친 통합 미들웨어 함수
 export default async function middleware(request: NextRequest) {
   const token = await getToken({
     req: request,
