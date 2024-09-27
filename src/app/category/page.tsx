@@ -4,7 +4,7 @@ import MainCategoryList from '@/components/category/MainCategoryList'
 import SubCategoryList from '@/components/category/SubCategoryList'
 
 export default async function Category({ searchParams }: { searchParams: { main: string } }) {
-  const categoryData: CategoryType[] | undefined = await getParentCategories()
+  const categoryData: CategoryType[] = await getParentCategories()
   const parentCategory = categoryData?.find((item) => item.categoryName === searchParams.main)
 
   return (

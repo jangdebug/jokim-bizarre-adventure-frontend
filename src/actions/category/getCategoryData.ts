@@ -6,6 +6,8 @@ export const getParentCategories = async () => {
   if (res.ok) {
     const data: CategoryType[] = (await res.json()).result
     return data
+  } else {
+    return []
   }
 }
 

@@ -2,42 +2,47 @@ import { categoryBadgeType } from '@/types/InitialDataTypes'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getCategoryBadgeImage } from '@/actions/main/getCategoryBadgeData'
 
-function MainCategoryItem({
-  categoryBadgeData,
+export default async function MainCategoryItem({
+  // categoryBadgeData,
+  categoryData,
 }: {
-  categoryBadgeData: categoryBadgeType
+  // categoryBadgeData: categoryBadgeType
+  categoryData: CategoryType
 }) {
+  const imageUrl = await getCategoryBadgeImage(categoryData.categoryCode)
+
   return (
     <li>
-      <Link className="flex flex-col justify-center items-center" href={'/bgd'}>
+      <Link
+        className="flex flex-col justify-center items-center"
+        href={{
+          pathname: `/product/${categoryData.categoryName}`,
+          query: {
+            code: categoryData.categoryCode,
+            parentName: categoryData.categoryName,
+          },
+        }}
+      >
         <div className="object-cover w-5/6 rounded-full">
-          <Image
-            src={categoryBadgeData.categoryBadgeImageUrl}
-            width={200}
-            height={200}
-            alt={categoryBadgeData.categoryName}
-            priority
-          />
+          <Image src={imageUrl} width={200} height={200} alt={categoryData.categoryName} priority />
         </div>
         <p className="h-1/5 mt-1.5 text-center text-xs lg:text-xl">
-          {categoryBadgeData.categoryName
-            .split('/')
-            .map((part, index, array) => (
-              <React.Fragment key={index}>
-                {part}
-                {index < array.length - 1 && (
-                  <>
-                    {'/'}
-                    <br />
-                  </>
-                )}
-              </React.Fragment>
-            ))}
+          {categoryData.categoryName.split('/').map((part, index, array) => (
+            <React.Fragment key={index}>
+              {part}
+              {index < array.length - 1 && (
+                <>
+                  {'/'}
+                  <br />
+                </>
+              )}
+            </React.Fragment>
+          ))}
+          {/* {categoryData.categoryName} */}
         </p>
       </Link>
     </li>
   )
 }
-
-export default MainCategoryItem
