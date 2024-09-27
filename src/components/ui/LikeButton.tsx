@@ -5,12 +5,11 @@ import FilledHeartIcon from '../icons/product/FilledHeartIcon'
 interface LikeButtonProps {
   type: 'product' | 'event' | 'brand' | 'best' | 'basket'
   targetId: string
-  currentState: boolean
+  currentState?: boolean
 }
 
-export default function LikeButton({ type, targetId, currentState }: LikeButtonProps) {
+export default function LikeButton({ type, targetId, currentState = false }: LikeButtonProps) {
   const handleLikeState = async (likeFormData: FormData) => {
-    'use server'
     const res = await changeLikeAction(likeFormData)
   }
 

@@ -1,3 +1,4 @@
+'use server'
 import { options } from '@/app/api/auth/[...nextauth]/options'
 import { getServerSession } from 'next-auth'
 import { revalidateTag } from 'next/cache'
@@ -14,6 +15,7 @@ async function getSessionAuth() {
 }
 
 export async function changeLikeAction(likeData: FormData) {
+  'use server'
   const auth = getSessionAuth()
   if (!auth) return
 

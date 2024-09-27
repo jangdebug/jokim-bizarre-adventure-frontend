@@ -1,4 +1,3 @@
-import { userDataType } from '@/types/ResponseTypes'
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import KakaoProvider from 'next-auth/providers/kakao'
