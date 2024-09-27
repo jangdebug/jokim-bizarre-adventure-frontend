@@ -25,21 +25,23 @@ export default function ProductCard({
   const [productThumbnailUrl, setProductThumbnailUrl] = useState<string | null>(null)
   const [productReviewCount, setProductReviewCount] = useState<number>(0)
   const [brandName, setBrandName] = useState<string>('')
+
   useEffect(() => {
     async function fetchData() {
       try {
         const product = await getProductItemData(productCode.productCode)
         const thumbnailUrl = await getProductThumbnailUrl(productCode.productCode)
         const reviewCount = await getProductReviewCount(productCode.productCode)
-        // console.log('in client component', product, thumbnailUrl, reviewCount)
 
-        if (product && thumbnailUrl) {
-          const brand = await getBrandName(product.brandCode)
-          setProductData(product)
-          setProductThumbnailUrl(thumbnailUrl)
-          setProductReviewCount(reviewCount)
-          setBrandName(brand)
+        let brand = ''
+        if (product) {
+          brand = await getBrandName(product.brandCode)
         }
+
+        setProductData(product)
+        setProductThumbnailUrl(thumbnailUrl)
+        setProductReviewCount(reviewCount)
+        setBrandName(brand)
       } catch (error) {
         console.error('Failed to fetch product data:', error)
       }
@@ -62,7 +64,7 @@ export default function ProductCard({
     <li className={`w-full relative ${viewMode === 1 ? '' : 'mb-[36px]'}`}>
       <Link href={`/product-detail/${productData.productCode}`}>
         <div className="relative h-[267px] flex items-center ">
-          <div className="absolute top-0 left-0 w-full h-full z-20 bg-black bg-opacity-[0.03]" />
+          <div className="absolute top-0 left-0 w-full h-full z-[5] bg-black bg-opacity-[0.03]" />
           <Image
             src={productThumbnailUrl}
             alt="productImg"
