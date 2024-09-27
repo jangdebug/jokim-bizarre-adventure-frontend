@@ -1,11 +1,12 @@
-export interface userDataType {
+interface userDataType {
   accessToken: string
   refreshToken: string
 }
 
-export interface commonResType<T> {
-  HttpStatus: string
+interface commonResType<T> {
+  httpStatus: string
+  isSuccess: boolean
   code: number
   message: string
-  data?: T
+  result?: T
 }

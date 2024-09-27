@@ -3,9 +3,6 @@ import { getParentCategories } from '@/actions/category/getCategoryData'
 
 export default async function MainCategory() {
   const categoryDatas: CategoryType[] = await getParentCategories()
-
-  console.log(categoryDatas)
-
   return (
     <section className="w-11/12 mx-auto my-5 object-contain">
       <ul className="grid grid-cols-5 gap-3">

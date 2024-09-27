@@ -33,8 +33,8 @@ export const validateForm = (convertedForm: signupFormType): boolean => {
     !integratedMemberRight ||
     !infoUsageRight
   ) {
-    return true
-  } else {
     return false
+  } else {
+    return true
   }
 }
