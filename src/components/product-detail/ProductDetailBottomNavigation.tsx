@@ -1,9 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Button } from '../ui/button'
 import LetterButton from '../brand/LetterButton'
-import PlusButtonIcon from '../icons/basket/PlusButtonIcon'
-import MinusButtonIcon from '../icons/basket/MinusButtonIcon'
+import { Button } from '../ui/button'
 import Counter from './Counter'
 
 const productOptionsDummy: ProductOptionType[] = [

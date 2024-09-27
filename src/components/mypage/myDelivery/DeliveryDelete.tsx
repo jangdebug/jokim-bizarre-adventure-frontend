@@ -2,8 +2,8 @@ import { deleteDelivery, getMyDelivery } from '@/actions/mypage/getMyDeliveryDat
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
-  DialogContent,
   DialogClose,
+  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -16,17 +16,17 @@ interface deleteProps {
   addressCode: string
   addressName: string
   changeList: React.Dispatch<React.SetStateAction<deliveryType[]>>
+  token: string | undefined
 }
 
-export default function DeliveryDelete({ addressCode, addressName, changeList }: deleteProps) {
+export default function DeliveryDelete({ addressCode, addressName, changeList, token }: deleteProps) {
   const handleDeleteDelivery = async () => {
-    const res = await deleteDelivery(addressCode)
-
+    const res = await deleteDelivery(addressCode, token)
     if (!res) {
       console.log('Failed Delelte Delivery')
       return
     } else {
-      const changeListed: deliveryType[] = await getMyDelivery()
+      const changeListed: deliveryType[] = await getMyDelivery(token)
       changeList(changeListed)
     }
   }

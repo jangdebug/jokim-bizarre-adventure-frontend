@@ -93,9 +93,20 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(url)
     }
   }
+
+  // 마이페이지/내 사이즈에 'type' 파라미터 추가
   if (pathname.startsWith('/mypage/beautysize')) {
     if (!searchParams.has('type')) {
       searchParams.set('type', 'Add')
+      url.search = searchParams.toString()
+      return NextResponse.redirect(url)
+    }
+  }
+
+  //브랜드 eng/kor 'language' 파라미터 추가
+  if (pathname.startsWith('/brand')) {
+    if (!searchParams.has('language')) {
+      searchParams.set('language', 'english')
       url.search = searchParams.toString()
       return NextResponse.redirect(url)
     }
@@ -113,6 +124,7 @@ export const config = {
     '/sign-in/find-account/:path*',
     '/best/:path*',
     '/mypage/beautysize/:path*',
+    '/brand/:path*',
     '/((?!api|_next/static|_next/image|favicon.ico|fonts|images).*)', // 인증 미들웨어 적용 경로
   ],
 }

@@ -1,14 +1,28 @@
-import { addDeliveryType, deliveryType } from '@/types/MyPageTypes'
+import { options } from '@/app/api/auth/[...nextauth]/options'
+import { addDeliveryType, deliveryType, modDeliveryType } from '@/types/MyPageTypes'
+import { getServerSession } from 'next-auth'
 import { revalidateTag } from 'next/cache'
 
+async function getSessionAuth() {
+  const session = await getServerSession(options)
+  const isAuth = session?.user ? session.user : null
+
+  if (!isAuth) {
+    throw new Error('Unauthorized: No valid session found.')
+  }
+
+  return isAuth
+}
+
 ///////////////////// 내 배송지 정보들 /////////////////////
-export async function getMyDelivery(): Promise<deliveryType[]> {
+export async function getMyDelivery(token: string | undefined): Promise<deliveryType[]> {
   //const res: deliveryType[] = myDeliveryDatas
+
   const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/delivery-info`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     next: { tags: ['addAddress'] },
     cache: 'no-cache',
@@ -21,11 +35,13 @@ export async function getMyDelivery(): Promise<deliveryType[]> {
 
 ///////////////////// 수정할 배송지 정보 /////////////////////
 export async function getModifyDeliveryData(addressCode: string): Promise<deliveryType> {
+  const isAuth = await getSessionAuth()
+
   const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/delivery-info/${addressCode}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
     cache: 'no-cache',
   })
@@ -37,16 +53,17 @@ export async function getModifyDeliveryData(addressCode: string): Promise<delive
 
 ///////////////////// 기본 배송지 설정 /////////////////////
 export const updateDefaultDelivery = async (formData: FormData) => {
+  let accessToken = formData.get('token') as string
   let addressCode = formData.get('deliveryAddress') as string
 
   const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/delivery/default-address/${addressCode}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   })
-  if (res.status === 200) {
+  if (res.ok) {
     return true
   } else {
     return false
@@ -55,7 +72,7 @@ export const updateDefaultDelivery = async (formData: FormData) => {
 
 ///////////////////// 배송지 추가 /////////////////////
 export async function addDeliveryAction(deliveryFormData: FormData) {
-  console.log(`${process.env.ACCESS_TOKEN}`)
+  const isAuth = await getSessionAuth()
 
   const payload: addDeliveryType = {
     addressName: deliveryFormData.get('addressName') as string,
@@ -75,19 +92,22 @@ export async function addDeliveryAction(deliveryFormData: FormData) {
     body: JSON.stringify(payload),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     revalidateTag('addAddress')
     return true
   } else return false
 }
 
-///////////////////// 배송지 변경 /////////////////////
+///////////////////// 배송지 수정 /////////////////////
 export async function modifyDeliveryAction(deliveryFormData: FormData) {
-  const payload: addDeliveryType = {
+  const isAuth = await getSessionAuth()
+
+  const payload: modDeliveryType = {
+    addressCode: deliveryFormData.get('addressCode') as string,
     addressName: deliveryFormData.get('addressName') as string,
     recipient: deliveryFormData.get('recipient') as string,
     dispCellNo: deliveryFormData.get('dispCellNo') as string,
@@ -101,31 +121,31 @@ export async function modifyDeliveryAction(deliveryFormData: FormData) {
   }
 
   const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/delivery-info`, {
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify(payload),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     revalidateTag('addAddress')
     return true
   } else return false
 }
 
 ///////////////////// 배송지 삭제 /////////////////////
-export const deleteDelivery = async (addressCode: string) => {
+export const deleteDelivery = async (addressCode: string, token: string | undefined) => {
   const res = await fetch(`${process.env.API_BASE_URL}/v1/mypage/delivery-info/${addressCode}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
   })
 
-  if (res.status === 200) {
+  if (res.ok) {
     return true
   } else return false
 }
