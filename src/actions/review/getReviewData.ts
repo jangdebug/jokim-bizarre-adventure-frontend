@@ -22,9 +22,35 @@ export async function getReviewSummaryData(productCode: string): Promise<ReviewS
     }
   }
 }
-export async function getReviewItemData(): Promise<any> {
-  return null
+export async function getReviewList(productCode: string, page: number, size: number): Promise<ReviewDataType[]> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/reviews/product/${productCode}/${page}/${size}`, {
+    method: 'GET',
+  })
+
+  if (res.ok) {
+    const data = (await res.json()).result.content
+    // console.log('get product data', data)
+
+    return data
+  } else {
+    console.error('error with getting review item')
+
+    return []
+  }
 }
-export async function getReviewImageData(): Promise<any[]> {
-  return []
+export async function getReviewImageData(reviewCode: string): Promise<ReviewImageDataTypes[]> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/review-media/${reviewCode}`, {
+    method: 'GET',
+  })
+
+  if (res.ok) {
+    const data = (await res.json()).result
+    // console.log('get product data', data)
+
+    return data
+  } else {
+    console.error('error with getting review images')
+
+    return []
+  }
 }

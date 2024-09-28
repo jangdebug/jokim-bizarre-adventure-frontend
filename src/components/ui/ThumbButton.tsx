@@ -7,7 +7,7 @@ export default function ThumbButton({
   currentState = false,
   likeCount,
 }: {
-  reviewId: number
+  reviewId: string
   currentState?: boolean
   likeCount: number
 }) {

@@ -6,40 +6,40 @@ import Counter from './Counter'
 import { postProduct } from '@/actions/product/postProductData'
 import { useRouter } from 'next/navigation'
 
-const productOptionsDummy: ProductOptionType[] = [
-  {
-    productCode: '2406262345',
-    optionCode: '1',
-    optionName: '사이즈',
-    optionValue: 's',
-    quantity: 0,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '2',
-    optionName: '사이즈',
-    optionValue: 'm',
-    quantity: 1,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '3',
-    optionName: '사이즈',
-    optionValue: 'l',
-    quantity: 3,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '4',
-    optionName: '사이즈',
-    optionValue: 'xl',
-    quantity: 2,
-    price: 400000,
-  },
-]
+// const productOptionsDummy: ProductOptionType[] = [
+//   {
+//     productCode: '2406262345',
+//     optionCode: '1',
+//     optionName: '사이즈',
+//     optionValue: 's',
+//     quantity: 0,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '2',
+//     optionName: '사이즈',
+//     optionValue: 'm',
+//     quantity: 1,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '3',
+//     optionName: '사이즈',
+//     optionValue: 'l',
+//     quantity: 3,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '4',
+//     optionName: '사이즈',
+//     optionValue: 'xl',
+//     quantity: 2,
+//     price: 400000,
+//   },
+// ]
 
 interface productBasketProps {
   productCode: string
@@ -49,8 +49,6 @@ interface productBasketProps {
 
 export default function ProductDetailBottomNavigation({ productCode, productOptions, price }: productBasketProps) {
   const router = useRouter()
-
-  console.log('in modal', productOptions, price)
 
   // 모달 상태 관리
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -131,22 +129,8 @@ export default function ProductDetailBottomNavigation({ productCode, productOpti
           {/* options inner */}
           <div className="pb-[16px] flex flex-col gap-[16px]">
             {/* option name */}
-            <p className="text-[12px] leading-[20px] text-[#a0a0a0] underline">{productOptionsDummy[0].optionName}</p>
+            <p className="text-[12px] leading-[20px] text-[#a0a0a0] underline">옵션/사이즈</p>
             {/* optioin list */}
-            {/* <ul className="flex flex-row gap-[4px]">
-              {productOptionsDummy.map(
-                (item) =>
-                  item.quantity > 0 && (
-                    <LetterButton
-                      className="w-[40px] h-[40px] text-[#131922]"
-                      key={item.optionCode}
-                      isSelected={selectedOption === item.optionCode}
-                      onClick={() => handleOptionClick(item.optionCode)}
-                      letter={item.optionValue}
-                    />
-                  ),
-              )}
-            </ul> */}
 
             {/* with api */}
             <ul className="flex flex-row gap-[4px]">
