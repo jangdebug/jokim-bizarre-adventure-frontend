@@ -1,9 +1,4 @@
-import {
-  getProductOption,
-  getProductOptions,
-  getProductReviewCount,
-  getProductSummaryData,
-} from '@/actions/product/getProductData'
+import { getProductOption, getProductReviewCount, getProductSummaryData } from '@/actions/product/getProductData'
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
 import ProductDetailBottomNavigation from '@/components/product-detail/ProductDetailBottomNavigation'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
