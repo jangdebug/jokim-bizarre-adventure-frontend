@@ -13,7 +13,7 @@ interface DeliveryListProps {
 }
 
 export default function DeliveryList({ deliveryList, token }: DeliveryListProps) {
-  const [dList, setDList] = useState<deliveryType[]>(deliveryList)
+  const [dList, setDList] = useState<deliveryType[]>(deliveryList ? deliveryList : [])
 
   const handleDefaultSettingClick = async (formData: FormData) => {
     const res = await updateDefaultDelivery(formData)
@@ -27,10 +27,10 @@ export default function DeliveryList({ deliveryList, token }: DeliveryListProps)
 
   return (
     <form action={handleDefaultSettingClick}>
-      <DeliveryActionButtons dataLength={deliveryList.length} />
+      <DeliveryActionButtons dataLength={dList.length} />
       <input type="hidden" name="token" value={token} />
       <section className="w-11/12 mx-auto min-h-[calc(100vh-112px)]">
-        {dList.length > 0 ? (
+        {dList && dList.length > 0 ? (
           dList.map((info) => <DeliveryItem key={info.addressCode} info={info} changeList={setDList} token={token} />)
         ) : (
           <DeliveryEmpty />

@@ -8,7 +8,8 @@ async function getSessionAuth() {
   const isAuth = session?.user ? session.user : null
 
   if (!isAuth) {
-    throw new Error('Unauthorized: No valid session found.')
+    console.log('Unauthorized: No valid session found.')
+    return null
   }
 
   return isAuth

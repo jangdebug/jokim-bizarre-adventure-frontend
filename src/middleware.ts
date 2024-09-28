@@ -48,15 +48,6 @@ export default async function middleware(request: NextRequest) {
   // 특정 경로에 query parameter가 없는 경우 자동으로 추가
   const url = request.nextUrl.clone()
 
-  // 상품 경로에 'type' 파라미터 추가
-  if (pathname.startsWith('/product')) {
-    if (!searchParams.has('type')) {
-      searchParams.set('type', '0')
-      url.search = searchParams.toString()
-      return NextResponse.redirect(url)
-    }
-  }
-
   // 카테고리 경로에 'main' 파라미터 추가
   if (pathname.startsWith('/category')) {
     if (!searchParams.has('main')) {

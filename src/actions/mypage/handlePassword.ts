@@ -7,10 +7,10 @@ async function getSessionAuth() {
   const isAuth = session?.user ? session.user : null
 
   if (!isAuth) {
-    throw new Error('Unauthorized: No valid session found.')
+    console.log('Unauthorized: No valid session found.')
+  } else {
+    return isAuth
   }
-
-  return isAuth
 }
 
 export async function changePasswordAction(newPasswordForm: FormData) {
@@ -32,11 +32,11 @@ export async function changePasswordAction(newPasswordForm: FormData) {
     body: JSON.stringify(payload),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${isAuth.accessToken}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
   })
 
-  console.log('res --> ', res)
+  // console.log('res --> ', res)
 
   if (res.ok) {
     return 'success'

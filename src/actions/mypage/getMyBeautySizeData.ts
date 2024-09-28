@@ -11,7 +11,8 @@ async function getSessionAuth() {
   const isAuth = session?.user ? session.user : null
 
   if (!isAuth) {
-    throw new Error('Unauthorized: No valid session found.')
+    console.log('Unauthorized: No valid session found.')
+    return null
   }
 
   return isAuth
@@ -26,7 +27,7 @@ export async function getMySize(): Promise<mySizeType> {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${isAuth.accessToken}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
     next: { tags: ['updateSize'] },
   })
@@ -70,7 +71,7 @@ export async function sizeRegistAction(sizeFormData: FormData) {
     body: JSON.stringify(payload),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${isAuth.accessToken}`,
+      Authorization: `Bearer ${isAuth?.accessToken}`,
     },
   })
 

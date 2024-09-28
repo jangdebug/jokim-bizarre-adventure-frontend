@@ -13,7 +13,7 @@ export async function getEventDetailData(id: number): Promise<eventDetailType> {
   // const res = await fetch(`/api/v1/event-detail/${id}`);
 
   // if (!res.ok) {
-  //   throw new Error('Failed to fetch event details');
+  //   console.log('Failed to fetch event details');
   // }
 
   // const data: eventDetailType = await res.json();

@@ -10,7 +10,7 @@ export async function getOrderDeliveryAction(): Promise<orderDeliveryType> {
   //   cache: 'no-cache',
   // })
   // if (!res.ok) {
-  //   throw new Error('Failed to fetch cart item list')
+  //   console.log('Failed to fetch cart item list')
   // }
   // const data = await res.json()
   // return data
@@ -25,7 +25,7 @@ export async function getOrderCustomerAction(): Promise<orderCustomerType> {
   //   cache: 'no-cache',
   // })
   // if (!res.ok) {
-  //   throw new Error('Failed to fetch cart item list')
+  //   console.log('Failed to fetch cart item list')
   // }
   // const data = await res.json()
   // return data

@@ -1,87 +1,96 @@
 'use client'
-import React, { useState, useEffect, useRef, Suspense } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ProductCard from './ProductCard'
 import { getProductCodeList } from '@/actions/product/getProductData'
+import ProductListSectionHeader from './ProductListSectionHeader'
 
 export default function ProductList({
-  viewMode = 0,
-  productList: initialProductList,
   intialProductCodes,
   categoryCode,
 }: {
-  viewMode?: number
-  productList: ProductCardType[]
   intialProductCodes: ProductCodeType[]
   categoryCode: string
 }) {
   const [productCodeList, setProductCodeList] = useState<ProductCodeType[]>(intialProductCodes)
-  const [pageNo, setPageNo] = useState(2)
+  const [pageNo, setPageNo] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
   const observerRef = useRef<HTMLDivElement | null>(null)
-  // 상품 리스트 데이터 호출
+  const [viewMode, setViewMode] = useState<number>(0)
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !loading) {
+        if (entries[0].isIntersecting && !loading && hasMore) {
           fetchMoreProducts()
         }
       },
       { threshold: 1 },
     )
 
-    if (observerRef.current) {
-      observer.observe(observerRef.current)
+    const currentObserver = observerRef.current
+    if (currentObserver) {
+      observer.observe(currentObserver)
     }
 
     return () => {
-      if (observerRef.current) observer.unobserve(observerRef.current)
+      if (currentObserver) observer.unobserve(currentObserver)
     }
-  }, [loading])
+  }, [loading, hasMore])
 
-  const fetchMoreProducts = async () => {
+  const fetchMoreProducts = () => {
+    if (loading || !hasMore) return
+
     setLoading(true)
-    try {
-      const newProducts = await getProductCodeList(categoryCode, pageNo + 1)
-      setProductCodeList((prevList) => [...prevList, ...newProducts])
-      setPageNo((prevPageNo) => prevPageNo + 1)
-    } catch (error) {
-      console.error('상품을 불러오는 중 오류 발생:', error)
-    } finally {
-      setLoading(false)
-    }
+    getProductCodeList(categoryCode, pageNo + 1)
+      .then((newProducts) => {
+        if (newProducts.length === 0) {
+          setHasMore(false)
+        } else {
+          setProductCodeList((prevList) => [...prevList, ...newProducts])
+          setPageNo((prevPageNo) => prevPageNo + 1)
+        }
+      })
+      .catch((error) => {
+        console.error('상품을 불러오는 중 오류 발생:', error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  const handleViewModeChange = () => {
+    setViewMode((prev) => (prev + 1 > 2 ? 0 : prev + 1))
   }
 
   return (
     <>
+      <ProductListSectionHeader currentViewMode={viewMode} handleViewMode={handleViewModeChange} />
       <ul
         className={`grid 
           ${
-            viewMode == 0
+            viewMode === 0
               ? 'grid-cols-2 gap-x-[8px]'
-              : viewMode == 1
+              : viewMode === 1
                 ? 'grid-cols-4 gap-[4px] mb-[36px]'
-                : viewMode == 2
+                : viewMode === 2
                   ? 'grid-cols-1'
                   : 'grid-cols-2 gap-x-[8px]'
-          } w-full  px-[24px]`}
+          } 
+          w-full px-[24px]`}
       >
-        {initialProductList.map((item) => (
-          <Suspense
-            key={item.id}
-            fallback={
-              <div className="w-full h-[380px] p-[4px]">
-                <div className="w-full h-full bg-[#f2f2f2]"></div>
-              </div>
-            }
-          >
-            <ProductCard productCard={item} viewMode={viewMode} />
-          </Suspense>
+        {productCodeList.map((item) => (
+          <ProductCard key={item.productCode} productCode={item} viewMode={viewMode} />
         ))}
       </ul>
-      {/* 로딩 */}
-      {loading && <div className="text-center p-4">상품을 불러오는 중...</div>}
 
-      {/* 스크룰 감지용*/}
+      {/* 로딩 표시 */}
+      {loading && <div className="text-center p-4">LOADING...</div>}
+
+      {/* 더 이상 불러올 데이터가 없으면 표시 */}
+      {!hasMore && <div className="text-center p-4">상품이 존재하지 않습니다.</div>}
+
+      {/* 스크롤 감지용 */}
       <div ref={observerRef} className="w-full h-[1px]"></div>
     </>
   )

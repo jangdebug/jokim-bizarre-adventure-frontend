@@ -1,11 +1,9 @@
-import { getBestItemCategoryAction } from '@/actions/best/getBestItemData'
+import { getBestItemAction } from '@/actions/best/getBestItemData'
 import PopularList from '@/components/best/PopularList'
-import PopularPage from '@/components/best/PopularPage'
 import { BestItemType } from '@/types/BestTypes'
 
 export default async function Page({ searchParams }: { searchParams: { type: string } }) {
-  const popularItemDatas: BestItemType[] = await getBestItemCategoryAction(searchParams.type)
-  console.log(searchParams)
+  const popularItemDatas: BestItemType[] = await getBestItemAction(searchParams.type)
 
   return (
     <>

@@ -8,16 +8,17 @@ async function getSessionAuth() {
   const isAuth = session?.user ? session.user : null
 
   if (!isAuth) {
-    throw new Error('Unauthorized: No valid session found.')
+    console.log('Unauthorized: No valid session found.')
+    return false
+  } else {
+    return isAuth
   }
-
-  return isAuth
 }
 
 export async function changeLikeAction(likeData: FormData) {
   'use server'
-  const auth = getSessionAuth()
-  if (!auth) return
+  const isAuth = await getSessionAuth()
+  if (!isAuth) return
 
   const isLike = likeData.get('currentState') === 'true'
   const type = likeData.get('type')
@@ -32,12 +33,11 @@ export async function changeLikeAction(likeData: FormData) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${(await auth).accessToken}`,
+        Authorization: `Bearer ${isAuth.accessToken}`,
       },
       body: JSON.stringify(reqData),
     })
     const data = await res.json()
-    // console.log('data', data)
 
     if (!res.ok) {
       console.error(`Error: ${res.statusText}`)
@@ -52,13 +52,13 @@ export async function changeLikeAction(likeData: FormData) {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${(await auth).accessToken}`,
+        Authorization: `Bearer ${isAuth.accessToken}`,
       },
     })
 
     // 추가적인 응답 처리
     if (!res.ok) {
-      throw new Error(`Error: ${res.statusText}`)
+      console.log(`Error: ${res.statusText}`)
     }
     // const data = await res.json()
     // return data

@@ -1,4 +1,4 @@
-import { getProductOptions } from '@/actions/product/getProductData'
+import { getProductOption, getProductReviewCount, getProductSummaryData } from '@/actions/product/getProductData'
 import ProductDescriptionSection from '@/components/product-detail/ProductDescriptionSection'
 import ProductDetailBottomNavigation from '@/components/product-detail/ProductDetailBottomNavigation'
 import ProductDetailNavigation from '@/components/product-detail/ProductDetailNavigation'
@@ -8,9 +8,9 @@ import Divider from '@/components/ui/Divider'
 import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import { productDetailData } from '@/datas/dummy/product/ProductDetailData'
 
-async function getDescription(productId: string) {
+async function getDescription(productDetailUrl: string) {
   try {
-    const res = await fetch(`https://m-goods.sivillage.com/goods/getGoodDescCont.siv?goods_no=${productId}`)
+    const res = await fetch(productDetailUrl)
     return await res.text()
   } catch (error) {
     return `<div>ERROR</div>`
@@ -25,10 +25,18 @@ interface ProductDetailProps {
 
 export default async function ProductDetail({ params }: ProductDetailProps) {
   // params 로 받아온 상품 id 를 통해 데이터를 받아와야함
+  const productCode = params.id
+
+  const productSummary: ProductSummaryDataType = await getProductSummaryData(productCode)
+
+  const reviewCount = await getProductReviewCount(productCode)
+  const html = await getDescription(productSummary.detail)
+  const productOption: ProductOptionDataType[] = await getProductOption(productCode)
+
+  const discountedPrice = productSummary.price - productSummary.price * (productSummary.discountRate / 100)
+
+  // dummy
   const productDetail: ProductDetailType = productDetailData
-  const html = await getDescription(productDetail.productId)
-  const productOptions: ProductOptionType[] = await getProductOptions(params.id)
-  // console.log(params.id)
 
   // 쇼핑백으로 보내는 서버액션
 
@@ -38,7 +46,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
     <main>
       <ProductHashTagSection hashTagList={productDetail.hashTag} />
       <SlimEventSwiper />
-      <ProductDetailNavigation reviewCount={productDetail.reviewCount} />
+      <ProductDetailNavigation reviewCount={reviewCount} />
       <ProductDescriptionSection html={html} />
       <div className="flex p-[24px] gap-[8px]">
         <Button variant={'outline'} size={'auth'}>
@@ -49,7 +57,11 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         </Button>
       </div>
       <Divider />
-      <ProductDetailBottomNavigation productCode={productDetail.productId} productOptions={productOptions} />
+      <ProductDetailBottomNavigation
+        productCode={productSummary.productCode}
+        productOptions={productOption}
+        price={discountedPrice}
+      />
     </main>
   )
 }

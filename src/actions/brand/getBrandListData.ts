@@ -7,7 +7,8 @@ async function getSessionAuth() {
   const isAuth = session?.user ? session.user : null
 
   if (!isAuth) {
-    throw new Error('Unauthorized: No valid session found.')
+    console.log('Unauthorized: No valid session found.')
+    return false
   }
 
   return isAuth
@@ -32,6 +33,7 @@ export async function getBrandListAction(): Promise<brandListType[]> {
 
 export async function checkWishByBrandAction(): Promise<checkWishByBrandType[]> {
   const isAuth = await getSessionAuth()
+  if (!isAuth) return []
 
   const res = await fetch(`${process.env.API_BASE_URL}/v1/wishlist/brand`, {
     method: 'GET',
@@ -52,6 +54,7 @@ export async function checkWishByBrandAction(): Promise<checkWishByBrandType[]> 
 
 export async function getFavoriteItemInfo(brandCode: string): Promise<favoiteBrandInfoType | undefined> {
   const isAuth = await getSessionAuth()
+  if (!isAuth) return
 
   const res = await fetch(`${process.env.API_BASE_URL}/v1/brand/${brandCode}`, {
     method: 'GET',
