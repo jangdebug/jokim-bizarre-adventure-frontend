@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import QuestionIcon from '../icons/product-detail/QuestionIcon'
+import { getProductSummaryData } from '@/actions/product/getProductData'
 
-export default function BenefitInfoSection({ productId, productPrice }: { productId: string; productPrice: number }) {
+export default async function BenefitInfoSection({ productCode }: { productCode: string }) {
+  const productSummary: ProductSummaryDataType = await getProductSummaryData(productCode)
+  const discountedPrice = productSummary.price - productSummary.price * (productSummary.discountRate / 100)
   return (
     <section className="p-[24px]">
       <ul className="flex flex-col gap-[16px]">
@@ -18,7 +21,7 @@ export default function BenefitInfoSection({ productId, productPrice }: { produc
                   height={20}
                 />
                 {/* 적립률에 대한 변수를 전역으로 설정해줘야할까? */}
-                0.5%({(productPrice * 0.005).toLocaleString()}P)
+                0.5%({(discountedPrice * 0.005).toLocaleString()}P)
               </span>
             </p>
           </li>
@@ -66,7 +69,7 @@ export default function BenefitInfoSection({ productId, productPrice }: { produc
           <li className="border-t border-[#f0f0f0] mt-[8px]">
             <p className="flex items-center gap-[8px] pt-[24px]">
               <span className="text-[14px] leading-[20px] font-[500] text-[#404040] w-[94px]">상품코드</span>
-              <span className="text-[14px] leading-[18px]">{productId}</span>
+              <span className="text-[14px] leading-[18px]">{productCode}</span>
             </p>
           </li>
         </>

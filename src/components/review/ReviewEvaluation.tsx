@@ -3,7 +3,7 @@ export default function ReviewEvaluation({
   showRate = false,
   className,
 }: {
-  evaluationData: ReviewEvaluationType[]
+  evaluationData: ReviewEvaluationDataType[]
   showRate: boolean
   className?: string
 }) {

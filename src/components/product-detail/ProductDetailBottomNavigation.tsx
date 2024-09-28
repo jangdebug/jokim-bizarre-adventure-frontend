@@ -4,57 +4,67 @@ import LetterButton from '../brand/LetterButton'
 import { Button } from '../ui/button'
 import Counter from './Counter'
 import { postProduct } from '@/actions/product/postProductData'
+import { useRouter } from 'next/navigation'
 
-const productOptionsDummy: ProductOptionType[] = [
-  {
-    productCode: '2406262345',
-    optionCode: '1',
-    optionName: '사이즈',
-    optionValue: 's',
-    quantity: 0,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '2',
-    optionName: '사이즈',
-    optionValue: 'm',
-    quantity: 1,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '3',
-    optionName: '사이즈',
-    optionValue: 'l',
-    quantity: 3,
-    price: 400000,
-  },
-  {
-    productCode: '2406262345',
-    optionCode: '4',
-    optionName: '사이즈',
-    optionValue: 'xl',
-    quantity: 2,
-    price: 400000,
-  },
-]
+// const productOptionsDummy: ProductOptionType[] = [
+//   {
+//     productCode: '2406262345',
+//     optionCode: '1',
+//     optionName: '사이즈',
+//     optionValue: 's',
+//     quantity: 0,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '2',
+//     optionName: '사이즈',
+//     optionValue: 'm',
+//     quantity: 1,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '3',
+//     optionName: '사이즈',
+//     optionValue: 'l',
+//     quantity: 3,
+//     price: 400000,
+//   },
+//   {
+//     productCode: '2406262345',
+//     optionCode: '4',
+//     optionName: '사이즈',
+//     optionValue: 'xl',
+//     quantity: 2,
+//     price: 400000,
+//   },
+// ]
 
-export default function ProductDetailBottomNavigation({ productOptions }: { productOptions: ProductOptionType[] }) {
+interface productBasketProps {
+  productCode: string
+  productOptions: ProductOptionDataType[]
+  price: number
+}
+
+export default function ProductDetailBottomNavigation({ productCode, productOptions, price }: productBasketProps) {
+  const router = useRouter()
+
   // 모달 상태 관리
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [selectedOption, setSelectedOption] = useState<string>()
+  const [selectedOption, setSelectedOption] = useState<string>(productOptions[0].productOptionCode)
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
+  const [targetMaxQuantity, setTargetMaxQuantity] = useState<number>(productOptions[0].stock)
 
   // 버튼 클릭 시 모달 토글
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       const target = e.currentTarget.name
-      console.log('이미 열린 상태', target)
-      const res = await postProduct(target)
-      console.log('in prod-detail', res)
-      // 로직수행 후 성공하면
-      setIsOpen(() => false)
+      const res = await postProduct(target, productCode, selectedOption, String(currentQuantity))
+      if (res) {
+        setIsOpen(() => false)
+        router.push('/order')
+      }
     } else {
       setIsOpen(() => true)
     }
@@ -63,9 +73,10 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
     setIsOpen(() => false)
   }
 
-  const handleOptionClick = (selected: string) => {
+  const handleOptionClick = (selected: string, quantity: number) => {
     setCurrentQuantity(() => 1)
     setSelectedOption(() => selected)
+    setTargetMaxQuantity(() => quantity)
   }
 
   const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -101,6 +112,7 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
           </li>
         </ul>
       </nav>
+
       {/* modal */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 z-[50] flex justify-center items-end transition-opacity duration-500 ease-in-out 
@@ -117,31 +129,39 @@ export default function ProductDetailBottomNavigation({ productOptions }: { prod
           {/* options inner */}
           <div className="pb-[16px] flex flex-col gap-[16px]">
             {/* option name */}
-            <p className="text-[12px] leading-[20px] text-[#a0a0a0] underline">{productOptionsDummy[0].optionName}</p>
+            <p className="text-[12px] leading-[20px] text-[#a0a0a0] underline">옵션/사이즈</p>
             {/* optioin list */}
+
+            {/* with api */}
             <ul className="flex flex-row gap-[4px]">
-              {productOptionsDummy.map(
+              {productOptions.map(
                 (item) =>
-                  item.quantity > 0 && (
+                  item.stock > 0 && (
                     <LetterButton
                       className="w-[40px] h-[40px] text-[#131922]"
-                      key={item.optionCode}
-                      isSelected={selectedOption === item.optionCode}
-                      onClick={() => handleOptionClick(item.optionCode)}
-                      letter={item.optionValue}
+                      key={item.productOptionCode}
+                      isSelected={selectedOption === item.productOptionCode}
+                      onClick={() => handleOptionClick(item.productOptionCode, item.stock)}
+                      letter={item.sizeValues}
                     />
                   ),
               )}
             </ul>
             {/* counter */}
-            <Counter currentQuantity={currentQuantity} setCurrentQuantity={setCurrentQuantity} />
+            <Counter
+              currentQuantity={currentQuantity}
+              setCurrentQuantity={setCurrentQuantity}
+              maxQuantity={targetMaxQuantity}
+            />
 
             {/* price */}
             <p className="flex justify-between items-center">
               <span className="text-[14px] leading-[20px] text-[#404040]">판매가</span>
               <span className=" font-bold text-[#131922]">
                 {/* 해당 옵션의 가격을 정해줘야합니다. */}
-                <span className="text-[24px] leading-[30px] pr-[2px]">{(currentQuantity * 4000).toLocaleString()}</span>
+                <span className="text-[24px] leading-[30px] pr-[2px]">
+                  {(currentQuantity * price).toLocaleString()}
+                </span>
                 <span className="text-[16px]">원</span>
               </span>
             </p>
