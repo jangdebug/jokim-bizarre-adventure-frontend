@@ -13,14 +13,14 @@ export default function Review({
 }) {
   // todo 상품 id 에 따른 리뷰 데이터드을 가져와야 합니다.
   console.log('review', params)
-
+  const productCode = params.id
   return (
     <>
-      <ReviewSummarySection />
+      <ReviewSummarySection productCode={productCode} />
       <Divider />
-      <ReviewListSection />
+      <ReviewListSection productCode={productCode} />
       <div className="px-[24px] pt-[12px] pb-[20px]">
-        <Link href={`/reviews/${params.id}`} className="w-full h-[48px] border flex items-center justify-center">
+        <Link href={`/reviews/${productCode}`} className="w-full h-[48px] border flex items-center justify-center">
           <p className="text-[14px] leading-[24px] tracking-[0.023rem]">리뷰 전체 보기</p> <RightArrowIcon />
         </Link>
       </div>

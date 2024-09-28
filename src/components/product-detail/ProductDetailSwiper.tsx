@@ -7,7 +7,7 @@ import 'swiper/css/effect-creative'
 import { Pagination, Navigation } from 'swiper/modules'
 import MainSwiperItem from './ProductDetailSwiperItem'
 
-export default function ProductDetailSwiper({ productDetailImages }: { productDetailImages: string[] }) {
+export default function ProductDetailSwiper({ productDetailImages }: { productDetailImages: ProductMediaType[] }) {
   const swiperRef = useRef<any>(null)
 
   return (
@@ -34,9 +34,9 @@ export default function ProductDetailSwiper({ productDetailImages }: { productDe
         modules={[Pagination, Navigation]}
         className="w-full"
       >
-        {productDetailImages.map((url, index) => (
-          <SwiperSlide key={index} className="relative">
-            <MainSwiperItem url={url} />
+        {productDetailImages.map((item) => (
+          <SwiperSlide key={item.mediaCode} className="relative">
+            <MainSwiperItem url={item.mediaUrl} />
           </SwiperSlide>
         ))}
       </Swiper>

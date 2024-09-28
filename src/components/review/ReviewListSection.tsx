@@ -1,13 +1,13 @@
-import { reviewListData } from '@/datas/dummy/review/ReviewData'
 import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
 import ReviewIcon from '../icons/review/ReviewIcon'
 
 import ReviewListItem from './ReviewListItem'
+import { getReviewList } from '@/actions/review/getReviewData'
 
-export default function ReviewListSection() {
-  const reviewList: ReviewType[] = reviewListData
-
+export default async function ReviewListSection({ productCode }: { productCode: string }) {
+  const reviews: ReviewDataType[] = await getReviewList(productCode, 0, 5)
   // 리뷰들에 대한 사용자의 좋아요 상태를 받아와야합니다.
+  console.log('in review', reviews)
 
   return (
     <section>
@@ -24,8 +24,8 @@ export default function ReviewListSection() {
       </div>
       <>
         <ul>
-          {reviewList.map((item) => (
-            <ReviewListItem key={item.reviewId} reviewData={item} />
+          {reviews.map((item) => (
+            <ReviewListItem key={item.reviewCode} review={item} />
           ))}
         </ul>
       </>

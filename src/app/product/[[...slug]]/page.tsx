@@ -3,8 +3,6 @@ import { getProductCodeList, getProductListData } from '@/actions/product/getPro
 import ProductStickyHeader from '@/components/layout/ProductStickyHeader'
 import FilterBar from '@/components/product/FilterBar'
 import ProductList from '@/components/product/ProductList'
-import ProductListSectionHeader from '@/components/product/ProductListSectionHeader'
-import { Suspense } from 'react'
 
 interface ProductSearchParamType {
   code: string
@@ -22,25 +20,18 @@ export default async function Product({
   const slugArray = Array.isArray(slug) ? slug : [slug]
   const decodedSlugArray = slugArray.map((element) => decodeURIComponent(element))
   const parentCategoryName = decodedSlugArray[decodedSlugArray.length - 1]
-  console.log('decoded', decodedSlugArray)
 
-  const productList: ProductCardType[] = await getProductListData(searchParams.code)
   const subCatgories: CategoryType[] = await getChildCategory(searchParams.code)
 
-  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code, 1)
+  const productCodes: ProductCodeType[] = await getProductCodeList(searchParams.code, 0)
   console.log('in page', productCodes)
 
   return (
     <main>
       <ProductStickyHeader parentCategoryName={parentCategoryName} subCategories={subCatgories} />
       <FilterBar />
-      <ProductListSectionHeader currentViewMode={searchParams.type} />
-      <ProductList
-        viewMode={searchParams.type}
-        productList={productList}
-        intialProductCodes={productCodes}
-        categoryCode={searchParams.code}
-      />
+      {/* <ProductListSectionHeader currentViewMode={searchParams.type} /> */}
+      <ProductList intialProductCodes={productCodes} categoryCode={searchParams.code} />
     </main>
   )
 }
