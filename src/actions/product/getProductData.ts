@@ -23,7 +23,13 @@ export async function getProductCodeList(mainCategoryCode: string, pageNo?: numb
   }
 }
 
-// api 명세 기반 데이터 타입 선정
+export async function getProductOptions(productCode: string): Promise<ProductOptionType[]> {
+  console.log('in server getproductCode', productCode)
+
+  return []
+}
+
+//////////////////////////// api 명세 기반 데이터 타입 선정
 export async function getProductItemData(productCode: string): Promise<ProductCardDataType | null> {
   const res = await fetch(`${process.env.API_BASE_URL}/v1/products/product-code-list?productCode=${productCode}`, {
     method: 'GET',
@@ -131,8 +137,19 @@ export async function getProductImageData(productCode: string): Promise<ProductM
   }
 }
 
-export async function getProductOptions(productCode: string): Promise<ProductOptionType[]> {
-  console.log('in server getproductCode', productCode)
+export async function getProductOption(productCode: string): Promise<ProductOptionDataType[]> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/products-options/${productCode}`, {
+    method: 'GET',
+  })
 
-  return []
+  if (res.ok) {
+    const data = (await res.json()).result
+    // console.log('get product data', data)
+
+    return data
+  } else {
+    console.error('error with getting product options')
+
+    return []
+  }
 }

@@ -75,3 +75,10 @@ interface ProductMediaType {
   mediaType: string
   isThumbnail: boolean
 }
+
+interface ProductOptionDataType {
+  productOptionCode: string
+  sizeValues: string
+  colorValues: string
+  stock: number
+}

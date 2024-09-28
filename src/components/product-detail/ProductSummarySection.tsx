@@ -9,7 +9,8 @@ import { getReviewSummaryData } from '@/actions/review/getReviewData'
 
 export default async function ProductSummarySection({ productCode }: { productCode: string }) {
   const productSummary: ProductSummaryDataType = await getProductSummaryData(productCode)
-  const brandName: string = await getBrandName(productCode)
+  const brandName: string = await getBrandName(productSummary.brandCode)
+
   const discountedPrice = productSummary.price - productSummary.price * (productSummary.discountRate / 100)
   const reviewCount = await getProductReviewCount(productCode)
   const reviewSummary = await getReviewSummaryData(productCode)

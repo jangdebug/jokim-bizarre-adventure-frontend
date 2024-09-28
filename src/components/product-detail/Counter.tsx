@@ -4,21 +4,27 @@ import PlusButtonIcon from '../icons/basket/PlusButtonIcon'
 interface CounterProps {
   currentQuantity: number
   setCurrentQuantity: React.Dispatch<React.SetStateAction<number>>
+  maxQuantity: number
 }
 
-export default function Counter({ currentQuantity, setCurrentQuantity }: CounterProps) {
+export default function Counter({ currentQuantity, setCurrentQuantity, maxQuantity }: CounterProps) {
   const handleMinus = () => {
     setCurrentQuantity((prevValue) => Math.max(prevValue - 1, 1)) // 1보다 작아지지 않도록 설정
   }
 
   const handlePlus = () => {
-    setCurrentQuantity((prevValue) => prevValue + 1) // 값 증가
+    if (currentQuantity < maxQuantity) setCurrentQuantity((prevValue) => prevValue + 1) // 값 증가
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value)
+    console.log('newval', newValue)
+
     if (newValue >= 1) {
       setCurrentQuantity(newValue) // 1보다 크거나 같으면 상태 업데이트
+    }
+    if (newValue > maxQuantity) {
+      setCurrentQuantity(maxQuantity)
     }
   }
 
