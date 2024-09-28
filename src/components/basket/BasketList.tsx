@@ -1,7 +1,7 @@
 'use client'
 
 import { basketListType } from '@/types/BasketTypes'
-import React from 'react'
+import React, { useState } from 'react'
 import Divider from '../ui/Divider'
 import BasketNoItem from './BasketNoItem'
 import BasketItem from './BasketItem'
@@ -17,6 +17,8 @@ interface basketProps {
 }
 
 export default function BasketList({ basketListDatas }: basketProps) {
+  const [productPrice, setProductPrice] = useState<number>(0)
+
   const handleCheckAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     basketListDatas.map((item) => basketCheckUpdate(item, e.target.checked))
   }
@@ -28,7 +30,7 @@ export default function BasketList({ basketListDatas }: basketProps) {
 
   const totalAmount: number = basketListDatas
     .filter((item) => item.isChecked)
-    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .reduce((total, item) => total + productPrice * item.quantity, 0)
 
   return (
     <section>
@@ -68,7 +70,7 @@ export default function BasketList({ basketListDatas }: basketProps) {
                 </fieldset>
                 <ThinClose />
               </div>
-              <BasketItem item={item} />
+              <BasketItem item={item} productPrice={productPrice} setProductPrice={setProductPrice} />
             </li>
           ))
         ) : (

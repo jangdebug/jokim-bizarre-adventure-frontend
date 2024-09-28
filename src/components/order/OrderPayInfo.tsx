@@ -19,16 +19,19 @@ export default function OrderPayInfo({ basketListDatas }: { basketListDatas: bas
         <div className="pb-[16px] border-black border-b-[1px]">
           <p className="my-[12px] font-bold flex justify-between">
             <span>주문 금액</span>
-            <span>{totalAmount.toLocaleString()} 원</span>
+            {/* <span>{totalAmount.toLocaleString()} 원</span> */}
+            <span>19,000 원</span>
           </p>
           <div className="pl-[12px] border-l-[2px] text-sm text-gray-500">
             <p className="mb-[8px] flex justify-between">
               <span>상품 금액</span>
-              <span>{totalAmount.toLocaleString()} 원</span>
+              {/* <span>{totalAmount.toLocaleString()} 원</span> */}
+              <span>19,000 원</span>
             </p>
             <p className="flex justify-between">
               <span>배송비</span>
-              <span>{payDelivery} 원</span>
+              {/* <span>{payDelivery} 원</span> */}
+              <span>19,000 원</span>
             </p>
           </div>
         </div>
@@ -36,7 +39,8 @@ export default function OrderPayInfo({ basketListDatas }: { basketListDatas: bas
         <div className="mt-[16px] mb-[40px] text-xl font-bold flex justify-between">
           <p>최종 결제금액</p>
           <p className="text-[#e19c5b]">
-            {(totalAmount - payDelivery).toLocaleString()} <span className="text-base">원</span>
+            {/* {(totalAmount - payDelivery).toLocaleString()} <span className="text-base">원</span> */}
+            19,000 <span className="text-base">원</span>
           </p>
         </div>
       </div>
@@ -48,7 +52,8 @@ export default function OrderPayInfo({ basketListDatas }: { basketListDatas: bas
         <div className="mt-[12px] mb-[24px] text-sm flex justify-between">
           <p>S.I.포인트</p>
           <p className="font-bold">
-            {(Math.round(((totalAmount - payDelivery) * 0.005) / 10) * 10).toLocaleString()} P
+            {/* {(Math.round(((totalAmount - payDelivery) * 0.005) / 10) * 10).toLocaleString()} P */}
+            100 P
           </p>
         </div>
       </div>

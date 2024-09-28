@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function EventListTitle() {
-  const temp = 111
+  const temp = 412
 
   return (
     <div className="py-2 px-6 mb-1 flex items-center justify-between h-full font-bold">

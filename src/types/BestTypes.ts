@@ -13,11 +13,23 @@ export interface BestFilterTypes {
 
 export interface BestItemType {
   productCode: string
-  rank: string
-  productImageUrl: string
-  brandName: string
+  rankValue: number
   productName: string
-  discount?: string | undefined
-  price: number
-  isWishList: boolean
+  discountPrice: number
+  discountRate: number
+  brandCode: string
+  englishName: string
+  updateAt: string
+}
+
+export interface bestImageType {
+  mediaCode: string
+  mediaUrl: string
+  mediaType: string
+}
+
+export interface bestBrandType {
+  englishName: string
+  koreanName: string
+  logoMediaUrl: string
 }

@@ -5,7 +5,7 @@ export async function getMyReviewCount() {
   const res = myReviewCountData as reviewCountType
   // const res = await fetch(`/mypage/review/all-count`)
   // if(!res.ok){
-  //   throw new Error('Fail to fetch')
+  //   console.log('Fail to fetch')
   // }
   // const data = (await res.json()) as commonResType;
   //return data.data as writenReviewType[];
@@ -18,7 +18,7 @@ export async function getAbleReview(range: string): Promise<AbleReviewType[]> {
   console.log(`getAbleReview -> `, range)
   // const res = await fetch(`/mypage/not-reviewed/{range}`)
   // if(!res.ok){
-  //   throw new Error('Fail to fetch')
+  //   console.log('Fail to fetch')
   // }
   // const data = (await res.json()) as commonResType;
   //return data.data as writenReviewType[];
@@ -31,7 +31,7 @@ export async function getMyWritenReview(range: string): Promise<writenReviewType
   //console.log(`getMyWritenReview -> `, range)
   // const res = await fetch(`/mypage/review/{range}`)
   // if(!res.ok){
-  //   throw new Error('Fail to fetch')
+  //   console.log('Fail to fetch')
   // }
   // const data = (await res.json()) as commonResType;
   //return data.data as writenReviewType[];
