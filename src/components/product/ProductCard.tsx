@@ -13,7 +13,7 @@ import {
 } from '@/actions/product/getProductData'
 
 export default function ProductCard({
-  viewMode = 0,
+  viewMode,
   productCode,
   showMoreOptions = true,
 }: {
@@ -27,33 +27,45 @@ export default function ProductCard({
   const [brandName, setBrandName] = useState<string>('')
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const product = await getProductItemData(productCode.productCode)
-        const thumbnailUrl = await getProductThumbnailUrl(productCode.productCode)
-        const reviewCount = await getProductReviewCount(productCode.productCode)
+    let isMounted = true
 
-        let brand = ''
-        if (product) {
-          brand = await getBrandName(product.brandCode)
+    Promise.all([
+      getProductItemData(productCode.productCode),
+      getProductThumbnailUrl(productCode.productCode),
+      getProductReviewCount(productCode.productCode),
+    ])
+      .then(([product, thumbnailUrl, reviewCount]) => {
+        if (isMounted) {
+          setProductData(product)
+          setProductThumbnailUrl(thumbnailUrl)
+          setProductReviewCount(reviewCount)
+
+          if (product) {
+            getBrandName(product.brandCode).then((brand) => {
+              if (isMounted) {
+                setBrandName(brand)
+              }
+            })
+          }
         }
-
-        setProductData(product)
-        setProductThumbnailUrl(thumbnailUrl)
-        setProductReviewCount(reviewCount)
-        setBrandName(brand)
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error('Failed to fetch product data:', error)
-      }
-    }
+      })
 
-    fetchData()
+    return () => {
+      isMounted = false // 언마운트 시 상태 업데이트 방지
+    }
   }, [productCode.productCode])
 
   if (!productData || !productThumbnailUrl) {
     return (
       <Link href={`/product-detail/${productCode.productCode}`}>
-        <div className="w-full h-[380px] p-[4px]">
+        <div
+          className={`w-full ${
+            viewMode === 0 ? 'h-[360px]' : viewMode === 1 ? 'h-[132px]' : viewMode === 2 ? 'h-[530px]' : ''
+          } p-[4px]`}
+        >
           <div className="w-full h-full bg-black bg-opacity-[0.03]"></div>
         </div>
       </Link>
@@ -63,7 +75,7 @@ export default function ProductCard({
   return (
     <li className={`w-full relative ${viewMode === 1 ? '' : 'mb-[36px]'}`}>
       <Link href={`/product-detail/${productData.productCode}`}>
-        <div className="relative h-[267px] flex items-center ">
+        <div className={`relative ${viewMode === 0 ? 'h-[267px]' : ''} flex items-center`}>
           <div className="absolute top-0 left-0 w-full h-full z-[5] bg-black bg-opacity-[0.03]" />
           <Image
             src={productThumbnailUrl}
@@ -100,11 +112,6 @@ export default function ProductCard({
             )}
           </div>
         )}
-        {/* 신상 여부 */}
-        {/* {showMoreOptions &&
-            (viewMode == 1 ? null : productCard.isNew ? (
-              <p className="pl-[8px] mt-[-8px] text-[12px] leading-[18px] font-bold text-[#d99c63]">신상</p>
-            ) : null)} */}
       </Link>
       {viewMode !== 1 && (
         <div className="absolute top-[8px] right-[8px] z-10">

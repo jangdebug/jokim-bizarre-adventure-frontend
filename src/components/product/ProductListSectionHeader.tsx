@@ -1,25 +1,16 @@
 'use client'
 import ViewTwoIcon from '../icons/product/ViewTwoIcon'
 import SortIcon from '../icons/product/SortIcon'
-import { useState } from 'react'
 import ViewFourIcon from '../icons/product/ViewFourIcon'
 import ViewOneIcon from '../icons/product/ViewOneIcon'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export default function ProductListSectionHeader({ currentViewMode = 0 }: { currentViewMode: number }) {
-  const [viewMode, SetViewMode] = useState<number>(currentViewMode)
-  const currentPath = usePathname()
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const code = searchParams.get('code')
-
-  const handleViewModeChange = () => {
-    SetViewMode((prev) => (prev + 1 > 2 ? 0 : prev + 1))
-    console.log(currentPath)
-
-    router.replace(`${currentPath}?code=${code}&type=${viewMode + 1 > 2 ? 0 : viewMode + 1}`)
-  }
-
+export default function ProductListSectionHeader({
+  currentViewMode = 0,
+  handleViewMode,
+}: {
+  currentViewMode: number
+  handleViewMode: () => void
+}) {
   return (
     <header className={`bg-white pl-[24px] pr-[16px] mt-[16px] flex items-center justify-between h-[56px] `}>
       <span className="header-font text-[22px] leading-[40px] font-[900] text-[#131922]">All Product</span>
@@ -30,12 +21,12 @@ export default function ProductListSectionHeader({ currentViewMode = 0 }: { curr
           </button>
         </li>
         <li>
-          <button onClick={handleViewModeChange}>
-            {viewMode == 0 ? (
+          <button onClick={handleViewMode}>
+            {currentViewMode == 0 ? (
               <ViewTwoIcon />
-            ) : viewMode == 1 ? (
+            ) : currentViewMode == 1 ? (
               <ViewFourIcon />
-            ) : viewMode == 2 ? (
+            ) : currentViewMode == 2 ? (
               <ViewOneIcon />
             ) : null}
           </button>

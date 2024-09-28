@@ -2,28 +2,26 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ProductCard from './ProductCard'
 import { getProductCodeList } from '@/actions/product/getProductData'
+import ProductListSectionHeader from './ProductListSectionHeader'
 
 export default function ProductList({
-  viewMode = 0,
-  productList: initialProductList,
   intialProductCodes,
   categoryCode,
 }: {
-  viewMode?: number
-  productList: ProductCardType[]
   intialProductCodes: ProductCodeType[]
   categoryCode: string
 }) {
   const [productCodeList, setProductCodeList] = useState<ProductCodeType[]>(intialProductCodes)
   const [pageNo, setPageNo] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
   const observerRef = useRef<HTMLDivElement | null>(null)
+  const [viewMode, setViewMode] = useState<number>(0)
 
-  // IntersectionObserver 설정
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !loading) {
+        if (entries[0].isIntersecting && !loading && hasMore) {
           fetchMoreProducts()
         }
       },
@@ -38,25 +36,36 @@ export default function ProductList({
     return () => {
       if (currentObserver) observer.unobserve(currentObserver)
     }
-  }, [loading])
+  }, [loading, hasMore])
 
-  // 상품 데이터 가져오기
-  const fetchMoreProducts = async () => {
+  const fetchMoreProducts = () => {
+    if (loading || !hasMore) return
+
     setLoading(true)
-    try {
-      const newProducts = await getProductCodeList(categoryCode, pageNo + 1)
-      setProductCodeList((prevList) => [...prevList, ...newProducts])
-      setPageNo((prevPageNo) => prevPageNo + 1)
-    } catch (error) {
-      console.error('상품을 불러오는 중 오류 발생:', error)
-      // 사용자에게 오류 메시지 표시할 수 있음
-    } finally {
-      setLoading(false)
-    }
+    getProductCodeList(categoryCode, pageNo + 1)
+      .then((newProducts) => {
+        if (newProducts.length === 0) {
+          setHasMore(false)
+        } else {
+          setProductCodeList((prevList) => [...prevList, ...newProducts])
+          setPageNo((prevPageNo) => prevPageNo + 1)
+        }
+      })
+      .catch((error) => {
+        console.error('상품을 불러오는 중 오류 발생:', error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
+
+  const handleViewModeChange = () => {
+    setViewMode((prev) => (prev + 1 > 2 ? 0 : prev + 1))
   }
 
   return (
     <>
+      <ProductListSectionHeader currentViewMode={viewMode} handleViewMode={handleViewModeChange} />
       <ul
         className={`grid 
           ${
@@ -77,6 +86,9 @@ export default function ProductList({
 
       {/* 로딩 표시 */}
       {loading && <div className="text-center p-4">LOADING...</div>}
+
+      {/* 더 이상 불러올 데이터가 없으면 표시 */}
+      {!hasMore && <div className="text-center p-4">상품이 존재하지 않습니다.</div>}
 
       {/* 스크롤 감지용 */}
       <div ref={observerRef} className="w-full h-[1px]"></div>
