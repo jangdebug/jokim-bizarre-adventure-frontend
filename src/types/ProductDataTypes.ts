@@ -50,6 +50,13 @@ interface ProductCardDataType {
   productCode: string
   productName: string
   discountRate: number
+  price: number
+  brandCode: string
+}
+interface ProductSummaryDataType {
+  productCode: string
+  productName: string
+  discountRate: number
   amount: number
   price: number
   detail: string
@@ -60,4 +67,11 @@ interface BrandDataType {
   englishName: string | null
   koreanName: string | null
   logoMediaUrl: string | null
+}
+
+interface ProductMediaType {
+  mediaCode: string
+  mediaUrl: string
+  mediaType: string
+  isThumbnail: boolean
 }

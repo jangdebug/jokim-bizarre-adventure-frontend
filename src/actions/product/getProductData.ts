@@ -25,7 +25,7 @@ export async function getProductCodeList(mainCategoryCode: string, pageNo?: numb
 
 // api 명세 기반 데이터 타입 선정
 export async function getProductItemData(productCode: string): Promise<ProductCardDataType | null> {
-  const res = await fetch(`${process.env.API_BASE_URL}/v1/products/${productCode}`, {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/products/product-code-list?productCode=${productCode}`, {
     method: 'GET',
   })
 
@@ -40,6 +40,30 @@ export async function getProductItemData(productCode: string): Promise<ProductCa
     return null
   }
 }
+export async function getProductSummaryData(productCode: string): Promise<ProductSummaryDataType> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/products/${productCode}`, {
+    method: 'GET',
+  })
+
+  if (res.ok) {
+    const data = (await res.json()).result
+    return data as ProductSummaryDataType // 타입 단언
+  } else {
+    console.error('Error getting product summary data')
+
+    // 기본값 반환
+    return {
+      productCode: '',
+      productName: '',
+      discountRate: 0,
+      amount: 0,
+      price: 0,
+      detail: '',
+      brandCode: '',
+    }
+  }
+}
+
 export async function getProductThumbnailUrl(productCode: string): Promise<string | null> {
   const res = await fetch(`${process.env.API_BASE_URL}/v1/product-media/thumbnail/${productCode}`, {
     method: 'GET',
@@ -90,8 +114,21 @@ export async function getBrandName(brandCode: string): Promise<string> {
   }
 }
 
-export async function getProductImageData(): Promise<any[]> {
-  return []
+export async function getProductImageData(productCode: string): Promise<ProductMediaType[]> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/product-media/${productCode}`, {
+    method: 'GET',
+  })
+
+  if (res.ok) {
+    const data = (await res.json()).result
+    // console.log('get product data', data)
+
+    return data
+  } else {
+    console.error('error with getting product images')
+
+    return []
+  }
 }
 
 export async function getProductOptions(productCode: string): Promise<ProductOptionType[]> {

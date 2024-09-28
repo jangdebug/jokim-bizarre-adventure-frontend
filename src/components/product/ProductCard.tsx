@@ -99,7 +99,7 @@ export default function ProductCard({
                 </span>
               )}
               <span className="text-[12px] leading-[18px] tracking-[-0.06px]">
-                {productData.price.toLocaleString()}
+                {(productData.price - productData.price * (productData.discountRate / 100)).toLocaleString()}
               </span>
             </span>
 

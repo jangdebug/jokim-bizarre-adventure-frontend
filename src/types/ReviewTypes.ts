@@ -30,3 +30,15 @@ interface ReviewSummaryType {
   evaluation: ReviewEvaluationType[]
   image: ReviewImageType[]
 }
+//////////////////////// api connection
+
+interface ReviewEvaluationDataType {
+  name: string
+  value: string
+  rate?: number
+}
+
+interface ReviewSummaryDataType {
+  starAverage: number
+  evaluation: ReviewEvaluationDataType[]
+}

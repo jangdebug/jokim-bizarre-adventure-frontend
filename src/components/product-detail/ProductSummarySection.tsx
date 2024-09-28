@@ -4,8 +4,15 @@ import LikeButton from '../ui/LikeButton'
 import ShareIcon from '../icons/product-detail/ShareIcon'
 import QuestionIcon from '../icons/product-detail/QuestionIcon'
 import StarAverage from '../ui/StarAverage'
+import { getBrandName, getProductReviewCount, getProductSummaryData } from '@/actions/product/getProductData'
+import { getReviewSummaryData } from '@/actions/review/getReviewData'
 
-export default function ProductSummarySection({ productDetailData }: { productDetailData: ProductDetailType }) {
+export default async function ProductSummarySection({ productCode }: { productCode: string }) {
+  const productSummary: ProductSummaryDataType = await getProductSummaryData(productCode)
+  const brandName: string = await getBrandName(productCode)
+  const discountedPrice = productSummary.price - productSummary.price * (productSummary.discountRate / 100)
+  const reviewCount = await getProductReviewCount(productCode)
+  const reviewSummary = await getReviewSummaryData(productCode)
   return (
     <section className="px-[24px] pt-[12px] pb-[48px] bg-white">
       <>
@@ -13,7 +20,7 @@ export default function ProductSummarySection({ productDetailData }: { productDe
           <li className="flex">
             <Link href={'/brand'}>
               <ul className="flex items-center py-[11px] pr-[5px]">
-                <li className="text-[16px] font-bold leading-[20px]">{productDetailData.brandName}</li>
+                <li className="text-[16px] font-bold leading-[20px]">{brandName}</li>
                 <li>
                   <RightArrowIcon />
                 </li>
@@ -24,7 +31,7 @@ export default function ProductSummarySection({ productDetailData }: { productDe
           <li className="absolute translate-y-[-12px] right-[-10px] top-[50%] flex items-center justify-center ">
             <ul className="flex gap-[8px]">
               <li className="h-[24px]">
-                <LikeButton type={'product'} targetId={productDetailData.productId} />
+                <LikeButton type={'product'} targetId={productSummary.productCode} />
               </li>
               <li>
                 <ShareIcon />
@@ -35,20 +42,20 @@ export default function ProductSummarySection({ productDetailData }: { productDe
       </>
 
       <>
-        <p className="py-[4px] text-[18px] leading-[24px] text-[#404040]">{productDetailData.name}</p>
+        <p className="py-[4px] text-[18px] leading-[24px] text-[#404040]">{productSummary.productName}</p>
 
         <p className="flex items-center gap-[7px] mt-[2px] py-[10px]">
-          {productDetailData.discountRate > 0 && (
-            <span className="text-[22px] text-[#d99c63] font-bold">{productDetailData.discountRate}%</span>
+          {productSummary.discountRate > 0 && (
+            <span className="text-[22px] text-[#d99c63] font-bold">{productSummary.discountRate}%</span>
           )}
 
           <span className="flex gap-[3px]">
-            <b className="text-[22px] leading-[26px]">{productDetailData.price.toLocaleString()}</b>
+            <b className="text-[22px] leading-[26px]">{discountedPrice.toLocaleString()}</b>
             <span className="text-[16px] leading-20px text-[#141a23]">원</span>
           </span>
-          {productDetailData.discountRate > 0 && (
+          {productSummary.discountRate > 0 && (
             <del className="flex gap-[4px] items-center text-[16px] leading-20px] text-[#a0a0a0]">
-              {productDetailData.rawPrice.toLocaleString()}
+              {productSummary.price.toLocaleString()}
               <QuestionIcon />
             </del>
           )}
@@ -57,12 +64,12 @@ export default function ProductSummarySection({ productDetailData }: { productDe
 
       <>
         <div>
-          {productDetailData.isNew && (
+          {/* {productDetailData.isNew && (
             <span className="align-text-top bg-[#929292] inline-flex text-white h-[20px] px-[4px] items-center text-[10px] font-[500] m-[1px]">
               신상
             </span>
-          )}
-          {productDetailData.discountRate > 0 && (
+          )} */}
+          {productSummary.discountRate > 0 && (
             <span className="align-text-top bg-[#d99c63] inline-flex text-white h-[20px] px-[4px] items-center text-[10px] font-[500] m-[1px]">
               할인
             </span>
@@ -72,8 +79,8 @@ export default function ProductSummarySection({ productDetailData }: { productDe
 
       <>
         <StarAverage
-          starAverage={productDetailData.starAverage}
-          reviewCount={productDetailData.reviewCount}
+          starAverage={reviewSummary.starAverage}
+          reviewCount={reviewCount}
           size={12}
           className="mt-[32px]"
         />
