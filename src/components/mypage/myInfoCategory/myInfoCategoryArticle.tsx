@@ -31,9 +31,6 @@ export default function MyInfoCategoryArticle({ category }: { category: myCatego
         {category.item && category.item.length > 0
           ? category.item.map((item, itemIndex) => <MyInfoCategoryItem item={item} key={itemIndex} />)
           : null}
-        <li>
-          <MyLogOut />
-        </li>
       </ul>
     </div>
   )

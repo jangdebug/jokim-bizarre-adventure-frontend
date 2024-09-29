@@ -1,5 +1,5 @@
 import { myWishProductType } from '@/types/MyPageTypes'
-import React from 'react'
+import MyWishProductItem from './MyWishProductItem'
 
 interface wishProductProps {
   wishProductDatas: myWishProductType[]
@@ -7,8 +7,10 @@ interface wishProductProps {
 
 export default function MyWishProducts({ wishProductDatas }: wishProductProps) {
   return (
-    <>
-      <div>Product 상품 목록 컴포넌트</div>
-    </>
+    <div>
+      <ul className="w-full">
+        {wishProductDatas && wishProductDatas.map((item) => <MyWishProductItem productItem={item} key={item.id} />)}
+      </ul>
+    </div>
   )
 }

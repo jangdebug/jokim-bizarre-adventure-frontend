@@ -1,5 +1,3 @@
-import exp from 'constants'
-
 export interface basketTabType {
   id: number
   name: string
@@ -14,13 +12,9 @@ export interface basketPointType {
 
 export interface basketListType {
   productCode: string
-  brandName: string
-  productImageUrl: string
-  productName: string
-  productOption: string
+  productOptionCode: string
+  basketCode: string
   quantity: number
-  price: number
-  isWished: boolean
   isChecked: boolean
 }
 

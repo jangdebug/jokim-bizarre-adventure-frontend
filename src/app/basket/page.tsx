@@ -13,6 +13,7 @@ export default async function Basket() {
     <main>
       <BasketNavPoint basketPoint={basketPoint} />
       <MyTab tabData={basketTabDatas} />
+
       <BasketList basketListDatas={basketListDatas} />
     </main>
   )
