@@ -1,11 +1,15 @@
 export interface orderDeliveryType {
   addressCode: string
   addressName: string
-  recipient: string
-  addressRoad: string
-  addressDetail: string
   dispCellNo: string
+  recipient: string
   phone: string
+  zipCode: string
+  addressRoad: string
+  addressJibeon: string
+  addressDetail: string
+  isDefault: boolean
+  deliveryPolicy: boolean
 }
 
 export interface orderMessageType {

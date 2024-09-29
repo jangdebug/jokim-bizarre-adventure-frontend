@@ -48,21 +48,28 @@ export async function getBasketListAction(): Promise<basketListType[]> {
 }
 
 ////////////////////// 장바구니 상품 체크 //////////////////////
-export const basketCheckUpdate = async (item: basketListType, checked: boolean) => {
-  console.log('item -> ', item)
-  console.log('checked -> ', checked)
-  // 'use server'
-  // const res = fetch(`${process.env.API_BASE_URL}/basket/changeCheck`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     productCode: item.productCode,
-  //     isChecked: checked,
-  //   }),
-  // })
-  // revalidateTag('checkBasket')
+export async function basketCheckUpdate(basketCode: string, checked: boolean) {
+  'use server'
+
+  const auth = await getSessionAuth()
+  if (!auth) return
+
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/basket/check`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${auth.accessToken}`,
+    },
+    body: JSON.stringify({
+      basketCode: basketCode,
+      isChecked: !checked,
+    }),
+  })
+
+  if (!res.ok) {
+    console.error('체크 상태 변경 실패:', res)
+    return
+  } else revalidateTag('checkBasket')
 }
 
 ////////////////////// 장바구니 수량 변경 //////////////////////
@@ -98,11 +105,7 @@ export async function basketQuantityChange(basketCode: string, quantity: number,
   if (!res.ok) {
     console.error('수량 변경 실패:', res)
     return
-  }
-
-  //const data = await res.json() // 응답 데이터 처리
-  //console.log('basketQuantityChange -> ', data)
-  else {
+  } else {
     revalidateTag('changeQuantity')
   }
 }
@@ -164,6 +167,28 @@ export async function getBasketProduct(productCode: string): Promise<basketProdu
   }
 
   return (await res.json()).result as basketProductType
+}
+
+////////////////////// 장바구니 상품 옵션 정보 //////////////////////
+export async function getBasketProductOption(productOptionCode: string): Promise<string> {
+  const auth = await getSessionAuth()
+  if (!auth) return ''
+
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/basket/option-info/${productOptionCode}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${auth.accessToken}`,
+    },
+  })
+
+  if (!res.ok) {
+    console.log('Failed to fetch getBasketProductOption')
+    return ''
+  }
+
+  const data = (await res.json()).result.optionInfo
+  return data
 }
 
 ////////////////////// 장바구니 상품 이미지 //////////////////////
@@ -241,4 +266,33 @@ export async function getTotalPrice(items: basketListType[]): Promise<number> {
   }
 
   return totalPrice
+}
+
+////////////////////// 장바구니 상품 삭제 //////////////////////
+export async function basketDeleteAction(basketCode: string | string[]): Promise<boolean> {
+  'use server'
+
+  const auth = await getSessionAuth()
+  if (!auth) return false
+
+  const basketCodes = Array.isArray(basketCode) ? basketCode : [basketCode]
+
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/basket`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${auth.accessToken}`,
+    },
+    body: JSON.stringify({
+      basketCodeList: basketCodes,
+    }),
+  })
+
+  if (!res.ok) {
+    console.error('상품 삭제 실패:', res)
+    return false
+  } else {
+    revalidateTag('delBasket')
+    return true
+  }
 }

@@ -3,7 +3,7 @@ import MinusButtonIcon from '../icons/basket/MinusButtonIcon'
 import PlusButtonIcon from '../icons/basket/PlusButtonIcon'
 import CouponDownloadIcon from '../icons/basket/CouponDownloadIcon'
 import { basketListType } from '@/types/BasketTypes'
-import { getBasketProduct } from '@/actions/basket/getBasketListData'
+import { getBasketProduct, getBasketProductOption } from '@/actions/basket/getBasketListData'
 import BasketItemQuantity from './BasketItemQuantity'
 
 interface BasketItemProps {
@@ -12,12 +12,13 @@ interface BasketItemProps {
 
 export default async function BasketItemData({ item }: BasketItemProps) {
   const productData = await getBasketProduct(item.productCode)
+  const productOption = await getBasketProductOption(item.productOptionCode)
 
   return (
     <div className="flex flex-col flex-grow">
       <div className="flex flex-col justify-between pb-4 ">
         <p className="flex gap-3 items-center mb-[64px]">
-          <span className="text-xs text-gray-500">{'xl / 500'}</span>
+          <span className="text-xs text-gray-500">{productOption}</span>
         </p>
 
         <div className="flex justify-between">
