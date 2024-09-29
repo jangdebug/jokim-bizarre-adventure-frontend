@@ -17,7 +17,8 @@ export default function OrderProduct({ basketListDatas }: { basketListDatas: bas
       <div className="my-[16px] flex justify-between">
         <p className="text-xl font-bold">주문상품</p>
         <div className="flex items-center">
-          <p className="text-[14px] text-gray-500 mr-2">{basketListDatas[0].productName} 외 1건</p>
+          {/* <p className="text-[14px] text-gray-500 mr-2">{basketListDatas[0].productName} 외 1건</p> */}
+          <p className="text-[14px] text-gray-500 mr-2">아카시아직사각도마 외 1건</p>
           <button type="button" onClick={toggleDetailHandler}>
             {isDetail ? (
               <Image src={UpArrowIcon} alt="upArrowIcon" />

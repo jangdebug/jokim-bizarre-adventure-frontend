@@ -1,13 +1,13 @@
 import { orderCustomerType, orderDeliveryType, orderMessageType, orderPhoneType } from '@/types/OrderTypes'
 
 export const orderDeliveryData: orderDeliveryType = {
-  addressCode: '111',
-  addressName: 'baesongji',
-  recipient: 'who',
-  addressRoad: '강원 속초시 교동로 44-5',
-  addressDetail: '3',
+  addressCode: '134712',
+  addressName: '조김클럽',
+  recipient: '조김님',
+  addressRoad: '부산광역시 수영구 광안로45번길 8 (광안동, 광안비취빌리지)',
+  addressDetail: '703호',
   dispCellNo: '010',
-  phone: '1234-1234',
+  phone: '7134-5135',
 }
 
 export const orderMessageDatas: orderMessageType[] = [
@@ -30,9 +30,9 @@ export const orderMessageDatas: orderMessageType[] = [
 ]
 
 export const orderCustomerData: orderCustomerType = {
-  name: '테스터',
-  email: 'test@gmail.com',
-  phone: '010-1234-0123',
+  name: '본인',
+  email: 'jogim@gmail.com',
+  phone: '010-7134-5135',
 }
 
 export const orderPhoneDatas: orderPhoneType[] = [

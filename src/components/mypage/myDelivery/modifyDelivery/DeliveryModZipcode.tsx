@@ -20,10 +20,10 @@ export default function DeliveryModZipcode({ zip, road, jib, detail }: ZipPorps)
   })
 
   const handleAddressSearch = () => {
-    let zip = '88848'
-    let addressRoad = '[도로명]'
-    let addressJibeon = '[지번]'
-    let addrDetail = ' 상세'
+    let zip = '48058'
+    let addressRoad = '[도로명] 부산광역시 해운대구 센텀남대로 35 (우동)'
+    let addressJibeon = '[지번] 부산광역시 해운대구 우동 1495 신세계백화점센텀시티점'
+    let addrDetail = ' 305호'
 
     setModData((prevFormData) => ({
       ...prevFormData,

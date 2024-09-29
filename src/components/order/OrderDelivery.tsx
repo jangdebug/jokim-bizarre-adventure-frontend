@@ -17,7 +17,7 @@ export default function OrderDelivery({ orderDelivery }: { orderDelivery: orderD
   return (
     <section className="px-[24px]">
       <div className="py-[20px] flex justify-between">
-        <p className="text-xl font-bold">배송지</p>
+        <p className="text-xl font-bold w-[80px]">배송지</p>
         <div className="flex items-center">
           <p className={`text-sm mr-2 ${isDetail ? 'hidden' : ''}`}>
             {orderDelivery.addressRoad} {orderDelivery.addressDetail}

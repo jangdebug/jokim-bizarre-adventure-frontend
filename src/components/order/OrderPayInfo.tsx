@@ -5,9 +5,9 @@ import Divider from '../ui/Divider'
 export default function OrderPayInfo({ basketListDatas }: { basketListDatas: basketListType[] }) {
   let payDelivery = 0
 
-  const totalAmount: number = basketListDatas
-    .filter((item) => item.isChecked)
-    .reduce((total, item) => total + item.price * item.quantity, 0)
+  // const totalAmount: number = basketListDatas
+  //   .filter((item) => item.isChecked)
+  //   .reduce((total, item) => total + item.price * item.quantity, 0)
 
   return (
     <section>
