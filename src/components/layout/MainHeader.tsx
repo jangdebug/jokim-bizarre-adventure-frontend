@@ -6,6 +6,7 @@ import Image from 'next/image'
 import MainHeaderLogo from '../icons/main-header/MainHeaderLogo.png'
 import Link from 'next/link'
 import { useScrollEvent } from '@/hooks/UseScrollEvent'
+import HeaderBasketCount from './HeaderBasketCount'
 
 export default function MainHeader() {
   const isVisible = useScrollEvent()
@@ -38,7 +39,7 @@ export default function MainHeader() {
                 <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
-                <span
+                {/* <span
                   className={`absolute
                                                 top-[-4px]
                                                 right-[-6px]
@@ -54,7 +55,7 @@ export default function MainHeader() {
                                                 leading-[0]`}
                 >
                   12
-                </span>
+                </span> */}
               </li>
             </ul>
           </li>

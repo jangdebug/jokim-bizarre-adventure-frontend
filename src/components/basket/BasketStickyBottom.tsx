@@ -12,7 +12,7 @@ export default function BasketStickyBottom({ totalAmount }: { totalAmount: numbe
       </div>
 
       <Link href="/order" className="w-2/3 bg-[#131922] flex justify-center items-center h-full">
-        <span className="text-white">{totalAmount.toLocaleString()} 주문하기</span>
+        <span className="text-white">{totalAmount.toLocaleString()}원 주문하기</span>
       </Link>
     </div>
   )

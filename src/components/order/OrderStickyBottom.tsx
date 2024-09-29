@@ -1,10 +1,9 @@
 import { basketListType } from '@/types/BasketTypes'
 import { Button } from '../ui/button'
+import { getTotalOrderPrice } from '@/actions/order/getOrderData'
 
-export default function OrderStickyBottom({ basketListDatas }: { basketListDatas: basketListType[] }) {
-  const totalAmount: number = basketListDatas
-    .filter((item) => item.isChecked)
-    .reduce((total, item) => total + item.price * item.quantity, 0)
+export default async function OrderStickyBottom({ basketListDatas }: { basketListDatas: basketListType[] }) {
+  const totalOrderPrice = await getTotalOrderPrice(basketListDatas)
 
   return (
     <div className="w-full fixed bottom-0 bg-white border-[1px] z-[11]">
@@ -13,7 +12,7 @@ export default function OrderStickyBottom({ basketListDatas }: { basketListDatas
         <span className="text-gray-400 border-b-[1]">약관보기</span>
       </div>
       <Button className="w-full bg-[#131922] h-[60px] flex justify-center items-center">
-        <span className="text-lg text-white">{totalAmount.toLocaleString()}원 결제하기</span>
+        <span className="text-lg text-white">{totalOrderPrice.toLocaleString()}원 결제하기</span>
       </Button>
     </div>
   )

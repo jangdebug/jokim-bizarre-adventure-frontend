@@ -63,7 +63,7 @@ export default function ProductDetailBottomNavigation({ productCode, productOpti
       const res = await postProduct(target, productCode, selectedOption, String(currentQuantity))
       if (res) {
         setIsOpen(() => false)
-        router.push('/order')
+        router.push('/basket')
       }
     } else {
       setIsOpen(() => true)

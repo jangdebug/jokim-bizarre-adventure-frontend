@@ -11,9 +11,9 @@ interface LikeButtonProps {
 
 export default function LikeButton({ type, targetId, currentState = false }: LikeButtonProps) {
   const handleLikeState = async (likeFormData: FormData) => {
-    console.log('form is : ', likeFormData.get('type'))
-    console.log('form is : ', likeFormData.get('currentState'))
-    console.log('form is : ', likeFormData.get('targetId'))
+    // console.log('form is : ', likeFormData.get('type'))
+    // console.log('form is : ', likeFormData.get('currentState'))
+    // console.log('form is : ', likeFormData.get('targetId'))
 
     const res = await changeLikeAction(likeFormData)
   }

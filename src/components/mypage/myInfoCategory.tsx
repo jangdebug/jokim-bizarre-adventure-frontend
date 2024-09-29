@@ -1,5 +1,6 @@
 import React from 'react'
 import MyInfoCategoryArticle from './myInfoCategory/myInfoCategoryArticle'
+import MyLogOut from './myLogout'
 
 export interface myCategoryProps {
   title: string
@@ -140,6 +141,9 @@ export default function MyInfoCategory() {
       {myPageCategory.map((category, index) => (
         <MyInfoCategoryArticle category={category} key={index} />
       ))}
+      <div className="px-[24px]">
+        <MyLogOut />
+      </div>
     </div>
   )
 }
