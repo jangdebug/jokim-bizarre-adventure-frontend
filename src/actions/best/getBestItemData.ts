@@ -13,6 +13,17 @@ export async function getBestItemAction(type: string): Promise<BestItemType[]> {
   return data
 }
 
+export async function getBestItemMainAction(): Promise<BestItemType[]> {
+  const res = await fetch(`${process.env.API_BASE_URL}/v1/best/popular-product`)
+  if (!res.ok) {
+    console.log('Fail to fetch best/popular-product')
+    return []
+  }
+  const data = (await res.json()).result as BestItemType[]
+
+  return data.slice(0, 10)
+}
+
 // export async function getBestItemCategoryAction(type: string): Promise<BestItemType[]> {
 //   if (type !== 'ALL') return []
 //   // const res: BestItemType[] = popularItems
