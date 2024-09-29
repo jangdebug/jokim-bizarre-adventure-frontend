@@ -16,10 +16,6 @@ interface basketProps {
 export default async function BasketList({ basketListDatas }: basketProps) {
   const totalAmount = await getTotalPrice(basketListDatas)
 
-  // const totalAmount: number = basketListDatas
-  //   .filter((item) => item.isChecked)
-  //   .reduce((total, item) => total + productPrice * item.quantity, 0)
-
   return (
     <section>
       <div className="h-[56px] px-[24px] flex items-center justify-between">

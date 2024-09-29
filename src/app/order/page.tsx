@@ -1,17 +1,19 @@
-import { getBasketListAction } from '@/actions/basket/getBasketListData'
-import { getOrderCustomerAction, getOrderDeliveryAction } from '@/actions/order/getOrderData'
+import { getBasketListAction, getBasketProduct } from '@/actions/basket/getBasketListData'
+import { getOrderDeliveryAction, getOrderPageList } from '@/actions/order/getOrderData'
 import OrderCustomer from '@/components/order/OrderCustomer'
 import OrderDelivery from '@/components/order/OrderDelivery'
 import OrderPayInfo from '@/components/order/OrderPayInfo'
 import OrderProduct from '@/components/order/OrderProduct'
 import OrderStickyBottom from '@/components/order/OrderStickyBottom'
 import Divider from '@/components/ui/Divider'
-import React from 'react'
 
 export default async function Order() {
   const orderDelivery = await getOrderDeliveryAction()
-  const orderCustomer = await getOrderCustomerAction()
+  // const orderCustomer = await getOrderCustomerAction()
   const basketListDatas = await getBasketListAction()
+  const orderListDatas = await getOrderPageList()
+
+  const firstProductData = await getBasketProduct(orderListDatas[0].productCode)
 
   return (
     <main>
@@ -20,9 +22,9 @@ export default async function Order() {
         <Divider />
         <OrderPayInfo basketListDatas={basketListDatas} />
         <Divider />
-        <OrderCustomer orderCustomer={orderCustomer} />
+        <OrderCustomer orderDelivery={orderDelivery} />
         <Divider />
-        <OrderProduct basketListDatas={basketListDatas} />
+        <OrderProduct orderListDatas={orderListDatas} firstProductData={firstProductData} />
         <Divider />
         <OrderStickyBottom basketListDatas={basketListDatas} />
       </section>

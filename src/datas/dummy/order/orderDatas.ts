@@ -1,14 +1,14 @@
 import { orderCustomerType, orderDeliveryType, orderMessageType, orderPhoneType } from '@/types/OrderTypes'
 
-export const orderDeliveryData: orderDeliveryType = {
-  addressCode: '134712',
-  addressName: '조김클럽',
-  recipient: '조김님',
-  addressRoad: '부산광역시 수영구 광안로45번길 8 (광안동, 광안비취빌리지)',
-  addressDetail: '703호',
-  dispCellNo: '010',
-  phone: '7134-5135',
-}
+// export const orderDeliveryData: orderDeliveryType = {
+//   addressCode: '134712',
+//   addressName: '조김클럽',
+//   recipient: '조김님',
+//   addressRoad: '부산광역시 수영구 광안로45번길 8 (광안동, 광안비취빌리지)',
+//   addressDetail: '703호',
+//   dispCellNo: '010',
+//   phone: '7134-5135',
+// }
 
 export const orderMessageDatas: orderMessageType[] = [
   {

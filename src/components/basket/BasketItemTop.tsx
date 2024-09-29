@@ -1,8 +1,8 @@
+import { getBasketBrandName } from '@/actions/basket/getBasketListData'
 import { getProductItemData } from '@/actions/product/getProductData'
 import { basketListType } from '@/types/BasketTypes'
-import CheckboxWithSvg from '../dummy/CheckboxWithSvg'
-import ThinClose from '../icons/basket/ThinClose'
-import { getBasketBrandName } from '@/actions/basket/getBasketListData'
+import BasketCheckBox from './BasketCheckBox'
+import BasketDeleteDIV from './BasketDeleteDIV'
 
 interface itemProps {
   item: basketListType
@@ -22,12 +22,7 @@ export default async function BasketItemTop({ item }: itemProps) {
   return (
     <div className="flex items-center justify-between mb-4">
       <fieldset className="flex items-center gap-4 ">
-        <CheckboxWithSvg
-          id={item.productCode}
-          name={`${brandName} ${productData?.productName}`}
-          checked={item.isChecked}
-          // onChange={(e) => handleItemCheck(e, item, e.target.checked)}
-        />
+        <BasketCheckBox basketCode={item.basketCode} isChecked={item.isChecked} />
 
         <label htmlFor={item.productCode}>
           <div className="text-base flex gap-4">
@@ -36,9 +31,7 @@ export default async function BasketItemTop({ item }: itemProps) {
           </div>
         </label>
       </fieldset>
-      <div className="mx-2">
-        <ThinClose />
-      </div>
+      <BasketDeleteDIV basketCode={item.basketCode} productName={productData?.productName} />
     </div>
   )
 }
