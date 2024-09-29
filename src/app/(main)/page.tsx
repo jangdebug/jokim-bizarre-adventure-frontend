@@ -1,16 +1,16 @@
-import FadeUpSection from '@/components/util/FadeUpSection'
-import MainSwiper from '@/components/main/MainSwiper'
-import MainCategory from '@/components/main/MainCategory'
 import { getMainSwiperItem } from '@/actions/main/getMainSwiperItem'
+import MainCategory from '@/components/main/MainCategory'
+import MainSwiper from '@/components/main/MainSwiper'
+import FadeUpSection from '@/components/util/FadeUpSection'
 
-import { getServerSession } from 'next-auth'
-import { options } from '../api/auth/[...nextauth]/options'
-import { getParentCategories } from '@/actions/category/getCategoryData'
+import { getBestItemMainAction } from '@/actions/best/getBestItemData'
+import FadeBestList from '@/components/main/FadeBestList'
 import SlimEventSwiper from '@/components/ui/SlimEventSwiper'
 import Image from 'next/image'
 
 export default async function Home() {
   const mainSwiperData = await getMainSwiperItem()
+  const bestItems = await getBestItemMainAction()
 
   // const session = await getServerSession(options)
   // const isAuth = session?.user ? session.user : null
@@ -33,23 +33,9 @@ export default async function Home() {
       <FadeUpSection>
         <SlimEventSwiper />
       </FadeUpSection>
-      <div
-        style={{
-          height: '400px',
-          backgroundColor: 'black',
-          color: 'white',
-        }}
-      >
+      <div>
         <FadeUpSection>
-          <div
-            style={{
-              height: '300px',
-              backgroundColor: 'grey',
-              color: 'black',
-            }}
-          >
-            FADEUP ITEM
-          </div>
+          <FadeBestList bestItems={bestItems} />
         </FadeUpSection>
       </div>
     </main>
