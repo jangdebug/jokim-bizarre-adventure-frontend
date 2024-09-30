@@ -1,6 +1,6 @@
 import { Button } from './button'
 
-export default function CommonModal({ message, onClose }: { message: string; onClose: () => void }) {
+export default function CommonModal({ message, onClose }: { message: string | null; onClose: () => void }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
       <div className="bg-white p-6 text-center w-[60%]">
