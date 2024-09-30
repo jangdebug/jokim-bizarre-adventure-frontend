@@ -1,11 +1,28 @@
 'use client'
+import { useEffect } from 'react'
 import { Button } from '../ui/button'
 import SignInField from './SignInField'
 import { signIn } from 'next-auth/react'
 
-import { redirect } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function SignInSection() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  useEffect(() => {
+    const email = searchParams.get('email')
+    const password = searchParams.get('password')
+
+    if (email && password) {
+      const formData = new FormData()
+      formData.append('email', email)
+      formData.append('password', password)
+
+      // handleSignIn 호출
+      handleSignIn(formData)
+    }
+  }, [searchParams])
+
   const handleSignIn = async (formData: FormData) => {
     console.log(formData.get('email'))
     console.log(formData.get('password'))
@@ -21,7 +38,7 @@ export default function SignInSection() {
       console.log('Error:', res)
     } else {
       console.log('Success:', res)
-      redirect('/')
+      router.push('/')
     }
   }
 
