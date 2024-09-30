@@ -12,7 +12,6 @@ export default async function ReviewSummarySection({ productCode }: { productCod
   // console.log('in review summary id is ', searchParams)
   const summary = await getReviewSummaryData(productCode)
   const reviewCount = await getProductReviewCount(productCode)
-  console.log('in review summary', summary)
 
   return (
     <section id="review" className="scroll-m-[36px] px-[24px] pb-[24px]">

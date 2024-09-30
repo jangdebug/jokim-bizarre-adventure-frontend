@@ -75,7 +75,7 @@ export default function ProductCard({
   return (
     <li className={`w-full relative ${viewMode === 1 ? '' : 'mb-[36px]'}`}>
       <Link href={`/product-detail/${productData.productCode}`}>
-        <div className={`relative ${viewMode === 0 ? 'h-[267px]' : ''} flex items-center`}>
+        <div className={`relative flex items-center`}>
           <div className="absolute top-0 left-0 w-full h-full z-[5] bg-black bg-opacity-[0.03]" />
           <Image
             src={productThumbnailUrl}

@@ -4,6 +4,7 @@ import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import HeaderBasketCount from './HeaderBasketCount'
 
 export default function ProductPageHeader() {
   const router = useRouter()
@@ -35,23 +36,7 @@ export default function ProductPageHeader() {
                 <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
-                <span
-                  className={`absolute
-                                                top-[-4px]
-                                                right-[-6px]
-                                                flex
-                                                w-[20px]
-                                                h-[20px]
-                                                text-[10px]
-                                                bg-[rgb(217,156,99)]
-                                                text-white
-                                                items-center
-                                                justify-center
-                                                rounded-full
-                                                leading-[0]`}
-                >
-                  12
-                </span>
+                <HeaderBasketCount />
               </li>
             </ul>
           </li>

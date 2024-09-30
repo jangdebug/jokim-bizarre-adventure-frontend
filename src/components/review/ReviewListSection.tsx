@@ -7,7 +7,6 @@ import { getReviewList } from '@/actions/review/getReviewData'
 export default async function ReviewListSection({ productCode }: { productCode: string }) {
   const reviews: ReviewDataType[] = await getReviewList(productCode, 0, 5)
   // 리뷰들에 대한 사용자의 좋아요 상태를 받아와야합니다.
-  console.log('in review', reviews)
 
   return (
     <section>
