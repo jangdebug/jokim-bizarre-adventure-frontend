@@ -3,7 +3,6 @@
 import SearchIcon from '../icons/auth-service-header/SearchIcon'
 import BasketIcon from '../icons/auth-service-header/BasketIcon'
 import Image from 'next/image'
-import MainHeaderLogo from '../icons/main-header/MainHeaderLogo.png'
 import Link from 'next/link'
 import { useScrollEvent } from '@/hooks/UseScrollEvent'
 import HeaderBasketCount from './HeaderBasketCount'
@@ -39,6 +38,8 @@ export default function MainHeader() {
                 <Link href={'/basket'}>
                   <BasketIcon />
                 </Link>
+                <HeaderBasketCount />
+
                 {/* <span
                   className={`absolute
                                                 top-[-4px]

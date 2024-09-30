@@ -6,7 +6,7 @@ import React from 'react'
 export default function MainSwiperItem({ swiperItem }: { swiperItem: mainSwiperItem }) {
   return (
     <>
-      <Link href={`/event/${swiperItem.eventId}`} className="relative">
+      <Link href={`/event`} className="relative">
         <Image
           src={swiperItem.thumbnailUrl}
           alt="main image"

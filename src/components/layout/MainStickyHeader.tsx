@@ -27,7 +27,7 @@ const stickHeaderItemData: stickHeaderItemType[] = [
     id: 3,
     title: 'Deal',
     value: 'deal',
-    url: '/deal',
+    url: '#',
   },
   {
     id: 4,
@@ -39,19 +39,19 @@ const stickHeaderItemData: stickHeaderItemType[] = [
     id: 5,
     title: 'S.I.Live',
     value: 'silive',
-    url: '/silive',
+    url: '#',
   },
   {
     id: 6,
     title: 'Content',
     value: 'content',
-    url: '/content',
+    url: '#',
   },
   {
     id: 7,
     title: 'SSG DF',
     value: 'ssgdf',
-    url: '/ssgdf',
+    url: '#',
   },
 ]
 

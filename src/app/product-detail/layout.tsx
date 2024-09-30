@@ -13,8 +13,6 @@ export default function Layout({
       {children}
       <ToTopButton moveWithBottomNav={false} />
       <Footer />
-      {/* <ProductDetailBottomNavigation /> */}
-      {/* <ProductDetailBottomNavigation_tet /> */}
     </>
   )
 }

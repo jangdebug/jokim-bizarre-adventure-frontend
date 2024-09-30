@@ -5,41 +5,7 @@ import { Button } from '../ui/button'
 import Counter from './Counter'
 import { postProduct } from '@/actions/product/postProductData'
 import { useRouter } from 'next/navigation'
-
-// const productOptionsDummy: ProductOptionType[] = [
-//   {
-//     productCode: '2406262345',
-//     optionCode: '1',
-//     optionName: '사이즈',
-//     optionValue: 's',
-//     quantity: 0,
-//     price: 400000,
-//   },
-//   {
-//     productCode: '2406262345',
-//     optionCode: '2',
-//     optionName: '사이즈',
-//     optionValue: 'm',
-//     quantity: 1,
-//     price: 400000,
-//   },
-//   {
-//     productCode: '2406262345',
-//     optionCode: '3',
-//     optionName: '사이즈',
-//     optionValue: 'l',
-//     quantity: 3,
-//     price: 400000,
-//   },
-//   {
-//     productCode: '2406262345',
-//     optionCode: '4',
-//     optionName: '사이즈',
-//     optionValue: 'xl',
-//     quantity: 2,
-//     price: 400000,
-//   },
-// ]
+import CommonModal from '../ui/CommonModal'
 
 interface productBasketProps {
   productCode: string
@@ -52,18 +18,33 @@ export default function ProductDetailBottomNavigation({ productCode, productOpti
 
   // 모달 상태 관리
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [selectedOption, setSelectedOption] = useState<string>(productOptions[0].productOptionCode)
+  const [selectedOption, setSelectedOption] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [targetMaxQuantity, setTargetMaxQuantity] = useState<number>(productOptions[0].stock)
+
+  // test
+  const [modalVisible, setModalVisible] = useState(false)
+  const [modalMessage, setModalMessage] = useState<string | null>(null)
+  const [redirectUrl, setRedirectUrl] = useState<string | null>(null)
+  const closeModal = () => {
+    console.log('onclose', redirectUrl)
+
+    if (redirectUrl !== null) {
+      router.push(redirectUrl)
+    }
+  }
 
   // 버튼 클릭 시 모달 토글
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       const target = e.currentTarget.name
+      console.log(target)
+
       const res = await postProduct(target, productCode, selectedOption, String(currentQuantity))
       if (res) {
-        setIsOpen(() => false)
-        router.push('/basket')
+        setRedirectUrl(() => '/basket')
+        setModalMessage(() => '쇼핑백으로 이동합니다.')
+        setModalVisible(() => true)
       }
     } else {
       setIsOpen(() => true)
@@ -98,6 +79,8 @@ export default function ProductDetailBottomNavigation({ productCode, productOpti
 
   return (
     <>
+      {modalVisible && <CommonModal message={modalMessage} onClose={closeModal} />}
+
       <nav className="fixed bottom-0 left-0 h-[56px] w-full z-[55]">
         <ul className="flex items-center justify-between w-full h-full">
           <li className="w-full h-full">

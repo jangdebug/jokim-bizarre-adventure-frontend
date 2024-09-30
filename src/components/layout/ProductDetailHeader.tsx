@@ -7,6 +7,7 @@ import { useScrollEvent } from '@/hooks/UseScrollEvent'
 import { useRouter } from 'next/navigation'
 import HomeIcon from '../icons/auth-service-header/HomeIcon'
 import { useEffect, useState } from 'react'
+import HeaderBasketCount from './HeaderBasketCount'
 
 export default function ProductDetailHeader() {
   const isVisible = useScrollEvent()
@@ -68,23 +69,7 @@ export default function ProductDetailHeader() {
                 <Link href={'/basket'}>
                   <BasketIcon color={isBlack ? 'black' : 'white'} />
                 </Link>
-                <span
-                  className={`absolute
-                                            top-[-4px]
-                                            right-[-6px]
-                                            flex
-                                            w-[20px]
-                                            h-[20px]
-                                            text-[10px]
-                                            bg-[rgb(217,156,99)]
-                                            text-white
-                                            items-center
-                                            justify-center
-                                            rounded-full
-                                            leading-[0]`}
-                >
-                  12
-                </span>
+                <HeaderBasketCount />
               </li>
             </ul>
           </li>

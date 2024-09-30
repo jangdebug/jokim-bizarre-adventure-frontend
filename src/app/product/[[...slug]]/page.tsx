@@ -30,7 +30,6 @@ export default async function Product({
     <main>
       <ProductStickyHeader parentCategoryName={parentCategoryName} subCategories={subCatgories} />
       <FilterBar />
-      {/* <ProductListSectionHeader currentViewMode={searchParams.type} /> */}
       <ProductList intialProductCodes={productCodes} categoryCode={searchParams.code} />
     </main>
   )

@@ -1,16 +1,22 @@
+'use client'
+import { useRouter } from 'next/navigation'
 import LeftArrowIcon from '../icons/auth-service-header/LeftArrowIcon'
 import Link from 'next/link'
 
 export default function CategoryPageHeader() {
+  const router = useRouter()
+  const handleClick = () => {
+    router.back()
+  }
   return (
     <header className="flex flex-col justify-center w-full h-[56px] px-[16px]">
       <nav>
         <ul className="flex justify-between items-center">
           <li>
             {/* 뒤로가기 기능으로 변경해야합니다 */}
-            <Link href={'/'}>
+            <button onClick={handleClick}>
               <LeftArrowIcon />
-            </Link>
+            </button>
           </li>
 
           <Link href={'/search'} className="w-full border-b border-[#000] mx-[16px]  pb-[5px] text-left ">
