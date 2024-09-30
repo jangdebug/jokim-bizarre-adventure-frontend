@@ -52,10 +52,7 @@ export default function BottomNavigation({ withFadeOption = false }: { withFadeO
             </Link>
           </li>
           <li className="overflow-x-hidden w-full  box-border flex items-center justify-center ">
-            <Link
-              href={'/test'}
-              className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border"
-            >
+            <Link href={'#'} className="w-full h-full py-[6px] flex flex-col items-center justify-center box-border">
               <DefaultHistoryIcon />
               <span className="text-[10px] leading-[12px] pb-[3px] text-[#929292] ">Recent</span>
             </Link>

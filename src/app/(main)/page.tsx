@@ -12,10 +12,6 @@ export default async function Home() {
   const mainSwiperData = await getMainSwiperItem()
   const bestItems = await getBestItemMainAction()
 
-  // const session = await getServerSession(options)
-  // const isAuth = session?.user ? session.user : null
-  // console.log('user sesstion', isAuth)
-
   return (
     <main>
       <MainSwiper swiperItems={mainSwiperData} />
@@ -27,7 +23,7 @@ export default async function Home() {
           alt="dummyEvent"
           width={500}
           height={500}
-          className="px-[24px] pb-[48px]"
+          className="px-[24px] pb-[48px] w-full"
         />
       </FadeUpSection>
       <FadeUpSection>

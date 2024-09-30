@@ -113,7 +113,7 @@ export async function basketQuantityChange(basketCode: string, quantity: number,
 ////////////////////// 장바구니의 상품 총 개수 //////////////////////
 export async function getBasketCount(): Promise<basketCountType> {
   const auth = await getSessionAuth()
-  if (!auth) return { count: 0 }
+  if (!auth) return { count: -1 }
 
   const res = await fetch(`${process.env.API_BASE_URL}/v1/basket/count`, {
     method: 'GET',
@@ -123,11 +123,13 @@ export async function getBasketCount(): Promise<basketCountType> {
     },
   })
 
+  const data = await res.json()
+
   if (!res.ok) {
     console.log('Failed to fetch cart item list count')
     return { count: 0 }
   } else {
-    return (await res.json()).result.count as basketCountType
+    return data.result as basketCountType
   }
 }
 
